@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+    <html lang="es">
+        <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <link rel="stylesheet" href="css/css_login/login.css">
+
+
+            <title>Iniciar Sesion</title>
+
+
+        </head>
+        <body>
+
+            <header>
+                <hr>
+            </header>
+            
+            <div class="login-box">
+                
+                <h1>Iniciar Sesión</h1>
+                    <form id = "formulario" action="php/validar.php" method="POST">
+                        <label for = "correo">Correo :</label>
+                        <input type="text" name="correo" placeholder="Correo" size="40">
+                        
+                        <label for = "password">Contraseña :</label>
+                        <input type="text" name="password" placeholder="Contraseña" size="40">
+                        
+                        <input type="submit" value="Acceder" class="btn btn-default btn-md"> 
+                        
+                         <span>¿ No tienes cuenta ?</span>
+                        <a href="registrar.html"> Regístrate</a>
+                        <a href="index.html">Regresar</a>
+                    </form>
+            </div>
+        </body>
+    </html>

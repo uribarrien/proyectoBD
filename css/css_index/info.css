@@ -1,0 +1,29 @@
+#info   {
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 50px;
+    
+}
+
+#info h3    {
+    font-size: 30px;
+}
+
+#info .contenedor   {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    
+}
+.disenos    {
+    margin: 50px;
+}
+
+.disenos img    {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    border: 3px solid #000;
+    object-fit: cover;
+}
