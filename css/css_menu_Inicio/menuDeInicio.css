@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css?family=Julius+Sans+One|Montserrat:200|Raleway:300|Roboto:100|Work+Sans:200|Open+Sans');
+
+*{
+    margin:0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body {
+    background: #d8d8d8;
+    
+}
+h1        {
+    font-family: 'Open Sans', sans-serif;
+}
+.navegacion    {
+    width: 100%;
+    margin: 30px auto;
+}
+
+.navegacion ul    {
+    list-style: none;
+    text-align: center;
+    
+}
+
+.menu > li     {
+    position: relative;
+    display: inline-block;
+    margin-left: auto;
+}
+
+.menu li a    {
+    display: block;
+    padding: 15px 20px;
+    color: black;
+    font-family: 'Open Sans', sans-serif;
+    text-decoration: none;
+    
+}
+
+.menu li a:hover    {
+    color: #0059ff;
+    transition: all .5s;
+}
+

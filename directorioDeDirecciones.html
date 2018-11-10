@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Directorio de Direcciones</title>
+        <link rel="stylesheet" href="css/css_directorio_Direcciones/directorioDeDirecciones.css">
+        
+    </head>
+    <body>
+        <header> 
+            <div class="nombreT">
+                <h1>NOMBRE DE TIENDA</h1>
+            </div>
+            <nav class="navegacion">
+                <ul class="menu">
+                    <li><a href="#">Resumen</a></li>
+                    <li><a href="#">Estado de cuenta</a></li>
+                    <li><a href="#">Información personal</a></li>
+                    <li><a href="#">Directorio de direcciones</a></li>
+                    <li><a href="#">Historial de compra</a></li>
+                </ul>
+            </nav>
+            <div class="contenedor">
+               <div class="form_izq">
+                    <form  action="" method="post">
+                        <h2>Tus Datos</h2>  
+                        <label for="correo"><input type="text" name="correo" placeholder="Correo" size="40" class="input-100"></label>
+                        <label for="telefono"><input type="text" name="telefono" placeholder="Teléfono" size="40" class="input-100"></label>
+                        <label for="nombre"><input type="text" name="nombre" placeholder="Nombre" size="40" class="input-48"></label>
+                        <label for="apepat"><input type="text" name="apepat" placeholder="Apellido paterno" size="40" class="input-48"></label>
+                        <label for="apemat"><input type="text" name="apemat" placeholder="Apellido materno" size="40" class="input-48"></label>
+                    </form>
+                </div>
+                <div class="form_der">
+                    <form  action="" method="post">
+                        <h2>Domicilio de entrega</h2>       
+                        <label for="cp"><input type="text" name="cp" placeholder="Codigo Postal" size="40" class="input-48"></label>
+                        <label for="calle"><input type="text" name="calle" placeholder="Calle" size="40" class="input-100"></label>
+                        <label for="num_ext"><input type="text" name="num_ext" placeholder="Numero exterior" size="40" class="input-48" class="input-48"></label>
+                        <label for="num_int"><input type="text" name="num_int" placeholder="Numero de interior" size="40" class="input-48" class="input-48"></label>
+                        <label for="estado"><input type="text" name="calle" placeholder="Estado" size="40" class="input-48"></label>
+                        <label for="ciudad"><input type="text" name="calle" placeholder="Ciudad" size="40" class="input-48"></label>
+                        <label for="colonia"><input type="text" name="colonia" placeholder="Colonia" size="40" class="input-48"></label>
+
+                        <label for="entre_Calles">
+                            <p>¿Entre qué calles está el domicilio?</p>       
+                            <input type="text" name="entre_Calles" placeholder=" entre calles" size="40" class="input-100">
+                        </label>
+                        <label for="calle_ref">
+                            <p>Calle de referencia</p>    
+                            <input type="text" name="calle_ref" placeholder="calle_ref" size="40" class="input-100">
+                        </label>
+            
+                   </form>
+                   <input type="submit" value="Guardar información" class="btn btn-default btn-md"> 
+                </div>
+            </div>
+        </header>   
+        
+    </body>
+</html>
+
+
