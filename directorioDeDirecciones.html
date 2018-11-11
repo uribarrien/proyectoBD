@@ -5,8 +5,8 @@
         <meta http-equiv="X-UA-Compatible" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Directorio de Direcciones</title>
-        <link rel="stylesheet" href="css/css_directorio_Direcciones/directorioDeDirecciones.css">
-        
+        <link rel="stylesheet" href="css/css_directorio_Direcciones/directorioDirecciones.css">
+        <meta>
     </head>
     <body>
         <header> 
@@ -15,17 +15,17 @@
             </div>
             <nav class="navegacion">
                 <ul class="menu">
-                    <li><a href="#">Resumen</a></li>
+                    <li><a href="menuInicio.html">Resumen</a></li>
                     <li><a href="#">Estado de cuenta</a></li>
                     <li><a href="#">Información personal</a></li>
-                    <li><a href="#">Directorio de direcciones</a></li>
+                    <li><a class="navegacion_active" href="#">Directorio de direcciones</a></li>
                     <li><a href="#">Historial de compra</a></li>
                 </ul>
             </nav>
             <div class="contenedor">
                <div class="form_izq">
-                    <form  action="" method="post">
-                        <h2>Tus Datos</h2>  
+                    <form  action="php/direcciones.php" method="post" name="form_izq">
+                        <h2 class="texto">Tus Datos</h2>  
                         <label for="correo"><input type="text" name="correo" placeholder="Correo" size="40" class="input-100"></label>
                         <label for="telefono"><input type="text" name="telefono" placeholder="Teléfono" size="40" class="input-100"></label>
                         <label for="nombre"><input type="text" name="nombre" placeholder="Nombre" size="40" class="input-48"></label>
@@ -34,8 +34,8 @@
                     </form>
                 </div>
                 <div class="form_der">
-                    <form  action="" method="post">
-                        <h2>Domicilio de entrega</h2>       
+                    <form  action="php/direcciones.php" method="post" name="form_der">
+                        <h2 class="texto">Domicilio de entrega</h2>       
                         <label for="cp"><input type="text" name="cp" placeholder="Codigo Postal" size="40" class="input-48"></label>
                         <label for="calle"><input type="text" name="calle" placeholder="Calle" size="40" class="input-100"></label>
                         <label for="num_ext"><input type="text" name="num_ext" placeholder="Numero exterior" size="40" class="input-48" class="input-48"></label>
@@ -45,17 +45,25 @@
                         <label for="colonia"><input type="text" name="colonia" placeholder="Colonia" size="40" class="input-48"></label>
 
                         <label for="entre_Calles">
-                            <p>¿Entre qué calles está el domicilio?</p>       
+                            <p class="texto">¿Entre qué calles está el domicilio?</p>       
                             <input type="text" name="entre_Calles" placeholder=" entre calles" size="40" class="input-100">
                         </label>
                         <label for="calle_ref">
-                            <p>Calle de referencia</p>    
+                            <p class="texto">Calle de referencia</p>    
                             <input type="text" name="calle_ref" placeholder="calle_ref" size="40" class="input-100">
                         </label>
+                        
             
                    </form>
-                   <input type="submit" value="Guardar información" class="btn btn-default btn-md"> 
+                    <script>
+                        function enviar_formulario(){
+                            document.form_izq.submit()
+                            document.form_der.submit()    
+                        }
+                    </script>   
+                    
                 </div>
+                <a  class="boton" href="javascript:enviar_formulario()">Enviar</a> 
             </div>
         </header>   
         
