@@ -1,0 +1,59 @@
+@import url(../css_menu_Inicio/menuDeInicio.css);
+
+.contenedor {
+    width: 82%;
+    height: 80%;
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    top: 60%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    padding: 70px 30px;
+    border-radius: 10px;
+}
+
+.form_izq    {
+    width: 40%;
+    height: 120%;
+    color: #fff;
+    display: inline-block;
+    position: relative;
+    transform: translate(-0%, -65%);
+    box-sizing: border-box;
+    padding: 70px 30px;
+    border-radius: 10px;
+}
+
+.form_der    {
+    width: 40%;
+    height: 120%;
+    color: #fff;
+    display: inline-block;
+    position: relative;
+    transform: translate(50%, -13%);
+    box-sizing: border-box;
+    padding: 20px 30px;
+    border-radius: 10px;
+}
+
+
+input   {
+    margin-bottom: 15px;
+    padding: 15px;
+    font-size: 16px;
+    border-radius: 3px;
+    border: 0px solid black;
+    
+}
+
+
+.input-48   {
+    width: 48%;
+}
+
+.input-100   {
+    width: 100%;
+}
+
