@@ -3,15 +3,16 @@
 .contenedor {
     width: 82%;
     height: 80%;
-    background: rgba(0, 0, 0, 0.6);
     color: #fff;
-    top: 60%;
+    top: 70%;
     left: 50%;
     position: absolute;
     transform: translate(-50%, -50%);
     box-sizing: border-box;
     padding: 70px 30px;
     border-radius: 10px;
+    border-style: solid;
+    border-width: 3px;
 }
 
 .form_izq    {
@@ -20,7 +21,7 @@
     color: #fff;
     display: inline-block;
     position: relative;
-    transform: translate(-0%, -65%);
+    transform: translate(-0%, -54%);
     box-sizing: border-box;
     padding: 70px 30px;
     border-radius: 10px;
@@ -48,6 +49,11 @@ input   {
     
 }
 
+.texto    {
+    font-family: 'Open Sans:400', sans-serif;
+
+}
+
 
 .input-48   {
     width: 48%;
@@ -57,3 +63,23 @@ input   {
     width: 100%;
 }
 
+
+.boton {
+    text-decoration:none;
+    font-weight: 600;
+    font-size: 20px;
+    color: black;
+    padding-top:15px;
+    padding-bottom:15px;
+    padding-left:40px;
+    padding-right:40px;
+    background-color:#a0a1a4;
+    border-radius: 30px;
+    font-family: 'Open Sans:400', sans-serif;
+    margin-left: -70px;
+}
+
+.boton:hover    {
+    color: white;
+    background-color:#737373;
+}
