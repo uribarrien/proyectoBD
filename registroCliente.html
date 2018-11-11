@@ -2,19 +2,23 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <title>Registro de Usuario</title>
+        <link rel="stylesheet" href="css/css_registroCliente/registroCliente.css">
     </head>
     <body>
-        <h1>Registro de usuario</h1>
-         <form action="php/registarCliente.php" method="POST">
-            Nombres: <input type="text" name="nombre" size="30"><br>
-            Apellido paterno: <input type="text" name="apellido_paterno" size="30"><br>
-            Apellido materno: <input type="text" name="apellido_materno" size="30"><br>
-            Correo electrónico: <input type="text" name="correo"  size="34">
-            Contraseña: <input type="password" name="contrasena" size="15"><br>
-            <input type="submit" value="Registrar"><br>
-             <a href="../Php/Index.php">Regresar a inicio</a>
+        <form action="php/registarCliente.php" class="form-reg" method="POST">
+            <h2 class="form__titulo">CREA UNA CUENTA</h2>
+            <div class="contenedor-inputs">
+                <input type="text" name="nombre" placeholder="Nombre" class="input-48" >
+                <input type="text" name="apellido_paterno" placeholder="Apellido Paterno" class="input-48" >
+                <input type="text" name="apellido_materno" placeholder="Apellido Materno" class="input-48" >
+                <input type="text" name="correo"  placeholder="Correo Electronico" class="input-100" >
+                <input type="password" name="contrasena" placeholder="Contraseña" class="input-48" >
+                <input type="submit" value="Registrar" class="btn-send" >
+                <p class="form__link">¿Ya tienes cuenta? <a href="loginUsuario.html">Ingresa aqui</a></p>
+            </div>    
+            <a class="return" href="index.html">Regresar a inicio</a>
         </form>
-        
         
     </body>
 </html>

@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css?family=Julius+Sans+One|Montserrat:200|Raleway:300|Roboto:100|Work+Sans:200|Open+Sans');
+
+
+* {
+  
+    box-sizing: border-box;
+    
+}
+
+body {
+    margin: 0;
+    font-family: sans-serif;
+    background: #204862;
+    background: url(../../img/17.jpg) no-repeat center;
+}
+
+
+h1{
+    color: #000;
+    text-align: center;
+}
+
+.form-reg{
+    width: 95%;
+    max-width: 500px;
+    margin: auto;
+    background: rgba(202,228,235,0.3);
+    border-radius: 7px;
+    transform: translateY(20%);
+    
+}
+
+.form__titulo {
+    
+    background: rgba(107,199,222,0.7);
+    color: #000;
+    padding: 20px;
+    text-align: center;
+    font-weight: 100;
+    font-size: 30px;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+    border-bottom: 2px solid black;
+}
+
+.contenedor-inputs  {
+    
+    padding: 10px 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+input   {
+    margin-bottom: 15px;
+    padding: 15px;
+    font-size: 16px;
+    border-radius: 3px;
+    border: 1px solid black;
+    
+}
+
+
+.input-48   {
+    width: 48%;
+}
+
+.input-100   {
+    width: 100%;
+}
+
+
+
+.btn-send   {
+    background: lightblue;
+    color: #000;
+    margin: auto;
+    padding: 10px 40px;
+    width: 100%;
+    cursor: pointer;
+    font-size: 20px;
+    
+}
+
+.btn-send:hover   {
+    background: #085e71;
+    transform: scale(1.05);
+    color : #fff;
+}
+
+
+.form__link {
+    width: 100%;
+    margin: 7px;
+    font-size: 14px;
+    text-align: center;
+}
+
+
+
+.contenedor-inputs p a  {
+    text-decoration: none;
+    font-size: 12px;
+    line-height: 20px;
+    color: #0012a7;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+}
+
+.contenedor-inputs p a:hover   {
+    color: #48bbd7;
+}
+
+.return {
+    font-size: 17px;
+    margin: auto;
+    text-decoration: none;
+    color: #0012a7;
+}
+
+
+.return:hover {
+    color: #48bbd7;
+}
