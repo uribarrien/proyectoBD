@@ -28,8 +28,10 @@ $rowsC = mysqli_num_rows($resultC);
 
 if($rowsC > 0){
     echo "Cliente existe <br>";
+    header("location:../menuInicio.html");
 }else{
     echo "REQUIERE INICIAR SESION";
+    header("location:../loginUsuario.html");
 }
 
 mysqli_free_result($resultC);
