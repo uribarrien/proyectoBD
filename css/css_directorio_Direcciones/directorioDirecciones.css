@@ -78,8 +78,26 @@ input   {
     font-family: 'Open Sans:400', sans-serif;
     margin-left: -70px;
 }
-
-.boton:hover    {
+.boton1 {
+    text-decoration:none;
+    font-weight: 600;
+    font-size: 20px;
+    color: black;
+    padding-top:15px;
+    padding-bottom:15px;
+    padding-left:40px;
+    padding-right:40px;
+    background-color:#a0a1a4;
+    border-radius: 30px;
+    font-family: 'Open Sans:400', sans-serif;
+    margin-left: 70px;
+   
+}
+.boton,.boton1:hover    {
     color: white;
     background-color:#737373;
+}
+h1{
+    position: fixed;
+    left: 10px;
 }
