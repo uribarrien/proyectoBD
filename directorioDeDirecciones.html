@@ -9,7 +9,7 @@
         <meta>
     </head>
     <body>
-        <header> 
+        <header>
             <div class="nombreT">
                 <h1>NOMBRE DE TIENDA</h1>
             </div>
@@ -17,7 +17,7 @@
                 <ul class="menu">
                     <li><a href="menuInicio.html">Resumen</a></li>
                     <li><a href="#">Estado de cuenta</a></li>
-                    <li><a href="micuenta.html">Información personal</a></li>
+                    <li><a href="informarcionPersonal.html">Información personal</a></li>
                     <li><a class="navegacion_active" href="#">Directorio de direcciones</a></li>
                     <li><a href="#">Historial de compra</a></li>
                 </ul>
@@ -25,7 +25,7 @@
             <div class="contenedor">
                <div class="form_izq">
                     <form  action="php/direcciones.php" method="post" name="form_izq">
-                        <h2 class="texto">Tus Datos</h2>  
+                        <h2 class="texto">Tus Datos</h2>
                         <label for="correo"><input type="text" name="correo" placeholder="Correo" size="40" class="input-100"></label>
                         <label for="telefono"><input type="text" name="telefono" placeholder="Teléfono" size="40" class="input-100"></label>
                         <label for="nombre"><input type="text" name="nombre" placeholder="Nombre" size="40" class="input-48"></label>
@@ -35,39 +35,37 @@
                 </div>
                 <div class="form_der">
                     <form  action="php/direcciones.php" method="post" name="form_der">
-                        <h2 class="texto">Domicilio de entrega</h2>       
+                        <h2 class="texto">Domicilio de entrega</h2>
                         <label for="cp"><input type="text" name="cp" placeholder="Codigo Postal" size="40" class="input-48"></label>
                         <label for="calle"><input type="text" name="calle" placeholder="Calle" size="40" class="input-100"></label>
                         <label for="num_ext"><input type="text" name="num_ext" placeholder="Numero exterior" size="40" class="input-48" class="input-48"></label>
                         <label for="num_int"><input type="text" name="num_int" placeholder="Numero de interior" size="40" class="input-48" class="input-48"></label>
-                        <label for="estado"><input type="text" name="calle" placeholder="Estado" size="40" class="input-48"></label>
-                        <label for="ciudad"><input type="text" name="calle" placeholder="Ciudad" size="40" class="input-48"></label>
+                        <label for="estado"><input type="text" name="estado" placeholder="Estado" size="40" class="input-48"></label>
+                        <label for="ciudad"><input type="text" name="ciudad" placeholder="Ciudad" size="40" class="input-48"></label>
                         <label for="colonia"><input type="text" name="colonia" placeholder="Colonia" size="40" class="input-48"></label>
 
                         <label for="entre_Calles">
-                            <p class="texto">¿Entre qué calles está el domicilio?</p>       
+                            <p class="texto">¿Entre qué calles está el domicilio?</p>
                             <input type="text" name="entre_Calles" placeholder=" entre calles" size="40" class="input-100">
                         </label>
                         <label for="calle_ref">
-                            <p class="texto">Calle de referencia</p>    
+                            <p class="texto">Calle de referencia</p>
                             <input type="text" name="calle_ref" placeholder="calle_ref" size="40" class="input-100">
                         </label>
-                        
-            
+
+
                    </form>
                     <script>
                         function enviar_formulario(){
                             document.form_izq.submit()
-                            document.form_der.submit()    
+                            document.form_der.submit()
                         }
-                    </script>   
-                    
+                    </script>
+
                 </div>
-                <a  class="boton" href="javascript:enviar_formulario()">Enviar</a> 
+                <a  class="boton" href="javascript:enviar_formulario()">Enviar</a>
             </div>
-        </header>   
-        
+        </header>
+
     </body>
 </html>
-
-
