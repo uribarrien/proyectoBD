@@ -5,7 +5,9 @@
   margin-top: 25px !important;
 }
 
-
+body     {
+    background-color: white;
+}
 #cont_banner    {
     margin-top: 40px !important;
 }
@@ -43,7 +45,10 @@
 }
 
 
-
+#cont_nav    {
+    background-color: white;
+    background: white;
+}
 
 /*footer*/
 .col_white_amrc { color:#FFF;}

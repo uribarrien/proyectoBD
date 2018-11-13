@@ -1,0 +1,29 @@
+#banner-playeras    {
+    background-image: url(../../../img/31.jpg);
+    background-size: cover;
+    height: 200px;
+}
+
+#text_banner    {
+    font-size: 60px;
+    color: white;
+    font-weight: 800;
+}
+
+#contenedor_text_banner{
+     transform: translate(0%,60%);
+}
+    
+
+#contenedor_playeras    {
+    margin-top: 30px;
+}
+
+
+#img_t_shirt    {
+    border-radius: 35px 35px 35px 0px;
+}
+
+#precio    {
+    margin-top: 0;
+}
