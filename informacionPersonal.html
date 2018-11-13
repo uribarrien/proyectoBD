@@ -17,10 +17,13 @@
                 </ul>
             </nav>
         <div class="contenedor">
-
+            <form  action="/php/informacion.php" method="POST" name="form"> 
            <h2 class="text">Bienvenido</h2> <br>
         <div class="formarr">
-            <label for="nombres" ><input type="text" name="nombre" placeholder="Nombre(s)"></label>
+             
+                 <label for="nombres" >
+                    <input type="text" name="nombre" placeholder="Nombre(s)"></label>
+            
             <label for="apellidos"><input type="text" name="apellido" placeholder="Apellido(s)"></label>
             <label for="correo"><input type="text" name="correo" placeholder="Correo electrónico"></label>
             <h2>Si deseas cambiar tu contraseña hazlo aquí:</h2>
@@ -32,18 +35,22 @@
                <select>
                 <option value="femenino">Femenino</option>
                    <option value="masculino">Masculino</option>
-               </select><BR>
+               </select><br>
                <h2 class="texto">Fecha de nacimiento:</h2>
 
                <input id="date" type="date"><br>
                <h2>Teléfono</h2>
+              
                 <label for="telefono"><input type="text" name="telefono" placeholder="Teléfono(10 dígitos)"></label>
-
+                
+                 
             </div>
             <br>
-            <a  class="boton1" >Guardar</a>
-
-
+            
+             <button type="submit" class="boton1" name="submit">Guardar</button>   
+            
+            </form>
+            
         </div>
 
 

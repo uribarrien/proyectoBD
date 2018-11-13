@@ -8,14 +8,19 @@ $password = "123456789";
 session_start();
 $session_email=$_SESSION['correo'];
 error_reporting(0);
-
-$nombre = $_POST['calle'];
+if (isset($_POST["submit"])) {
+    $nombre = $_POST['nombre'];
 $no_exterior = $_POST['num_ext'];
 $colonia = $_POST['colonia'];
 $codigo_postal = $_POST['cp'];
 $estado = $_POST['estado'];
 $ciudad = $_POST['ciudad'];
-//$telefono = $_POST['telefono'];
+    $telefono = $_POST['telefono'];
+}
+echo "Hols;"
+ $nombre = $_POST['nombre'];
+
+echo $nombre;
 $connection = mysqli_connect($server,$user,$password,$db);
 
 if(!$connection){
