@@ -6,9 +6,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Directorio de Direcciones</title>
         <link rel="stylesheet" href="css/css_directorio_Direcciones/directorioDirecciones.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <meta>
     </head>
-    <body>
+<!--    <body>
         <header>
             <div class="nombreT">
                 <h1>NOMBRE DE TIENDA</h1>
@@ -31,10 +32,10 @@
                         <label for="nombre"><input type="text" name="nombre" placeholder="Nombre" size="40" class="input-48"></label>
                         <label for="apepat"><input type="text" name="apepat" placeholder="Apellido paterno" size="40" class="input-48"></label>
                         <label for="apemat"><input type="text" name="apemat" placeholder="Apellido materno" size="40" class="input-48"></label>
-                    <!--</form>-->
+                    <!--</form>->
                 </div>
                 <div class="form_der">
-                    <!--<form  action="php/direcciones.php" method="post" name="form_der">-->
+                    <!--<form  action="php/direcciones.php" method="post" name="form_der">->
                         <h2 class="texto">Domicilio de entrega</h2>
                         <label for="cp"><input type="text" name="cp" placeholder="Codigo Postal" size="40" class="input-48"></label>
                         <label for="calle"><input type="text" name="calle" placeholder="Calle" size="40" class="input-100"></label>
@@ -67,5 +68,203 @@
             </div>
         </header>
 
-    </body>
+    </body>-->
+    
+    <body id="todo" class="bg">
+    <header>
+           <div>
+              <h1>Quetzal</h1>
+           </div>
+                                           <!-- BARRA DE NAVEGACIÓN-->
+           <nav id="cont_nav" class="navbar navbar-expand-lg navbar-light">
+              <a id="cont_nav" class="navbar-brand" href="index.html">Inicio</a>
+              <button id="cont_nav" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+
+              <div id="cont_nav" class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Resumen </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Estado de cuenta</a>
+                  </li>
+                  <li class="nav-item  ">
+                    <a class="nav-link" href="informacionPersonal.html">Información personal
+                    </a>
+                  </li>
+                  <li class="nav-item active">
+                    <a class="nav-link" href="#">Directorio de direcciones
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Historial de compra
+                    </a>
+                  </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                </form>
+              </div>
+            </nav>   
+               
+       </header>
+                   <!-- FIN BARRA DE NAVEGACIÓN-->
+                   <!-- FORMULARIOS-->
+    <div id="contenedor_forms" class="container">
+      <div id="cont_titulo" class="py-1 text-center">
+      </div>
+
+      <form class="row" action="php/direcciones.php" method="post">
+        <div class="col-md order-md-2 mb-4">
+          <h4 class="d-flex justify-content-between align-items-center mb-3">
+            <span class="text-muted">Domicilio de entrega</span>
+          </h4>
+          <br>
+          <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="firstName">Codigo Postal</label>
+                <input type="text" class="form-control"  id="firstName" name="cp" placeholder="" value="" >
+                <div class="invalid-feedback">
+                  Valid first name is required.
+                </div>
+              </div>
+            </div>
+            <div class="mb-3">
+                <label for="email">Calle <span class="text-muted"></span></label>
+                <input type="email" name="calle" class="form-control" id="email" placeholder="">
+            </div>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="firstName">Número de exterior</label>
+                <input type="text" name="num_ext" class="form-control" id="firstName" placeholder="" value="" >
+                <div class="invalid-feedback">
+                  Valid first name is required.
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="lastName">Número de interior</label>
+                <input type="text" name="num_int" class="form-control" id="lastName" placeholder="" value="" >
+                <div class="invalid-feedback">
+                  Valid last name is required.
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="firstName">Colonia</label>
+                <input type="text" name="colonia" class="form-control" id="firstName" placeholder="" value="" >
+                <div class="invalid-feedback">
+                  Valid first name is required.
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="firstName">Estado / Provincia</label>
+                <input type="text" name="estado" class="form-control" id="firstName" placeholder="" value="" >
+                <div class="invalid-feedback">
+                  Valid first name is required.
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="lastName">Ciudad</label>
+                <input type="text" name="ciudad" class="form-control" id="lastName" placeholder="" value="" >
+                <div class="invalid-feedback">
+                  Valid last name is required.
+                </div>
+              </div>
+            </div>
+            <div class="mb-3">
+                <label for="email">¿Entre qué calles esta ?<span class="text-muted"></span></label>
+                <input type="email" name="entre_Calles" class="form-control" id="email" placeholder="">
+            </div>
+            <div class="mb-3">
+                <label for="email">¿Qué calle se encuentra cerca? <span class="text-muted"></span></label>
+                <input type="email" name="calle_ref" class="form-control" id="email" placeholder="">
+            </div>
+            <button id="boton" class="btn btn-lg btn-secondary btn-block" type="submit">CONFIRMAR</button>
+        </div>
+        <div class="col-md order-md-1">
+          <h4 id="text_izq" class="mb-3 text-muted">Datos de cuenta</h4>
+          <br>
+          <div class="needs-validation" novalidate>
+            <div class="mb-3">
+                <label for="email">Usuario (Correo electronico) <span class="text-muted"></span></label>
+                <input type="email" name="correo" class="form-control" id="email" placeholder="">
+            </div>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="firstName">Numero télefonico</label>
+                <input type="text" name="telefono" class="form-control" id="firstName" placeholder="" value="" >
+                <div class="invalid-feedback">
+                  Valid first name is required.
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="firstName">Nombre</label>
+                <input type="text" name="nombre" class="form-control" id="firstName" placeholder="" value="" >
+                <div class="invalid-feedback">
+                  Valid first name is required.
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="lastName">Apellidos</label>
+                <input type="text" name="apellidos" class="form-control" id="lastName" placeholder="" value="" >
+                <div class="invalid-feedback">
+                  Valid last name is required.
+                </div>
+              </div>
+            </div>
+            
+            
+            <hr class="mb-4">
+            
+          </div>
+        </div>
+      </form>
+        <!-- FIN FORMULARIOS-->
+      <footer class="my-5 pt-5 text-muted text-center text-small">
+        <p class="mb-1">&copy; 2018 Quetzal</p>
+        <ul class="list-inline">
+          <li class="list-inline-item"><a href="#">Privacidad</a></li>
+          <li class="list-inline-item"><a href="#">Terminos</a></li>
+          <li class="list-inline-item"><a href="#">Soporte</a></li>
+        </ul>
+      </footer>
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="../../assets/js/vendor/popper.min.js"></script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+    <script src="../../assets/js/vendor/holder.min.js"></script>
+    <script>
+      // Example starter JavaScript for disabling form submissions if there are invalid fields
+      (function() {
+        'use strict';
+
+        window.addEventListener('load', function() {
+          // Fetch all the forms we want to apply custom Bootstrap validation styles to
+          var forms = document.getElementsByClassName('needs-validation');
+
+          // Loop over them and prevent submission
+          var validation = Array.prototype.filter.call(forms, function(form) {
+            form.addEventListener('submit', function(event) {
+              if (form.checkValidity() === false) {
+                event.preventDefault();
+                event.stopPropagation();
+              }
+              form.classList.add('was-validated');
+            }, false);
+          });
+        }, false);
+      })();
+    </script>
+  </body>
 </html>

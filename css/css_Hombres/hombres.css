@@ -6,7 +6,7 @@
 }
 
 body     {
-    background-color: white;
+    background-color: #eceff1;
 }
 #cont_banner    {
     margin-top: 40px !important;
@@ -29,6 +29,9 @@ body     {
     background-image: url("../../img/30.jpg");
 }
 
+#pre_sel_text    {
+    margin-top: 40px !important;
+}
 
 #img_t_shirt    {
     margin-top: 40px !important;
@@ -47,11 +50,11 @@ body     {
 
 #cont_nav    {
     background-color: white;
-    background: white;
+    background: #eceff1;
 }
 
 /*footer*/
-.col_white_amrc { color:#FFF;}
+.col_white_amrc { color:#eceff1;}
 footer { width:100%; background-color:white; min-height:100px; padding:10px 0px 25px 0px ;}
 
 .foote_bottom_ul_amrc {

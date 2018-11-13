@@ -5,3 +5,11 @@
 #cont_titulo     {
     margin-bottom: 30px;
 }
+
+#boton    {
+    background-color: #485e69;
+}
+
+#boton:hover    {
+    background-color: #637883; 
+}
