@@ -7,12 +7,15 @@ $password = "123456789";
 
 $name = $_POST['nombre'];
 $price = $_POST['precio'];
-$cost = $_POST['costo'];
+//$cost = $_POST['costo'];
 $sex = $_POST['sexo'];
-$stock = $_POST['stock'];
-$aviable = $_POST['disponible'];
+//$stock = $_POST['stock'];
+$color = $_POST['color'];
+//$aviable = $_POST['disponible'];
+$size = $_POST['talla'];
 $model = $_POST['modelo'];
 $cloth = $_POST['tela'];
+$id = $_GET['id'];
 
 $connection = mysqli_connect($server,$user,$password,$db);
 if(!$connection){
@@ -24,11 +27,16 @@ if(!$connection){
     echo "Conexion exitosa<br>";
 }
 //---------------------------Insert---------------------------
-$qInsert = "INSERT INTO producto (nombre,precio,costo,sexo,stock,disponible,modelo,tela)
-            VALUES('$name','$price','$cost','$sex','$stock','$aviable','$model','$cloth')";
+$qInsert = "INSERT INTO producto (nombre,precio,sexo,modelo,tela)
+            VALUES('$name','$price','$sex','$model','$cloth')";
 mysqli_query($connection,$qInsert);
 
+
 $qSelect = "SELECT * FROM producto WHERE nombre = '$name';";
+
+$qCP = "INSERT INTO color_producto (color_id_color,producto_no_producto) VALUES($color,$id)";
+
+mysqli_query($connection,$qCP);
 
 $result = mysqli_query($connection,$qSelect);
 $rows = mysqli_num_rows($result);

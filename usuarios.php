@@ -15,9 +15,8 @@ if(!$connection){
 $datos = mysqli_query($connection, "SELECT * FROM cliente;");
 
  ?>
-
-<!DOCTYPE html>
-<html>
+ <!DOCTYPE html>
+ <html>
 <head><link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="css/css_administrador/tablasProv_Us.css"></head>
@@ -40,13 +39,13 @@ $datos = mysqli_query($connection, "SELECT * FROM cliente;");
                                 <a class="nav-link" href="administrador.html">Mi cuenta </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" href="usuarios.html">Usuarios</a>
+                                <a class="nav-link active" href="usuarios.php">Usuarios</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="proveedores.html">Proveedores</a>
+                                <a class="nav-link" href="proveedores.php">Proveedores</a>
                             </li>
                              <li class="nav-item">
-                                <a class="nav-link" href="">Productos</a>
+                                <a class="nav-link" href="producto.php">Productos</a>
                             </li>
                              <li class="nav-item">
                                 <a class="nav-link" href="">Cerrar sesión</a>
@@ -61,10 +60,10 @@ $datos = mysqli_query($connection, "SELECT * FROM cliente;");
         <table class="table">
   <thead class="barra">
     <tr>
-      <th>#</th>
+      <th>No. cliente</th>
       <th>Nombre</th>
-      <th>Apellido paterno</th>
       <th>Apellido materno</th>
+      <th>Apellido paterno</th>
       <th>Correo</th>
       <th>Teléfono</th>
       <th>Actualizar</th>
@@ -79,7 +78,7 @@ $datos = mysqli_query($connection, "SELECT * FROM cliente;");
       <td><?php echo $dt["apellido_materno"]; ?></td>
       <td><?php echo $dt["correo"]; ?></td>
       <td> <?php echo $dt["telefono"]; ?></td>
-      <td>Otto</td>
+      <td><a href="informacionPersonal.html"><img src="img/actualizarUsuario.png"></a></td>
     </tr>
     <?php } ?>
   </tbody>
