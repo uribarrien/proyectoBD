@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Julius+Sans+One|Montserrat:200|Raleway:300|Roboto:100|Work+Sans:200|Open+Sans');
 
-
+/*
 * {
   
     box-sizing: border-box;
@@ -121,4 +121,10 @@ input   {
 
 .return:hover {
     color: #48bbd7;
+}
+
+*/
+
+#texto_arriba     {
+    margin-bottom:0px;
 }
