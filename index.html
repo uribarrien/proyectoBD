@@ -15,6 +15,7 @@
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="css/css_index/index.css">
 <!--===============================================================================================-->
 </head>
 <body id="fondo" class="animsition">
@@ -25,12 +26,12 @@
 		<div class="container-menu-desktop">
 			<!-- Topbar -->
 			<div>
-                    <h1>Quetzal</h1>
+                    <h1 id="marca">Quetzal</h1>
             </div>
 
 			<div>
                 <nav id="cont_nav" class="navbar navbar-expand-lg navbar-light">
-                    <a id="cont_nav" class="navbar-brand" href="index.html">Inicio</a>
+                    <a id="txt-menu" class="navbar-brand" href="index.html">Inicio</a>
                     <button id="cont_nav" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -38,13 +39,13 @@
                     <div id="cont_nav" class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav mr-auto">
                             <li class="nav-item ">
-                                <a class="nav-link" href="hombres.html">Ropa para hombre </a>
+                                <a class="nav-link" id="txt-menu" href="hombres.html">Ropa para hombre </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="ropaMujer.html">Ropa para mujer</a>
+                                <a class="nav-link" id="txt-menu" href="ropaMujer.html">Ropa para mujer</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="loginUsuario.html">Iniciar Sesion</a>
+                                <a class="nav-link" id="txt-menu" href="loginUsuario.html">Iniciar Sesión</a>
                             </li>
                         </ul>
                     </div>
@@ -56,11 +57,11 @@
 	<section class="section-slide">
 		<div class="wrap-slick1">
 			<div class="slick1">
-				<div class="item-slick1" style="background-image: url(img/banner_chava.png);">
+				<div class="item-slick1" style="background-image: url(img/banner_chava_2.png);">
 					<div class="container h-full">
 						<div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
 							<div class="layer-slick1 animated visible-false" data-appear="fadeInDown" data-delay="0">
-								<span class="ltext-101 cl2 respon2">
+								<span id="txt-banner-ch" class="ltext-101 cl2 respon2">
 									Coleccion para ellas
 								</span>
 							</div>
@@ -72,7 +73,7 @@
 							</div>
 								
 							<div class="layer-slick1 animated visible-false" data-appear="zoomIn" data-delay="1600">
-								<a href="product.html" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
+								<a href="ropaMujer.html" id="txt-champagne" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
 									Compra ahora
 								</a>
 							</div>
@@ -80,11 +81,11 @@
 					</div>
 				</div>
 
-				<div class="item-slick1" style="background-image: url(img/banner_chavo.png);">
+				<div class="item-slick1" style="background-image: url(img/banner_chavo_2.png);">
 					<div class="container h-full">
 						<div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
 							<div class="layer-slick1 animated visible-false" data-appear="rollIn" data-delay="0">
-								<span class="ltext-101 cl2 respon2">
+								<span id="txt-banner-ch" class=" cl2 respon2">
 									Nueva temporada para caballero
 								</span>
 							</div>
@@ -96,7 +97,7 @@
 							</div>
 								
 							<div class="layer-slick1 animated visible-false" data-appear="slideInUp" data-delay="1600">
-								<a href="product.html" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
+								<a href="hombres.html" id="txt-champagne" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
 									Compra ahora
 								</a>
 							</div>
@@ -117,7 +118,7 @@
 					<div class="block1 wrap-pic-w">
 						<img src="img/fotito_chava.png" alt="IMG-BANNER">
 
-						<a href="ropaMujer.html" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
+						<a href="ropaMujer.html" class="block1-txt-sepia ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
 							<div class="block1-txt-child1 flex-col-l">
 								<span class="block1-name ltext-102 trans-04 p-b-8">
 									Mujer
@@ -142,7 +143,7 @@
 					<div class="block1 wrap-pic-w">
 						<img src="img/fotito_chavo.png" alt="IMG-BANNER">
 
-						<a href="hombres.html" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
+						<a href="hombres.html" class="block1-txt-sepia ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
 							<div class="block1-txt-child1 flex-col-l">
 								<span class="block1-name ltext-102 trans-04 p-b-8">
 									Caballero
@@ -172,7 +173,7 @@
 	<section id="ter_fondo" class="bg0 p-t-23 p-b-140">
 		<div class="container">
 			<div class="p-b-10">
-				<h3 class="ltext-103 cl5">
+				<h3 id="txt-champagne-bold" class="ltext-103 cl5">
 					Productos mas populares
 				</h3>
 			</div>
@@ -190,7 +191,7 @@
 
 						<div class="block2-txt flex-w flex-t p-t-14">
 							<div class="block2-txt-child1 flex-col-l ">
-								<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+								<a href="product-detail.html" class="txt-champagne cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
 									Chamarra Acolchada capucha
 								</a>
 
@@ -215,12 +216,12 @@
 
 						<div class="block2-txt flex-w flex-t p-t-14">
 							<div class="block2-txt-child1 flex-col-l ">
-								<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+								<a href="product-detail.html" class="txt-champagne cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
 									Abrigo cruzado espiga
 								</a>
 
 								<span class="stext-105 cl3">
-									$350.00
+									$1000.00
 								</span>
 							</div>
 						</div>
