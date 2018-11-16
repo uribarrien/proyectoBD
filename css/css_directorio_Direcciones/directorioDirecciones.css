@@ -1,4 +1,4 @@
-@import url(../css_menu_Inicio/menuDeInicio.css);
+/*@import url(../css_menu_Inicio/menuDeInicio.css);
 
 .contenedor {
     width: 82%;
@@ -78,8 +78,52 @@ input   {
     font-family: 'Open Sans:400', sans-serif;
     margin-left: -70px;
 }
-
-.boton:hover    {
+.boton1 {
+    text-decoration:none;
+    font-weight: 600;
+    font-size: 20px;
+    color: black;
+    padding-top:15px;
+    padding-bottom:15px;
+    padding-left:40px;
+    padding-right:40px;
+    background-color:#a0a1a4;
+    border-radius: 30px;
+    font-family: 'Open Sans:400', sans-serif;
+    margin-left: 70px;
+   
+}
+.boton,.boton1:hover    {
     color: white;
     background-color:#737373;
+}
+h1{
+    position: fixed;
+    left: 10px;
+}
+
+*/
+
+#text_izq    {
+    margin-bottom: 20px;
+}
+
+#boton     {
+    background-color: #485e69;
+}
+
+#boton:hover    {
+    background-color: #637883; 
+}
+
+#todo     {
+    background: #eceff1;
+    background-color: #eceff1;
+}
+
+#contenedor_forms    {
+    margin-top: 30px;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 4px 4px 4px #dfe2e3;
 }

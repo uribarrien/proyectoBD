@@ -26,6 +26,9 @@ $qClient = "SELECT * FROM cliente WHERE correo = '$client' AND contrasena = '$pa
 $resultC = mysqli_query($connection,$qClient);
 $rowsC = mysqli_num_rows($resultC);
 
+session_start();
+$_SESSION['correo']=$client;
+
 if($rowsC > 0){
     echo "Cliente existe <br>";
     header("location:../menuInicio.html");

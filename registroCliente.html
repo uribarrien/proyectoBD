@@ -1,24 +1,95 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8">
-        <title>Registro de Usuario</title>
-        <link rel="stylesheet" href="css/css_registroCliente/registroCliente.css">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>INFORMACIÓN PERSONAL</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        
+        <link rel="stylesheet" href="css/css_informacion_personal/informacionPersonal.css">
+        
     </head>
     <body>
-        <form action="php/registarCliente.php" class="form-reg" method="POST">
-            <h2 class="form__titulo">CREA UNA CUENTA</h2>
-            <div class="contenedor-inputs">
-                <input type="text" name="nombre" placeholder="Nombre" class="input-48" >
-                <input type="text" name="apellido_paterno" placeholder="Apellido Paterno" class="input-48" >
-                <input type="text" name="apellido_materno" placeholder="Apellido Materno" class="input-48" >
-                <input type="text" name="correo"  placeholder="Correo Electronico" class="input-100" >
-                <input type="password" name="contrasena" placeholder="Contraseña" class="input-48" >
-                <input type="submit" value="Registrar" class="btn-send" >
-                <p class="form__link">¿Ya tienes cuenta? <a href="loginUsuario.html">Ingresa aqui</a></p>
-            </div>    
-            <a class="return" href="index.html">Regresar a inicio</a>
-        </form>
-        
+        <header>
+            <h1>QUETZAL</h1>   
+                        <!-- MENU SUPERIOR -->
+            <div>
+                <nav id="cont_nav" class="navbar navbar-expand-lg navbar-light">
+                    <a id="cont_nav" class="navbar-brand" href="index.html">Inicio</a>
+                    <button id="cont_nav" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div id="cont_nav" class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item ">
+                                <a class="nav-link" href="hombres.html">Ropa para hombre </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="ropaMujer.html">Ropa para mujer</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="loginUsuario.html">Iniciar Sesion</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+
+                <!-- FINMENU SUPERIOR -->
+        </header>
+        <div>
+            
+        </div>
+        <div id="contenedor_form" class="container col-md-6">
+            <div class="col-ld-10 order-md-3 ">
+          <h4 class="mb-3 text-center pt-4">Abre una cuenta</h4>
+          <form class="needs-validation" action="php/registarCliente.php" method="POST">
+             <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="firstName">Nombre</label>
+                <input type="text" class="form-control" name="telefono" placeholder="Nombre" value="" >
+              </div>
+            </div>
+             
+             <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="firstName">Apellido paterno</label>
+                <input type="text" class="form-control"  name="apellido_paterno" id="firstName" placeholder="Apellido paterno" value="" >
+
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="lastName">Apellido materno</label>
+                <input type="text" class="form-control" name="apellido_materno" id="lastName" placeholder="Apellido materno" value="" >
+              </div>
+            </div>
+            
+            <div class="mb-3">
+                <label for="email">Correo Electronico <span class="text-muted"></span></label>
+                <input type="email" class="form-control" name="correo" id="email" placeholder="Correo">
+            </div>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="firstName">Contraseña</label>
+                <input type="text" class="form-control" name="contrasena" placeholder="Contraseña " value="" >
+
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="lastName">Reingresar contraseña</label>
+                <input type="text" class="form-control" name="confcontra" placeholder="Confirmar contraseña" value="" >
+
+              </div>
+            </div>          
+            <hr class="mb-4">
+            <button id="boton" class="btn btn-lg btn-secondary btn-block" type="submit">CONFIRMAR</button>
+            <br>
+          </form>
+        </div>
+        </div>
+           
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     </body>
 </html>

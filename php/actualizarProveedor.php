@@ -12,7 +12,6 @@ $num = $_POST['no_exterior'];
 $col = $_POST['colonia'];
 $cp = $_POST['cp'];
 $city = $_POST['ciudad'];
-$state = $_POST['estado'];
 
 $connection = mysqli_connect($server,$user,$password,$db);
 if(!$connection){
@@ -27,7 +26,7 @@ if(!$connection){
 //nombre_proveedor,rfc,calle,no_exterior,colonia,codigo_postal
 $qRefresh = "UPDATE proveedor SET nombre_proveedor = '$name', rfc = '$rfc', calle = '$street', no_exterior = '$num', colonia = '$col', codigo_postal = '$cp'
               WHERE rfc = '$rfc'";
-mysqli_query($connection,$Refresh);
+mysqli_query($connection,$qRefresh);
 
 $qSelect = "SELECT * FROM proveedor WHERE rfc = '$rfc';";
 
