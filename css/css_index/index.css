@@ -1,0 +1,31 @@
+@font-face{
+    font-family: champagne;
+    src: url(Champagne_&_Limousines_Bold.ttf);
+}
+
+#txt-menu     {
+    font-family: Champagne;
+    font-size: 20px;
+}
+
+#txt-champagne     {
+    font-family: Champagne;
+    font-size: 18px;
+}
+
+#txt-champagne-bold     {
+    font-family: Champagne;
+    font-size: 50px;
+    font-weight: 700;
+}
+
+#marca     {
+    font-family: Champagne;
+    font-size: 50px;
+}
+
+
+#txt-banner-ch    {
+    font-family: Champagne;
+    font-size: 38px;
+}

@@ -1976,6 +1976,10 @@ input.num-product::-webkit-inner-spin-button {
   background-color: rgba( 51,189,172,0.0);
 }
 
+.block1-txt-sepia {
+  background-color: rgba(102,59,42,0.0);
+}
+
 /*---------------------------------------------*/
 .block1-name {color: #333;}
 .block1-info {color: #555;}
@@ -2006,6 +2010,9 @@ input.num-product::-webkit-inner-spin-button {
 .block1-txt-mio:hover {
   background-color: rgba(51,189,172,0.6);
 }
+.block1-txt-sepia:hover {
+  background-color: rgba(102,59,42,0.6);
+}
 
 .block1-txt:hover .block1-txt-child2 {
   -webkit-transform: scaleX(1);
@@ -2029,10 +2036,14 @@ input.num-product::-webkit-inner-spin-button {
 }
 
 /*///////////////////////////////////mio*/
-¿
+
 .block1-txt-mio:hover {
   background-color: rgba(51,189,172,0.6);
 }
+
+.block1-txt-sepia:hover {
+  background-color: rgba(102,59,42,0.6);
+}    
 
 .block1-txt-mio:hover .block1-txt-child2 {
   -webkit-transform: scaleX(1);
@@ -2042,7 +2053,15 @@ input.num-product::-webkit-inner-spin-button {
   transform: scaleX(1);
 }
 
-.block1-txt-mio:hover .block1-link {
+.block1-txt-sepia:hover .block1-txt-child2 {
+  -webkit-transform: scaleX(1);
+  -moz-transform: scaleX(1);
+  -ms-transform: scaleX(1);
+  -o-transform: scaleX(1);
+  transform: scaleX(1);
+}
+
+.block1-txt-sepia:hover .block1-link {
   -webkit-transform: translateY(0%);
   -moz-transform: translateY(0%);
   -ms-transform: translateY(0%);
@@ -2050,8 +2069,8 @@ input.num-product::-webkit-inner-spin-button {
   transform: translateY(0%);
 }
 
-.block1-txt-mio:hover .block1-name,
-.block1-txt-mio:hover .block1-info {
+.block1-txt-sepia:hover .block1-name,
+.block1-txt-sepia:hover .block1-info {
   color: #fff;
 }
 
