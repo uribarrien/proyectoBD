@@ -139,19 +139,8 @@ $cd = mysqli_query($connection, "SELECT * FROM ciudad;");
               </div><br>
 
             </div>
-                <div class="row">
-
-              <div class="col-md-6 mb-3">
-                <label for="contrasena">Contraseña</label>
-                <input type="text" name="contrasena" class="form-control" id="contrasena" placeholder="" value="" >
-
-              </div>
-                  <div class="col-md-6 mb-3">
-                <label for="contrasena">Confirmar contraseña</label>
-                <input type="text" name="contrasena" class="form-control" id="contrasena" placeholder="" value="" >
-
-              </div>
-            </div>
+              
+            
 
             <hr class="mb-4">
 

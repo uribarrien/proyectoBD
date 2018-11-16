@@ -57,7 +57,7 @@ $descuento = mysqli_query($connection,"SELECT * FROM descuento;");
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="registroProveedor.html">Registro proveedor
+                    <a class="nav-link" href="registroProveedor.php">Registro proveedor
                     </a>
                   </li>
 
@@ -158,6 +158,11 @@ $descuento = mysqli_query($connection,"SELECT * FROM descuento;");
                 <input type="text" name="precio" class="form-control" id="precio" placeholder="" value="" >
 
               </div><br>
+                <div class="col-md-6 mb-3">
+                <label for="costo">Costo</label>
+                <input type="text" name="costo" class="form-control" id="costo" placeholder="" value="" >
+
+              </div><br>
 
             </div>
                 <div class="row">
@@ -166,6 +171,17 @@ $descuento = mysqli_query($connection,"SELECT * FROM descuento;");
                 <label for="cantidad">Cantidad</label>
                 <input type="text" name="cantidad" class="form-control" id="cantidad" placeholder="" value="" >
                     </div>
+              </div>
+               <div class="row">
+
+              <div class="col-md-6 mb-3">
+                <label for="disponible">Disponible</label>
+                <input type="text" name="disponible" class="form-control" id="disponible" placeholder="" value="" >
+                    </div>
+                <div class="col-md-6 mb-3">
+                <label for="descueto">Descuento</label>
+                <input type="text" name="descuento" class="form-control" id="descuento" placeholder="" value="" >
+                </div>
               </div>
             <hr class="mb-4">
 
