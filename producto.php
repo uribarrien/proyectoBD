@@ -11,7 +11,7 @@ if(!$connection){
     echo "Error de depuracion ".mysqli_connect_error().PHP_EOL;
     exit;
 }
-
+$i = 0;
 $datos = mysqli_query($connection, "SELECT * FROM producto;");
  ?>
  <!DOCTYPE html>
@@ -89,9 +89,9 @@ $datos = mysqli_query($connection, "SELECT * FROM producto;");
       <td><?php $q = mysqli_query($connection, "SELECT a.cantidad_desc des FROM descuento a JOIN producto b ON b.descuento_cod_descuento=a.cod_descuento;");
             $k = mysqli_fetch_array($q);
             echo $k["des"]."%"; ?></td>
-      <td><a href="registroProducto.html"><img src="img/actualizarUsuario.png"></a>
+      <td><a href="actualizaProducto.php?id=<?php echo $dt['no_producto']; ?>"><img src="img/actualizarUsuario.png"></a>
     </tr>
-    <?php } ?>
+    <?php $i = $i + 1; } ?>
   </tbody>
 </table>
 

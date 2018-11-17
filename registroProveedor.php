@@ -11,7 +11,7 @@ if(!$connection){
     echo "Error de depuracion ".mysqli_connect_error().PHP_EOL;
     exit;
 }
-$i = 1;
+
 $cd = mysqli_query($connection, "SELECT * FROM ciudad;");
 ?>
 

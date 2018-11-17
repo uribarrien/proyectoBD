@@ -7,13 +7,15 @@ $password = "123456789";
 
 $name = $_POST['nombre'];
 $price = $_POST['precio'];
-$cost = $_POST['costo'];
+//$cost = $_POST['costo'];
 $sex = $_POST['sexo'];
-$stock = $_POST['stock'];
-$aviable = $_POST['disponible'];
+$stock = $_POST['cantidad'];
+$talla = $_POST['talla'];
+$color = $_POST['color'];
+//$aviable = $_POST['disponible'];
 $model = $_POST['modelo'];
 $cloth = $_POST['tela'];
-$id = $_POST['no_poducto'];
+$id = $_GET['id'];
 
 $connection = mysqli_connect($server,$user,$password,$db);
 if(!$connection){
@@ -26,10 +28,14 @@ if(!$connection){
 }
 //-------------ACTUALIZAR-----------
 //nombre,precio,costo,sexo,stock,disponible,modelo,tela
-$qRefresh = "UPDATE producto SET nombre = '$name', precio = '$price', costo = '$cost', sexo = '$sex',
-              stock = '$stock', disponible = '$aviable', modelo = '$model', tela = '$cloth'
-              WHERE no_producto = '$id'";
-mysqli_query($connection,$Refresh);
+$qRefresh = "UPDATE producto SET nombre = '$name', precio = '$price', sexo = '$sex',
+              stock = '$stock', modelo = '$model', tela = '$cloth'
+              WHERE no_producto = '$id';";
+mysqli_query($connection,$qRefresh);
+$qInsC = "INSERT into color_producto(color_id_color,producto_no_producto) values($color,$id);";
+mysqli_query($connection,$qInsC);
+$qInsT = "INSERT into talla_producto(talla_id_talla,producto_no_producto) values($talla,$id);";
+mysqli_query($connection,$qInsT);
 
 $qSelect = "SELECT * FROM producto WHERE no_producto = '$id'";
 
@@ -37,9 +43,11 @@ $result = mysqli_query($connection,$qSelect);
 $rows = mysqli_num_rows($result);
 
 if($rows > 0){
-  echo "Producto actualizado";
+  //header("location:producto.php");
+  echo "producto.php";
 }else{
-  echo "No se pudo actualizar producto";
+  //header("location:actualizarProducto.php");
+  echo "actualizarProducto.php";
 }
 
 mysqli_free_result($result);
