@@ -1,3 +1,24 @@
+<?php
+$server= 'localhost';
+$user = 'proyecto';
+$password ='123456789';
+$bd = 'proyectobd';
+
+session_start();
+$session_email=$_SESSION['correo'];
+$connection=mysqli_connect($server,$user,$password,$bd);
+if(!$connection){
+
+   echo "Error: No se pudo conectar a la base de datos de MySQL!!".PHP_EOL;
+   echo "errno de depuracion".mysqli_connect_errno().PHP_EOL;
+   echo "error de depuracion".mysqli_connect_error().PHP_EOL;
+   exit;
+}
+$estados =mysqli_query($connection,"SELECT * FROM estado");
+$select = mysqli_query($connection,"SELECT * from cliente where correo= '$session_email';");
+while ($row=mysqli_fetch_array($select)){
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -7,69 +28,57 @@
         <title>Directorio de Direcciones</title>
         <link rel="stylesheet" href="css/css_directorio_Direcciones/directorioDirecciones.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
         <meta>
+
+<!--        <script type="text/javascript">
+          $(document).ready(function(){
+            $(".prueba").change(function(){
+              id_Estado = $(".prueba").val();
+
+              $.ajax({
+                type: "POST",
+                url: "prueba.php",
+                data: {id:id_Estado},
+                dataType: "html",
+                beforeSend: function(){
+                  alert("se envio")
+                },
+                error: function(){
+                  alert("Error en la petición AJAX");
+                },
+                success: function(data){
+                  alert("data");
+                }
+              });
+            });
+          });
+        </script>-->
+        <script>
+          function showUser(str) {
+            if (str == "") {
+              document.getElementById("txtHint").innerHTML = "";
+              return;
+            } else {
+                if (window.XMLHttpRequest) {
+                    xmlhttp = new XMLHttpRequest();
+                  } else {
+                    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                  }
+                  xmlhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                      document.getElementById("txtHint").innerHTML = this.responseText;
+                    }
+                  };
+                  xmlhttp.open("GET","prueba.php?q="+str,true);
+                  xmlhttp.send();
+                }
+              }
+        </script>
+
     </head>
-<!--    <body>
-        <header>
-            <div class="nombreT">
-                <h1>NOMBRE DE TIENDA</h1>
-            </div>
-            <nav class="navegacion">
-                <ul class="menu">
-                    <li><a href="menuInicio.html">Resumen</a></li>
-                    <li><a href="#">Estado de cuenta</a></li>
-                    <li><a href="informarcionPersonal.html">Información personal</a></li>
-                    <li><a class="navegacion_active" href="#">Directorio de direcciones</a></li>
-                    <li><a href="#">Historial de compra</a></li>
-                </ul>
-            </nav>
-            <div class="contenedor">
-               <div class="form_izq">
-                    <form  action="php/direcciones.php" method="post" name="form_izq">
-                        <h2 class="texto">Tus Datos</h2>
-                        <label for="correo"><input type="text" name="correo" placeholder="Correo" size="40" class="input-100"></label>
-                        <label for="telefono"><input type="text" name="telefono" placeholder="Teléfono" size="40" class="input-100"></label>
-                        <label for="nombre"><input type="text" name="nombre" placeholder="Nombre" size="40" class="input-48"></label>
-                        <label for="apepat"><input type="text" name="apepat" placeholder="Apellido paterno" size="40" class="input-48"></label>
-                        <label for="apemat"><input type="text" name="apemat" placeholder="Apellido materno" size="40" class="input-48"></label>
-                    <!--</form>->
-                </div>
-                <div class="form_der">
-                    <!--<form  action="php/direcciones.php" method="post" name="form_der">->
-                        <h2 class="texto">Domicilio de entrega</h2>
-                        <label for="cp"><input type="text" name="cp" placeholder="Codigo Postal" size="40" class="input-48"></label>
-                        <label for="calle"><input type="text" name="calle" placeholder="Calle" size="40" class="input-100"></label>
-                        <label for="num_ext"><input type="text" name="num_ext" placeholder="Numero exterior" size="40" class="input-48" class="input-48"></label>
-                        <label for="num_int"><input type="text" name="num_int" placeholder="Numero de interior" size="40" class="input-48" class="input-48"></label>
-                        <label for="estado"><input type="text" name="estado" placeholder="Estado" size="40" class="input-48"></label>
-                        <label for="ciudad"><input type="text" name="ciudad" placeholder="Ciudad" size="40" class="input-48"></label>
-                        <label for="colonia"><input type="text" name="colonia" placeholder="Colonia" size="40" class="input-48"></label>
-
-                        <label for="entre_Calles">
-                            <p class="texto">¿Entre qué calles está el domicilio?</p>
-                            <input type="text" name="entre_Calles" placeholder=" entre calles" size="40" class="input-100">
-                        </label>
-                        <label for="calle_ref">
-                            <p class="texto">Calle de referencia</p>
-                            <input type="text" name="calle_ref" placeholder="calle_ref" size="40" class="input-100">
-                        </label>
-
-
-                   </form>
-                    <script>
-                        function enviar_formulario(){
-                            document.form_izq.submit()
-                            //document.form_der.submit()
-                        }
-                    </script>
-
-                </div>
-                <a  class="boton" href="javascript:enviar_formulario()">Enviar</a>
-            </div>
-        </header>
-
-    </body>-->
-    
     <body id="todo" class="bg">
     <header>
            <div>
@@ -84,30 +93,24 @@
 
               <div id="cont_nav" class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Resumen </a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Estado de cuenta</a>
-                  </li>
                   <li class="nav-item  ">
-                    <a class="nav-link" href="informacionPersonal.html">Información personal
+                    <a class="nav-link" href="informacionPersonal.php">Información personal
                     </a>
                   </li>
                   <li class="nav-item active">
-                    <a class="nav-link" href="directorioDeDirecciones.html">Directorio de direcciones
+                    <a class="nav-link" href="directorioDeDirecciones.php">Directorio de direcciones
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="historialDeCompra.html">Historial de compra
+                    <a class="nav-link" href="historialDeCompra.php">Historial de compra
                     </a>
                   </li>
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
                 </form>
               </div>
-            </nav>   
-               
+            </nav>
+
        </header>
                    <!-- FIN BARRA DE NAVEGACIÓN-->
                    <!-- FORMULARIOS-->
@@ -124,7 +127,14 @@
           <div class="row">
               <div class="col-md-6 mb-3">
                 <label for="firstName">Codigo Postal</label>
-                <input type="text" class="form-control"  id="firstName" name="cp" placeholder="" value="" >
+                <input type="text" class="form-control"  id="firstName" name="cp" placeholder=""
+                value="<?php
+                if (is_null($row['codigo_postal'])){
+                  echo "Código postal";
+                }else{
+                  echo $row['codigo_postal'];
+                }
+                ?>" >
                 <div class="invalid-feedback">
                   Valid first name is required.
                 </div>
@@ -132,19 +142,40 @@
             </div>
             <div class="mb-3">
                 <label for="email">Calle <span class="text-muted"></span></label>
-                <input type="email" name="calle" class="form-control" id="email" placeholder="">
+                <input type="email" name="calle" class="form-control" id="email" placeholder=""
+                value="<?php
+                if (is_null($row['calle'])){
+                  echo "Calle";
+                }else{
+                  echo $row['calle'];
+                }
+                ?>" >
             </div>
             <div class="row">
               <div class="col-md-6 mb-3">
                 <label for="firstName">Número de exterior</label>
-                <input type="text" name="num_ext" class="form-control" id="firstName" placeholder="" value="" >
+                <input type="text" name="num_ext" class="form-control" id="firstName" placeholder=""
+                value="<?php
+                if (is_null($row['no_exterior'])){
+                  echo "Número exterior";
+                }else{
+                  echo $row['no_exterior'];
+                }
+                ?>" >
                 <div class="invalid-feedback">
                   Valid first name is required.
                 </div>
               </div>
               <div class="col-md-6 mb-3">
                 <label for="lastName">Número de interior</label>
-                <input type="text" name="num_int" class="form-control" id="lastName" placeholder="" value="" >
+                <input type="text" name="num_int" class="form-control" id="lastName" placeholder=""
+                value="<?php
+                if (is_null($row['no_exterior'])){
+                  echo "Número exterior";
+                }else{
+                  echo $row['no_exterior'];
+                }
+                ?>" >
                 <div class="invalid-feedback">
                   Valid last name is required.
                 </div>
@@ -153,7 +184,14 @@
             <div class="row">
               <div class="col-md-6 mb-3">
                 <label for="firstName">Colonia</label>
-                <input type="text" name="colonia" class="form-control" id="firstName" placeholder="" value="" >
+                <input type="text" name="colonia" class="form-control" id="firstName" placeholder=""
+                value="<?php
+                if (is_null($row['colonia'])){
+                  echo "Colonia";
+                }else{
+                  echo $row['colonia'];
+                }
+                ?>" >
                 <div class="invalid-feedback">
                   Valid first name is required.
                 </div>
@@ -162,26 +200,46 @@
             <div class="row">
               <div class="col-md-6 mb-3">
                 <label for="firstName">Estado / Provincia</label>
-                <input type="text" name="estado" class="form-control" id="firstName" placeholder="" value="" >
+                <select name="estado" class="form-control " id="firstName" onchange="showUser(this.value)">
+                    <option selected hidden>
+                      <?php
+                        if (is_null($row['ciudad_id_ciudad'])){
+                          echo "Estado";
+                        }else{
+                          $num=$row['ciudad_id_ciudad'];
+                          $query=mysqli_query($connection,"SELECT nombre as estado from estado where id_estado=$num;");
+                          $res = mysqli_fetch_array($query);
+                          echo $res['estado'];
+                        }
+                       ?>
+                    </option>
+                    <?php while ($res = mysqli_fetch_array($estados)) { ?>
+                    <option value="<?php echo $res['id_estado'];?>"><?php echo $res['nombre']; ?></option>
+                  <?php } ?>
+                </select>
                 <div class="invalid-feedback">
                   Valid first name is required.
                 </div>
               </div>
               <div class="col-md-6 mb-3">
                 <label for="lastName">Ciudad</label>
-                <input type="text" name="ciudad" class="form-control" id="lastName" placeholder="" value="" >
+                <select name="ciudad" class="form-control" id="txtHint">
+                  <option selected hidden>
+                    <?php
+                      if (is_null($row['ciudad_id_ciudad'])){
+                        echo "Ciudad";
+                      }else{
+                        $query=mysqli_query($connection,"SELECT a.nombre as ciudad from ciudad a, cliente b where b.ciudad_id_ciudad=a.id_ciudad and b.correo='$session_email';");
+                        $res = mysqli_fetch_array($query);
+                        echo $res['ciudad'];
+                      }
+                     ?>
+                  </option>
+                </select>
                 <div class="invalid-feedback">
                   Valid last name is required.
                 </div>
               </div>
-            </div>
-            <div class="mb-3">
-                <label for="email">¿Entre qué calles esta ?<span class="text-muted"></span></label>
-                <input type="email" name="entre_Calles" class="form-control" id="email" placeholder="">
-            </div>
-            <div class="mb-3">
-                <label for="email">¿Qué calle se encuentra cerca? <span class="text-muted"></span></label>
-                <input type="email" name="calle_ref" class="form-control" id="email" placeholder="">
             </div>
             <button id="boton" class="btn btn-lg btn-secondary btn-block" type="submit">CONFIRMAR</button>
         </div>
@@ -191,12 +249,12 @@
           <div class="needs-validation" novalidate>
             <div class="mb-3">
                 <label for="email">Usuario (Correo electronico) <span class="text-muted"></span></label>
-                <input type="email" name="correo" class="form-control" id="email" placeholder="">
+                <input type="email" name="correo" class="form-control" id="email" placeholder="" value="<?php echo $row['correo'];?>" disabled>
             </div>
             <div class="row">
               <div class="col-md-6 mb-3">
                 <label for="firstName">Numero télefonico</label>
-                <input type="text" name="telefono" class="form-control" id="firstName" placeholder="" value="" >
+                <input type="text" name="telefono" class="form-control" id="firstName" placeholder="" value="<?php echo $row['telefono'];?>" disabled>
                 <div class="invalid-feedback">
                   Valid first name is required.
                 </div>
@@ -205,23 +263,23 @@
             <div class="row">
               <div class="col-md-6 mb-3">
                 <label for="firstName">Nombre</label>
-                <input type="text" name="nombre" class="form-control" id="firstName" placeholder="" value="" >
+                <input type="text" name="nombre" class="form-control" id="firstName" placeholder="" value="<?php echo $row['nombre'];?>" disabled>
                 <div class="invalid-feedback">
                   Valid first name is required.
                 </div>
               </div>
               <div class="col-md-6 mb-3">
                 <label for="lastName">Apellidos</label>
-                <input type="text" name="apellidos" class="form-control" id="lastName" placeholder="" value="" >
+                <input type="text" name="apellidos" class="form-control" id="lastName" placeholder="" value="<?php echo $row['apellido_paterno'];?>" disabled>
                 <div class="invalid-feedback">
                   Valid last name is required.
                 </div>
               </div>
             </div>
-            
-            
+
+
             <hr class="mb-4">
-            
+
           </div>
         </div>
       </form>
@@ -241,9 +299,9 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
-    <script src="../../assets/js/vendor/popper.min.js"></script>
+    <!--<script src="../../assets/js/vendor/popper.min.js"></script>
     <script src="../../dist/js/bootstrap.min.js"></script>
-    <script src="../../assets/js/vendor/holder.min.js"></script>
+    <script src="../../assets/js/vendor/holder.min.js"></script>-->
     <script>
       // Example starter JavaScript for disabling form submissions if there are invalid fields
       (function() {
@@ -268,3 +326,4 @@
     </script>
   </body>
 </html>
+<?php } ?>
