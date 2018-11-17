@@ -31,7 +31,7 @@ $_SESSION['correo']=$client;
 
 if($rowsC > 0){
     echo "Cliente existe <br>";
-    header("location:../menuInicio.html");
+    header("location:../informacionPersonal.php");
 }else{
     echo "REQUIERE INICIAR SESION";
     header("location:../loginUsuario.html");
