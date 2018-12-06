@@ -23,36 +23,30 @@
 
               <div id="cont_nav" class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Resumen </a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Estado de cuenta</a>
-                  </li>
                   <li class="nav-item  ">
-                    <a class="nav-link" href="informacionPersonal.html">Información personal
+                    <a class="nav-link" href="informacionPersonal.php">Información personal
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="directorioDeDirecciones.html">Directorio de direcciones
+                    <a class="nav-link" href="directorioDeDirecciones.php">Directorio de direcciones
                     </a>
                   </li>
                   <li class="nav-item active">
-                    <a class="nav-link" href="historialDeCompra.html">Historial de compra
+                    <a class="nav-link" href="historialDeCompra.php">Historial de compra
                     </a>
                   </li>
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
                 </form>
               </div>
-            </nav>   
-               
+            </nav>
+
        </header>
                    <!-- FIN BARRA DE NAVEGACIÓN-->
                    <!-- FORMULARIOS-->
-    
+
     <div id="contenedor_forms" class="container">
-        <div><h1 id="title" >Historial de compra</h1></div>   
+        <div><h1 id="title" >Historial de compra</h1></div>
         <div class="container">
             <table class="table table-striped">
                 <thead>
