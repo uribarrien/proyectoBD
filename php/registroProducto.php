@@ -32,12 +32,11 @@ $qInsert = "INSERT INTO producto (nombre,precio,sexo,modelo,tela)
 mysqli_query($connection,$qInsert);
 
 
-$qSelect = "SELECT * FROM producto WHERE nombre = '$name';";
-$qSel = mysqli_fetch_array($qSelect);
+//$qSelect = "SELECT * FROM producto WHERE nombre = '$name';";
+//$qSel = mysqli_fetch_array($qSelect);
 
-$qCP = "INSERT INTO color_producto (color_id_color,producto_no_producto) VALUES($color,$qSel['no_producto'])";
-
-mysqli_query($connection,$qCP);
+//$qCP = "INSERT INTO color_producto (color_id_color,producto_no_producto) VALUES($color,$qSel['no_producto'])";
+//mysqli_query($connection,$qCP);
 
 $result = mysqli_query($connection,$qSelect);
 $rows = mysqli_num_rows($result);

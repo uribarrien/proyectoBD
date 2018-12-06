@@ -96,59 +96,29 @@ $descuento = mysqli_query($connection,"SELECT * FROM descuento;");
                 <label for="sexo">Sexo</label>
                 <input type="text" class="form-control"  id="sexo" name="sexo" placeholder="" value=<?php echo $dt['sexo']; ?> >
               </div>
+              </div>
+              <div class="row">
                 <div class="col-md mb-3">
-                <label for="color">Color <span class="text-muted"></span></label>
-                <!--<input type="text" name="color" class="form-control" id="color" placeholder="">-->
-                <select name="color" class="form-control" id="firstName">
-                    <option selected hidden><?php
-                    $c = mysqli_fetch_array($colorP);
-                    if (is_null($c)) {
-                      echo "Color";
-                    }else {
-                      echo $c['nombre'];
-                    }
-                    ?>
-                  </option>
-                    <?php while ($cl = mysqli_fetch_array($color)) { ?>
-                    <option value="<?php echo $cl['id_color'];?>"><?php echo $cl['nombre']; ?></option>
+                <label for="color">Color <span class="text-muted"></span></label><br>
+                <?php $colorP = mysqli_query($connection,"SELECT a.nombre color,a.id_color idC, c.no_producto from producto c join color_producto b on(b.producto_no_producto = c.no_producto and c.no_producto=$id) right join color a on( b.color_id_color = a.id_color) order by idC");
+                    while ($cl = mysqli_fetch_array($colorP)) { ?>
+                      <label class="checkbox-inline"><input type="checkbox" name="color[]"
+                        <?php if ($cl['no_producto']==$id){?> checked="checked" <?php } ?>
+                        value="<?php echo $cl['idC'];?>"><?php echo $cl['color']; ?></label>
                   <?php } ?>
-                </select>
             </div>
             </div>
 
             <div class="row">
               <div class="col-md-6 mb-3">
-                <label for="talla">Talla</label>
-                <!--<input type="text" name="talla" class="form-control" id="talla" placeholder="" value="" >-->
-                <select name="talla" class="form-control" id="firstName">
-                    <option selected hidden><?php
-                    $s = mysqli_fetch_array($tallaP);
-                    if (is_null($s)) {
-                      echo "Talla";
-                    }else {
-                      echo $s['talla'];
-                    }
-                    ?>
-                  </option>
-                    <?php while ($size = mysqli_fetch_array($talla)) { ?>
-                    <option value="<?php echo $size['id_talla'];?>"><?php echo $size['talla']; ?></option>
+                <label for="talla">Talla</label><br>
+                <?php $tallaP = mysqli_query($connection,"SELECT a.talla talla,a.id_talla idT, c.no_producto from producto c join talla_producto b on(b.producto_no_producto = c.no_producto and c.no_producto=$id) right join talla a on( b.talla_id_talla = a.id_talla) order by idT");
+                    while ($size = mysqli_fetch_array($tallaP)) { ?>
+                      <label class="checkbox-inline"><input type="checkbox" name="talla[]"
+                        <?php if ($size['no_producto']==$id){?> checked="checked" <?php } ?>
+                        value="<?php echo $size['idT'];?>"><?php echo $size['talla']; ?></label>
                   <?php } ?>
-                </select>
               </div>
-
-<!-- CCCEEEEECCCCYYY             AGREGA ESTO POR FAVORRRR, SI LO AGREGO YO SE DESACOMODA TODO, ARREGLALO PLEACE
-             <div class="row">
-                <div class="col-md-6 mb-3">
-                  <label for="descuento">Descuento</label>
-                  <input type="text" name="talla" class="form-control" id="talla" placeholder="" value="" >
-                  <select name="descuento" class="form-control" id="firstName">
-                      <option selected hidden>Descuento</option>
-                      <?php while ($des = mysqli_fetch_array($descuento)) { ?>
-                      <option value="<?php echo $des['cod_descuento'];?>"><?php echo $des['cantidad_desc']; ?></option>
-                    <?php } ?>
-                  </select>
-                </div>-->
-
             </div>
             <div class="row">
                   <div class="col-md-6 mb-3">
@@ -180,6 +150,12 @@ $descuento = mysqli_query($connection,"SELECT * FROM descuento;");
 
               </div><br>
 
+            <div class="col-md-6 mb-3">
+                <label for="costo">Costo</label>
+                <input type="text" name="costo" class="form-control" id="costo" placeholder="" value=<?php echo $dt['costo'];?>>
+
+              </div><br>
+
             </div>
                 <div class="row">
 
@@ -187,6 +163,24 @@ $descuento = mysqli_query($connection,"SELECT * FROM descuento;");
                 <label for="cantidad">Cantidad</label>
                 <input type="text" name="cantidad" class="form-control" id="cantidad" placeholder="" value="<?php echo $dt['stock']; ?>" >
                     </div>
+              </div>
+            <div class="row">
+        <div class="col-md-6 mb-3">
+                <label for="disponible">Disponible</label>
+                <input type="text" name="disponible" class="form-control" id="disponible" placeholder="" value=<?php echo $dt['disponible'];?>>
+                    </div>
+                <div class="col-md-6 mb-3">
+                <label for="descuento">Descuento</label>
+                    <select name="descuento" class="form-control" id="descuento">
+                         <?php while ($des = mysqli_fetch_array($descuento)) { ?>
+                         <option value="<?php echo $des['cod_descuento'];?>"><?php echo $des['cantidad_desc']; ?></option>
+                       <?php } ?>
+                       <option selected hidden><?php $des = mysqli_query($connection,"SELECT a.cantidad_desc descuento FROM descuento a join producto b where b.descuento_cod_descuento = a.cod_descuento and b.no_producto=$id;");
+                       $d=mysqli_fetch_array($des);
+                          echo $d['descuento'];
+                       ?></option>
+                    </select>
+                </div>
               </div>
             <hr class="mb-4">
 

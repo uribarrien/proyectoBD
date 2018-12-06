@@ -91,53 +91,26 @@ $descuento = mysqli_query($connection,"SELECT * FROM descuento;");
                 <label for="sexo">Sexo</label>
                 <input type="text" class="form-control"  id="sexo" name="sexo" placeholder="" value="" >
               </div>
-                
+
             </div>
             <div class="row">
                 <div class="col-md mb-3">
                 <label for="color">Color <span class="text-muted"></span></label><br>
-                    <label class="checkbox-inline"><input type="checkbox" value="">Rojo</label>
-                    <label class="checkbox-inline"><input type="checkbox" value="">Negro</label>
-                    <label class="checkbox-inline"><input type="checkbox" value="">Morado</label>
-                           <label class="checkbox-inline"><input type="checkbox" value="">Rojo</label>
-                    <label class="checkbox-inline"><input type="checkbox" value="">Negro</label>
-                    <label class="checkbox-inline"><input type="checkbox" value="">Morado</label>
-                           <label class="checkbox-inline"><input type="checkbox" value="">Rojo</label>
-                    <label class="checkbox-inline"><input type="checkbox" value="">Negro</label>
-                    <label class="checkbox-inline"><input type="checkbox" value="">Morado</label>
-                    <option selected hidden>Color</option>
                     <?php while ($cl = mysqli_fetch_array($color)) { ?>
-                    <option value="<?php echo $cl['id_color'];?>"><?php echo $cl['nombre']; ?></option>
+                      <label class="checkbox-inline"><input type="checkbox" value="<?php echo $cl['id_color'];?>"><?php echo $cl['nombre']; ?></label>
                   <?php } ?>
-                
+
             </div>
             </div>
 
             <div class="row">
               <div class="col-md-6 mb-3">
                    <label for="talla">Talla</label><br>
-                  <label class="checkbox-inline"><input type="checkbox" value="">XS</label>
-                  <label class="checkbox-inline"><input type="checkbox" value="">S</label>
-                  <label class="checkbox-inline"><input type="checkbox" value="">M</label>
-               
                     <?php while ($size = mysqli_fetch_array($talla)) { ?>
-                    <option value="<?php echo $size['id_talla'];?>"><?php echo $size['talla']; ?>
+                      <label class="checkbox-inline"><input type="checkbox" value="<?php echo $size['id_talla'];?>"><?php echo $size['talla']; ?></label>
                   <?php } ?>
-                
-              </div>
 
-<!-- CCCEEEEECCCCYYY             AGREGA ESTO POR FAVORRRR, SI LO AGREGO YO SE DESACOMODA TODO, ARREGLALO PLEACE
-             <div class="row">
-                <div class="col-md-6 mb-3">
-                  <label for="descuento">Descuento</label>
-                  <input type="text" name="talla" class="form-control" id="talla" placeholder="" value="" >
-                  <select name="descuento" class="form-control" id="firstName">
-                      <option selected hidden>Descuento</option>
-                      <?php while ($des = mysqli_fetch_array($descuento)) { ?>
-                      <option value="<?php echo $des['cod_descuento'];?>"><?php echo $des['cantidad_desc']; ?></option>
-                    <?php } ?>
-                  </select>
-                </div>-->
+              </div>
 
             </div>
             <div class="row">
@@ -192,7 +165,10 @@ $descuento = mysqli_query($connection,"SELECT * FROM descuento;");
                 <div class="col-md-6 mb-3">
                 <label for="descuento">Descuento</label>
                     <select name="descuento" class="form-control" id="descuento">
-                         <option selected>10%</option>
+                         <?php while ($des = mysqli_fetch_array($descuento)) { ?>
+                         <option value="<?php echo $des['cod_descuento'];?>"><?php echo $des['cantidad_desc']; ?></option>
+                       <?php } ?>
+                       <option selected hidden>Descuento</option>
                     </select>
                 </div>
               </div>

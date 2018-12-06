@@ -86,9 +86,9 @@ $datos = mysqli_query($connection, "SELECT * FROM producto;");
       <td><?php echo $dt["disponible"]; ?></td>
       <td><?php echo $dt["modelo"]; ?></td>
       <td><?php echo $dt["tela"]; ?></td>
-      <td><?php $q = mysqli_query($connection, "SELECT a.cantidad_desc des FROM descuento a JOIN producto b ON b.descuento_cod_descuento=a.cod_descuento;");
+      <td><?php $id = $dt["no_producto"]; $q = mysqli_query($connection, "SELECT a.cantidad_desc descuento FROM descuento a join producto b where b.descuento_cod_descuento = a.cod_descuento and b.no_producto=$id;;");
             $k = mysqli_fetch_array($q);
-            echo $k["des"]."%"; ?></td>
+            echo $k["descuento"]."%"; ?></td>
       <td><a href="actualizaProducto.php?id=<?php echo $dt['no_producto']; ?>"><img src="img/actualizarUsuario.png"></a>
     </tr>
     <?php $i = $i + 1; } ?>
