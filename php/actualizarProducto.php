@@ -46,7 +46,7 @@ while ($s = mysqli_fetch_array($colorP)) {
     if (!in_array($s['idC'],$color) && $s['no_producto'] == $id && $ban==false) {
       $idcB =  $s['idC'];
       $np = $s['no_producto'];
-      $qBorrC = "DELETE FROM color_producto where color_id_color = $idcB and producto_no_producto=$np)";
+      $qBorrC = "DELETE FROM color_producto where color_id_color = $idcB and producto_no_producto=$np;";
       mysqli_query($connection,$qBorrC);
       echo "El color ".$idcB." no esta relacionado con el producto ".$np." borrar";
       $ban=true;
@@ -62,6 +62,14 @@ while ($s = mysqli_fetch_array($tallaP)) {
       $qInsT = "INSERT into talla_producto(talla_id_talla,producto_no_producto) values($talla[$i],$id);";
       mysqli_query($connection,$qInsT);
       echo "insertar";
+    }
+    if (!in_array($s['idT'],$talla) && $s['no_producto'] == $id && $ban==false) {
+      $idtB =  $s['idT'];
+      $np = $s['no_producto'];
+      $qBorrT = "DELETE FROM talla_producto where talla_id_talla = $idtB and producto_no_producto=$np;";
+      mysqli_query($connection,$qBorrT);
+      echo "La talla ".$idtB." no esta relacionado con el producto ".$np." borrar";
+      $ban=true;
     }
   }
 }

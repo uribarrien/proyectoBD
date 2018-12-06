@@ -62,7 +62,7 @@ $descuento = mysqli_query($connection,"SELECT * FROM descuento;");
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="registroProveedor.html">Registro proveedor
+                    <a class="nav-link" href="registroProveedor.php">Registro proveedor
                     </a>
                   </li>
 
