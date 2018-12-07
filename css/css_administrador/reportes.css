@@ -1,11 +1,11 @@
 #contenedorr{
-    
+
     align-content: left;
     display: inline-block;
 }
  .containerr botton, .containerr {
     display: inline-block;
-    
+
     position: relative;
     left:10px;
 }
@@ -21,7 +21,7 @@
    position: relative;
     left: 15px;
     border: black;
-      
+
 }
 #cont_nav{
     background: #B4C2E2  ;
