@@ -168,7 +168,7 @@
       <?php
         }
       }
-     } ?>
+      ?>
 
 
    <tr >
@@ -178,10 +178,9 @@
           <td></td>
           <td></td>
           <td></td>
-          <td></td>
 
         <td ><b>Total de proveedores</b></td>
-          <td ><?php echo $i; ?></td>
+          <td ><?php echo $i;} ?></td>
       </tr>
   </tbody>
 </table>

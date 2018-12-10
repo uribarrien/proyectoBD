@@ -97,7 +97,7 @@ $descuento = mysqli_query($connection,"SELECT * FROM descuento;");
                 <div class="col-md mb-3">
                 <label for="color">Color <span class="text-muted"></span></label><br>
                     <?php while ($cl = mysqli_fetch_array($color)) { ?>
-                      <label class="checkbox-inline"><input type="checkbox" value="<?php echo $cl['id_color'];?>"><?php echo $cl['nombre']; ?></label>
+                      <label class="checkbox-inline"><input type="checkbox" name="color[]" value="<?php echo $cl['id_color'];?>"><?php echo $cl['nombre']; ?></label>
                   <?php } ?>
 
             </div>
@@ -107,7 +107,7 @@ $descuento = mysqli_query($connection,"SELECT * FROM descuento;");
               <div class="col-md-6 mb-3">
                    <label for="talla">Talla</label><br>
                     <?php while ($size = mysqli_fetch_array($talla)) { ?>
-                      <label class="checkbox-inline"><input type="checkbox" value="<?php echo $size['id_talla'];?>"><?php echo $size['talla']; ?></label>
+                      <label class="checkbox-inline"><input type="checkbox" name="talla[]" value="<?php echo $size['id_talla'];?>"><?php echo $size['talla']; ?></label>
                   <?php } ?>
 
               </div>
