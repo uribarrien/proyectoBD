@@ -1,0 +1,32 @@
+@font-face{
+    font-family: champagne;
+    src: url(Champagne_&_Limousines_Bold.ttf);
+}
+
+#contenedor_form    {
+    margin-top: 30px;
+    margin-bottom: 60px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 4px 4px 4px #dfe2e3;
+}
+
+
+body     {
+    background-color: #eceff1;
+}
+
+#boton    {
+    background-color: #4b4b4b; 
+}
+
+#boton:hover    {
+    background-color: #000000; 
+}
+#txt-50-c    { font-family: Champagne;font-size: 50px;}
+#txt-40-c    { font-family: Champagne;font-size: 40px;}
+#txt-30-c    { font-family: Champagne;font-size: 30px;}
+#txt-20-c    { font-family: Champagne;font-size: 20px;}
+#txt-10-c    { font-family: Champagne;font-size: 10px;}
+
+}
