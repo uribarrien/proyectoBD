@@ -44,41 +44,16 @@
             </div>
         </header>
 
-        <!--viejo
-<body>
-
-<header>
-<hr>
-</header>
-
-<div class="login-box">
-
-<h1>Iniciar Sesión</h1>
-<form id = "formulario" action="php/validar.php" method="POST">
-<label for = "correo">Correo :</label>
-<input type="text" name="correo" placeholder="Correo" size="40">
-
-<label for = "password">Contraseña :</label>
-<input type="text" name="password" placeholder="Contraseña" size="40">
-
-<input type="submit" value="Acceder" class="btn btn-default btn-md">
-
-<span>¿ No tienes cuenta ?</span>
-<a href="registroCliente.html"> Regístrate</a>
-<a href="index.html">Regresar</a>
-</form>
-</div>
-
-
-</body>
--->
 
         <div id ="contenedor_form" class="container text-center col-3">
             <form class="form-signin" action="php/validar.php" method="POST">
                 <h1 id="titulo_form" class="h3 mb-3 font-weight-normal">Quetzal</h1>
                 <br>
                 <label for="inputEmail"  class="sr-only">Nombre de usuario</label>
-                <input type="email" id="inputEmail" name="correo" class="form-control" placeholder="Usuario" required autofocus>
+                
+                
+                <input type="email" id="inputEmail" name="correo" class="form-control" placeholder="Usuario"  oninvalid="setCustomValidity('Correo incorrecto')" oninput="setCustomValidity('')" required autofocus>
+                
                 <label for="inputPassword" class="sr-only">Contraseña</label>
                 <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Contraseña" required>
                 <button id="boton" class="btn btn-lg btn-secondary btn-block" type="submit">ENTRAR</button>
