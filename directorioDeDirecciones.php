@@ -118,7 +118,7 @@ while ($row=mysqli_fetch_array($select)){
       <div id="cont_titulo" class="py-1 text-center">
       </div>
 
-      <form class="row" action="php/direcciones.php" method="post">
+      <form class="row" action="php/direcciones.php" id="form" name="form" method="post" onsubmit="return enviar();">
         <div class="col-md order-md-2 mb-4">
           <h4 class="d-flex justify-content-between align-items-center mb-3">
             <span class="text-muted">Domicilio de entrega</span>
@@ -127,7 +127,7 @@ while ($row=mysqli_fetch_array($select)){
           <div class="row">
               <div class="col-md-6 mb-3">
                 <label for="firstName">Codigo Postal</label>
-                <input type="text" class="form-control"  id="firstName" name="cp" placeholder=""
+                <input type="text" class="form-control"  id="cp" name="cp" placeholder=""
                 value="<?php
                 if (is_null($row['codigo_postal'])){
                   echo "Código postal";
@@ -135,14 +135,13 @@ while ($row=mysqli_fetch_array($select)){
                   echo $row['codigo_postal'];
                 }
                 ?>" >
-                <div class="invalid-feedback">
-                  Valid first name is required.
-                </div>
+                
               </div>
+              
             </div>
             <div class="mb-3">
-                <label for="email">Calle <span class="text-muted"></span></label>
-                <input type="email" name="calle" class="form-control" id="email" placeholder=""
+                <label for="">Calle <span class="text-muted"></span></label>
+                <input type="text" name="calle" class="form-control" id="calle" placeholder=""
                 value="<?php
                 if (is_null($row['calle'])){
                   echo "Calle";
@@ -153,8 +152,8 @@ while ($row=mysqli_fetch_array($select)){
             </div>
             <div class="row">
               <div class="col-md-6 mb-3">
-                <label for="firstName">Número de exterior</label>
-                <input type="text" name="num_ext" class="form-control" id="firstName" placeholder=""
+                <label for="">Número de exterior</label>
+                <input type="text" name="num_ext" class="form-control" id="num_ext" placeholder=""
                 value="<?php
                 if (is_null($row['no_exterior'])){
                   echo "Número exterior";
@@ -162,13 +161,10 @@ while ($row=mysqli_fetch_array($select)){
                   echo $row['no_exterior'];
                 }
                 ?>" >
-                <div class="invalid-feedback">
-                  Valid first name is required.
-                </div>
               </div>
               <div class="col-md-6 mb-3">
-                <label for="lastName">Número de interior</label>
-                <input type="text" name="num_int" class="form-control" id="lastName" placeholder=""
+                <label for="">Número de interior</label>
+                <input type="text" name="num_int" class="form-control" id="num_int" placeholder=""
                 value="<?php
                 if (is_null($row['no_exterior'])){
                   echo "Número exterior";
@@ -176,15 +172,12 @@ while ($row=mysqli_fetch_array($select)){
                   echo $row['no_exterior'];
                 }
                 ?>" >
-                <div class="invalid-feedback">
-                  Valid last name is required.
-                </div>
               </div>
             </div>
             <div class="row">
               <div class="col-md-6 mb-3">
-                <label for="firstName">Colonia</label>
-                <input type="text" name="colonia" class="form-control" id="firstName" placeholder=""
+                <label for="">Colonia</label>
+                <input type="text" name="colonia" class="form-control" id="colonia" placeholder=""
                 value="<?php
                 if (is_null($row['colonia'])){
                   echo "Colonia";
@@ -192,15 +185,13 @@ while ($row=mysqli_fetch_array($select)){
                   echo $row['colonia'];
                 }
                 ?>" >
-                <div class="invalid-feedback">
-                  Valid first name is required.
-                </div>
+    
               </div>
             </div>
             <div class="row">
               <div class="col-md-6 mb-3">
-                <label for="firstName">Estado / Provincia</label>
-                <select name="estado" class="form-control " id="firstName" onchange="showUser(this.value)">
+                <label for="">Estado / Provincia</label>
+                <select name="estado" class="form-control " id="estado" onchange="showUser(this.value)">
                     <option selected hidden>
                       <?php
                         if (is_null($row['ciudad_id_ciudad'])){
@@ -222,7 +213,7 @@ while ($row=mysqli_fetch_array($select)){
                 </div>
               </div>
               <div class="col-md-6 mb-3">
-                <label for="lastName">Ciudad</label>
+                <label for="">Ciudad</label>
                 <select name="ciudad" class="form-control" id="txtHint">
                   <option selected hidden>
                     <?php
@@ -236,11 +227,42 @@ while ($row=mysqli_fetch_array($select)){
                      ?>
                   </option>
                 </select>
-                <div class="invalid-feedback">
-                  Valid last name is required.
-                </div>
+
               </div>
             </div>
+            <script>
+                function enviar(){
+                    var cp = document.form.cp.value;
+                    var n_e = document.form.num_ext.value;
+                    var n_i = document.form.num_int.value;
+                    var valid_num = false;
+                    var valid_cp = false;
+                    if(/^\d*$/.test(n_e) && /^\d*$/.test(n_i)){
+                        valid_num = true;
+                    }else{
+                        valid_num=false;
+                        alert("Solo digitos en Número exterior o interior");
+                    }
+                    
+                    
+                    if(/^\D*\d{4,5}$/.test(cp)){
+                        valid_cp = true;
+                    }else{
+                        alert("El codigo postal es de cuatro a cinco digitos")
+                        valid_cp = false;
+                    }
+                    
+                    if(valid_num && valid_cp){
+                        form.submit();
+                        return true;  
+                    }else{
+                        return false;
+                    }
+
+
+                } 
+
+            </script>
             <button id="boton" class="btn btn-lg btn-secondary btn-block" type="submit">CONFIRMAR</button>
         </div>
         <div class="col-md order-md-1">
@@ -249,31 +271,25 @@ while ($row=mysqli_fetch_array($select)){
           <div class="needs-validation" novalidate>
             <div class="mb-3">
                 <label for="email">Usuario (Correo electronico) <span class="text-muted"></span></label>
-                <input type="email" name="correo" class="form-control" id="email" placeholder="" value="<?php echo $row['correo'];?>" disabled>
+                <input type="email" name="correo" class="form-control" id="correo" placeholder="" value="<?php echo $row['correo'];?>" disabled>
             </div>
             <div class="row">
               <div class="col-md-6 mb-3">
-                <label for="firstName">Numero télefonico</label>
-                <input type="text" name="telefono" class="form-control" id="firstName" placeholder="" value="<?php echo $row['telefono'];?>" disabled>
-                <div class="invalid-feedback">
-                  Valid first name is required.
-                </div>
+                <label for="">Numero télefonico</label>
+                <input type="text" name="telefono" class="form-control" id="telefono" placeholder="" value="<?php echo $row['telefono'];?>" disabled>
+
               </div>
             </div>
             <div class="row">
               <div class="col-md-6 mb-3">
                 <label for="firstName">Nombre</label>
-                <input type="text" name="nombre" class="form-control" id="firstName" placeholder="" value="<?php echo $row['nombre'];?>" disabled>
-                <div class="invalid-feedback">
-                  Valid first name is required.
-                </div>
+                <input type="text" name="nombre" class="form-control" id="nombre" placeholder="" value="<?php echo $row['nombre'];?>" disabled>
+
               </div>
               <div class="col-md-6 mb-3">
                 <label for="lastName">Apellidos</label>
-                <input type="text" name="apellidos" class="form-control" id="lastName" placeholder="" value="<?php echo $row['apellido_paterno'];?>" disabled>
-                <div class="invalid-feedback">
-                  Valid last name is required.
-                </div>
+                <input type="text" name="apellidos" class="form-control" id="apellidos" placeholder="" value="<?php echo $row['apellido_paterno'];?>" disabled>
+
               </div>
             </div>
 

@@ -1,100 +1,75 @@
 <!DOCTYPE html>
-    <html lang="es">
-        <head>
-            <meta charset="UTF-8">
-            <meta http-equiv="X-UA-Compatible" content="">
-            <meta name="viewport" content="width=device-width, initial-scale=1">
-            <link rel="stylesheet" href="css/css_login/login.css">
-            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
-            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
-            <link rel="stylesheet" type="text/css" href="css/css_index/index.css">
-            <title>Iniciar Sesion</title>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/css_login/login.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="css/css_index/index.css">
+        <title>Iniciar Sesion</title>
 
 
-        </head>
+    </head>
 
-        <body id="todo" class="left-center">
-            <header>
-                <div>
-                    <h1>Quetzal</h1>
-                </div>
-                <!-- BARRA DE NAVEGACIÓN-->
-                <div>
+    <body id="todo" class="left-center">
+        <header>
+            <div>
+                <h1>Quetzal</h1>
+            </div>
+            <!-- BARRA DE NAVEGACIÓN-->
+            <div>
                 <nav id="cont_nav" class="navbar navbar-expand-lg navbar-light">
-              <a id="txt-menu" class="navbar-brand" href="index.html">Inicio</a>
-              <button id="cont_nav" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
+                    <a id="txt-menu" class="navbar-brand" href="index.html">Inicio</a>
+                    <button id="cont_nav" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
 
-              <div id="cont_nav" class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                  <li class="nav-item ">
-                    <a class="nav-link" id="txt-menu" href="hombres.html">Ropa para hombre <span class="sr-only">(current)</span></a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" id="txt-menu" href="mujeres.html">Ropa para mujer</a>
-                  </li>
-                  <li class="nav-item active">
-                    <a class="nav-link" id="txt-menu" href="loginUsuario.html">Iniciar Sesion</a>
-                  </li>
+                    <div id="cont_nav" class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item ">
+                                <a class="nav-link" id="txt-menu" href="hombres.html">Ropa para hombre <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="txt-menu" href="mujeres.html">Ropa para mujer</a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" id="txt-menu" href="loginUsuario.html">Iniciar Sesion</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+
+        <div id ="contenedor_form" class="container text-center col-3">
+            <form class="form-signin" action="php/validar.php" method="POST">
+                <h1 id="titulo_form" class="h3 mb-3 font-weight-normal">Quetzal</h1>
+                <br>
+                <label for="inputEmail"  class="sr-only">Nombre de usuario</label>
+                
+                
+                <input type="email" id="inputEmail" name="correo" class="form-control" placeholder="Usuario"  oninvalid="setCustomValidity('Correo incorrecto')" oninput="setCustomValidity('')" required autofocus>
+                
+                <label for="inputPassword" class="sr-only">Contraseña</label>
+                <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Contraseña" required>
+                <button id="boton" class="btn btn-lg btn-secondary btn-block" type="submit">ENTRAR</button>
+                <div id="sub_text" class="mt-5 mb-3 text-muted">¿No tienes cuenta?... <a href="registroCliente.html">Registrate</a></div>
+                <p class="text-muted">Siguenos en :</p>
+                <ul id="footer" class="social_footer_ul">
+                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
                 </ul>
-              </div>
-            </nav>
-                </div>
-            </header>
-
-            <!--viejo
-        <body>
-
-            <header>
-                <hr>
-            </header>
-
-            <div class="login-box">
-
-                <h1>Iniciar Sesión</h1>
-                    <form id = "formulario" action="php/validar.php" method="POST">
-                        <label for = "correo">Correo :</label>
-                        <input type="text" name="correo" placeholder="Correo" size="40">
-
-                        <label for = "password">Contraseña :</label>
-                        <input type="text" name="password" placeholder="Contraseña" size="40">
-
-                        <input type="submit" value="Acceder" class="btn btn-default btn-md">
-
-                         <span>¿ No tienes cuenta ?</span>
-                        <a href="registroCliente.html"> Regístrate</a>
-                        <a href="index.html">Regresar</a>
-                    </form>
-            </div>
-
-
-        </body>
-        -->
-
-            <div id ="contenedor_form" class="container text-center col-3">
-                <form class="form-signin" action="php/validar.php" method="POST">
-                    <h1 id="titulo_form" class="h3 mb-3 font-weight-normal">Quetzal</h1>
-                    <br>
-                    <label for="inputEmail"  class="sr-only">Nombre de usuario</label>
-                    <input type="email" id="inputEmail" name="correo" class="form-control" placeholder="Usuario" required autofocus>
-                    <label for="inputPassword" class="sr-only">Contraseña</label>
-                    <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Contraseña" required>
-                    <button id="boton" class="btn btn-lg btn-secondary btn-block" type="submit">ENTRAR</button>
-                    <div id="sub_text" class="mt-5 mb-3 text-muted">¿No tienes cuenta?... <a href="registroCliente.html">Registrate</a></div>
-                    <p class="text-muted">Siguenos en :</p>
-                    <ul id="footer" class="social_footer_ul">
-                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                    </ul>
-                </form>
-            </div>
+            </form>
+        </div>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous">
         </script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous">
         </script>
-        </body>
-    </html>
+    </body>
+</html>
