@@ -90,12 +90,12 @@ while ($row=mysqli_fetch_array($select)){
                         <div class="col-md-6 mb-3">
                             <label >Cambiar contraseña (opcional)</label>
                             <input type="text" class="form-control" name="contrasena" placeholder="Contraseña " value="" >
-        
+
                         </div>
                         <div class="col-md-6 mb-3">
                             <label >Reingresar contraseña</label>
                             <input type="text" class="form-control" name="newcontrasena" placeholder="Confirmar contraseña" value="" >
-         
+
                         </div>
                     </div>
                     <div class="row">
@@ -318,21 +318,21 @@ while ($row=mysqli_fetch_array($select)){
                                     alert("Las dos claves son distintas");
                                     same_pass = false;
                                 }
-                                
+
                                 if(/^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/.test(pass1)){
                                     valid_pass = true;
                                 }else{
                                     alert("La contraseña debe contener : \n - Mayusculas \n - Minusculas \n - Almenos un digito \n - De 8 a 16 caraceteres");
                                     valid_pass = false;
                                 }
-                                
+
                                 if(/^[0-9]{10}$/.test(tel)){
                                     valid_tel = true;
                                 }else{
                                     valid_tel = false;
                                     alert("El telefono deben ser 10 digitos")
-                                }   
-                                
+                                }
+
                                 if(same_pass && valid_pass && valid_tel){
                                     formu.submit();
                                     return true;
@@ -341,7 +341,7 @@ while ($row=mysqli_fetch_array($select)){
                                 }
 
 
-                            } 
+                            }
 
                         </script>
                     </div>

@@ -4,7 +4,6 @@
  $db = "proyectobd";
  $user = "proyecto";
  $password = "123456789";
-
  $name = $_POST['nombre'];
  $apePat = $_POST['apellido_paterno'];
  $apeMat = $_POST['apellido_materno'];
