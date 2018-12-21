@@ -174,9 +174,9 @@ $descuento = mysqli_query($connection,"SELECT * FROM descuento;");
                     <select name="descuento" class="form-control" id="descuento">
                          <?php while ($des = mysqli_fetch_array($descuento)) { ?>
                          <option value="<?php echo $des['cod_descuento'];?>"><?php echo $des['cantidad_desc']; ?></option>
-                       <?php } $des = mysqli_query($connection,"SELECT a.cantidad_desc descuento, a.cod_descuento FROM descuento a join producto b where b.descuento_cod_descuento = a.cod_descuento and b.no_producto=$id;");
-                       $d=mysqli_fetch_array($des);?>
-                       <option selected hidden value="<?php echo $d['cod_descuento']?>"><?php
+                       <?php } ?>
+                       <option selected hidden><?php $des = mysqli_query($connection,"SELECT a.cantidad_desc descuento FROM descuento a join producto b where b.descuento_cod_descuento = a.cod_descuento and b.no_producto=$id;");
+                       $d=mysqli_fetch_array($des);
                           echo $d['descuento'];
                        ?></option>
                     </select>

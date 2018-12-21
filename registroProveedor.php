@@ -124,6 +124,7 @@ $cd = mysqli_query($connection, "SELECT * FROM ciudad;");
             <div class="row">
                   <div class="col-md-6 mb-3">
                 <label for="ciudad">Ciudad</label>
+                <!--<input type="text" name="ciudad" class="form-control" id="ciudad" placeholder="" value="" >-->
                 <select name="ciudad" class="form-control" id="firstName">
                     <option selected hidden>Ciudad</option>
                     <?php while ($res = mysqli_fetch_array($cd)) { ?>
@@ -140,7 +141,7 @@ $cd = mysqli_query($connection, "SELECT * FROM ciudad;");
 
             <button id="boton" class="btn btn-lg btn-secondary btn-block" type="submit">CONFIRMAR</button>
         </div>
-
+       
       </form>
         <!-- FIN FORMULARIOS-->
       <footer class="my-5 pt-5 text-muted text-center text-small">

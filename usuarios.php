@@ -17,9 +17,7 @@ $datos = mysqli_query($connection, "SELECT * FROM cliente;");
  ?>
  <!DOCTYPE html>
  <html>
-<head>
-  <title>Usuarios</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<head><link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="css/css_administrador/tablasProv_Us.css"></head>
 <body id="todo">
@@ -80,7 +78,7 @@ $datos = mysqli_query($connection, "SELECT * FROM cliente;");
       <td><?php echo $dt["apellido_materno"]; ?></td>
       <td><?php echo $dt["correo"]; ?></td>
       <td> <?php echo $dt["telefono"]; ?></td>
-      <td><a href="registroUsuario.php?id=<?php echo $dt['no_cliente']; ?>"><img src="img/actualizarUsuario.png"></a></td>
+      <td><a href="informacionPersonal.html"><img src="img/actualizarUsuario.png"></a></td>
     </tr>
     <?php } ?>
   </tbody>

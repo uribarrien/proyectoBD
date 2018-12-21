@@ -39,7 +39,7 @@ $newcantidad = $array2['cantidad'] + $cantidad;
 if ($array2 == null){
 	$query = mysqli_query($connection,"INSERT INTO detalle_carrito (carrito_no_pedido,producto_no_producto,precio,cantidad) values ($no_pedido,$no_producto,$precio,$cantidad);");
 }else{
-	$qUpdate = mysqli_query($connection,"UPDATE detalle_carrito set cantidad=$newcantidad");
+	$qUpdate = mysqli_query($connection,"UPDATE detalle_carrito set cantidad=$newcantidad where carrito_no_pedido = $no_pedido and producto_no_producto=$no_producto");
 }
 
 

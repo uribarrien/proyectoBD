@@ -85,7 +85,7 @@ $cd = mysqli_query($connection, "SELECT * FROM ciudad;");
       <div id="cont_titulo" class="py-1 text-center">
       </div>
 
-      <form class="row" action="php/actualizarProveedor.php?id=<?php echo $id;?>" method="post">
+      <form class="row" action="php/actualizarProveedor.php" method="post">
         <div class="col-md order-md-2 mb-4">
           <h4 class="d-flex justify-content-between align-items-center mb-3">
             <span class="text-muted">Dirección</span>
@@ -113,13 +113,10 @@ $cd = mysqli_query($connection, "SELECT * FROM ciudad;");
                   <div class="col-md-6 mb-3">
                 <label for="ciudad">Ciudad</label>
                 <select name="ciudad" class="form-control" id="firstName" >
+                    <option selected hidden>Ciudad</option>
                     <?php while ($res = mysqli_fetch_array($cd)) { ?>
                     <option value="<?php echo $res['id_ciudad'];?>"><?php echo $res['nombre']; ?></option>
-                  <?php } $id=$data["no_proveedor"];
-                  $q = mysqli_query($connection, "SELECT a.nombre cd, a.id_ciudad FROM ciudad a JOIN v_proveedor b ON b.ciudad_id_ciudad=a.id_ciudad AND b.no_proveedor=$id;");
-                  $k = mysqli_fetch_array($q);?>
-                  <option value="<?php echo $k['id_ciudad'];?>"selected hidden><?php 
-                        echo $k["cd"]; ?></option>
+                  <?php } ?>
                 </select>
               </div>
               <div class="col-md-6 mb-3">

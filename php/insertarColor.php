@@ -1,4 +1,5 @@
 <?php
+
 $server = "localhost";
 $db = "proyectobd";
 $user = "proyecto";
@@ -41,5 +42,9 @@ if (isset($_POST['enviar'])){
      echo "<br/>no existe el archivo";
    }
 }
+
+
+
+
 mysqli_close($connection);
  ?>
