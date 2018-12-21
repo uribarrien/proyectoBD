@@ -35,16 +35,6 @@ if($fatmp != false){
 return $fa;
 }
 session_start();
-$no_cliente = $_SESSION['no_cliente'];
-$query = mysqli_query($connection,"SELECT * FROM carrito where cliente_no_cliente = $no_cliente");
-$array = mysqli_fetch_array($query);
-$subtotal = $array['subtotal'];
-$total = $array['total'];
-$no_pedido = $array['no_pedido'];
-$query2 = mysqli_query($connection,"SELECT * FROM detalle_carrito where carrito_no_pedido = $no_pedido");
-$query3 = mysqli_query($connection,"SELECT a.nombre as name from producto a, detalle_carrito b where a.no_producto = b.producto_no_producto and carrito_no_pedido=$no_pedido");
-$array3 = mysqli_fetch_array($query3);
-
 
  ?>
 <!DOCTYPE html>
@@ -103,29 +93,49 @@ $array3 = mysqli_fetch_array($query3);
                                     </tr>
                                     <!-- EMPIEZA UNA FILA PARA UN ELEMENTO-->
                                     <?php
-                                    while ($row = mysqli_fetch_array($query2)){
+																		$no_cliente = $_SESSION['no_cliente'];
+																		$query = mysqli_query($connection,"SELECT * FROM carrito where cliente_no_cliente = $no_cliente");
+																		$array = mysqli_fetch_array($query);
+																		$subtotal = $array['subtotal'];
+																		if ($subtotal == null){
+																			$subtotal = 0;
+																		}
+																		$total = $array['total'];
+																		if ($total == null){
+																			$total = 0;
+																		}
+																		$no_pedido = $array['no_pedido'];
+																		if ($no_pedido != null ){
+																		$query2 = mysqli_query($connection,"SELECT * FROM detalle_carrito where carrito_no_pedido = $no_pedido");
 
+                                    while ($row = mysqli_fetch_array($query2)){
+																			$no_producto = $row['producto_no_producto'];
+																			echo "PRODUCTO ".$no_producto;
+																			$query3 = mysqli_query($connection,"SELECT a.nombre as name from producto a, detalle_carrito b where a.no_producto = b.producto_no_producto and carrito_no_pedido=$no_pedido and producto_no_producto = $no_producto");
+																			$array3 = mysqli_fetch_array($query3);
+																			$imagenes = getFiles('productos/'.$no_producto.'/');
+
+																			$_SESSION['no_pedido'] = $no_pedido;
                                      ?>
                                     <tr class="table_row">
                                         <td class="column-1">
                                             <div class="how-itemcart1">
-                                                <img src="img_tienda/playeras/4_r.png" alt="IMG">
+
+																								<?php
+																								echo '<img src="productos/'.$no_producto.'/'.$imagenes[0].'" alt="IMG">';
+																								 ?>
+
                                             </div>
                                         </td>
-                                        <td class="column-2 "><span id="txt-desc"><?php
-
-                                            echo $array3['name'];
-
-
-                                         ?> </span></td>
+                                        <td class="column-2 "><span id="txt-desc"><?php echo $array3['name'];?> </span></td>
                                         <td class="column-3">$ <?php echo $row['precio'] ?></td>
                                         <td class="column-4"><?php echo $row['cantidad'] ?></td>
                                         <td class="column-5">
-                                            <button type="button" class="btn btn-outline-dark btn-sm">Remover</button>
+                                          <a href="php/eliminarcarrito.php?id=<?php echo $no_producto; ?>">  <button type="button" class="btn btn-outline-dark btn-sm">Remover </button></a>
                                         </td>
                                     </tr>
                                     <!-- TERMINA UNA FILA PARA UN ELEMENTO-->
-                                  <?php } ?>
+                                  <?php } }?>
                                 </table>
                             </div>
 
