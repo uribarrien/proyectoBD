@@ -126,6 +126,11 @@ body {
     margin-top: 100px;
 }
 
+#ajuste    {
+    margin-top: -9px;
+    margin-left: -2px;
+}
+
 .form-signin {
   width: 100%;
   max-width: 330px;
