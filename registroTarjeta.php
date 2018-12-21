@@ -5,12 +5,21 @@ $user = "proyecto";
 $db = "proyectobd";
 
 session_start();
+$session_email=$_SESSION['correo'];
+if($session_email==null || $session_email==''){
+    echo "Usted no puede entrar a esta página, necesita iniciar una sesión";
+    header("location:index.php");
+    die();
+
+}
 $id_cliente = $_SESSION['no_cliente'];
 $no_pedido = $_SESSION['no_pedido'];
 $no_envio = $_SESSION['no_envio'];
 $_SESSION['no_cliente'] = $id_cliente;
 $_SESSION['no_pedido'] = $no_pedido;
 $_SESSION['no_envio'] = $no_envio;
+
+
 
 $connection = mysqli_connect($server,$user,$password,$db);
 if(!$connection){
@@ -54,29 +63,35 @@ if ($row > 0 || $id_tarjeta!=NULL) {
               <div id="cont_nav" class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
 
-                  <li class="nav-item">
-                    <a class="nav-link" href="administrador.html">Mi cuenta</a>
-                  </li>
-                  <li class="nav-item  ">
-                    <a class="nav-link" href="usuarios.php">Usuarios
-                    </a>
+                  <li class="nav-item ">
+                      <a class="nav-link" id="txt-menu" href="hombres.php">Ropa para hombre </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="proveedores.php">Proveedores
-                    </a>
+                      <a class="nav-link" id="txt-menu" href="mujeres.php">Ropa para mujer</a>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="registroProveedor.php">Registro proveedor
-                    </a>
-                  </li>
+                  <?php
+                    $session_email=$_SESSION['correo'];
+                    if($session_email==null || $session_email==''){
+                  ?>
+                      <li class="nav-item">
+                          <a class="nav-link" id="txt-menu" href="loginUsuario.html">Iniciar Sesión</a>
+                      </li>
 
-                    <li class="nav-item">
-                    <a class="nav-link" href="producto.php">Productos
-                    </a>
-                  </li>
-                    <li class="nav-item">
-                    <a class="nav-link" href="#">Cerrar sesión
-                    </a>
+                  <?php
+                }else{
+                  ?>
+                      <li class="nav-item">
+                          <a class="nav-link" id="txt-menu" href="informacionPersonal.php">Mi cuenta</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" id="txt-menu" href="cerrar_sesion.php">Cerrar Sesión</a>
+                      </li>
+
+                  <?php
+                }
+                  ?>
+                  <li >
+                      <a href="carrito.php" style="font-size: 40px; color: gray ;"><i class="fas fa-shopping-cart  m-l-370 p-l-370"></i></a>
                   </li>
                 </ul>
               </div>

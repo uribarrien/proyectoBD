@@ -31,7 +31,7 @@ $_SESSION['correo']=$client;
 $bandera = $_SESSION['bandera'];
 if($rowsC > 0){
   if ($client == "Admin@gmail.com"){
-    header("location:../Administrador.html");
+    header("location:../administrador.php");
   }else{
     if($bandera == 1){
       $array = mysqli_fetch_array($resultC);

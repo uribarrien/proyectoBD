@@ -5,6 +5,12 @@ $user = "proyecto";
 $db = "proyectobd";
 
 session_start();
+$session_email=$_SESSION['correo'];
+if($session_email==null || $session_email==''){
+    echo "Usted no puede entrar a esta página, necesita iniciar una sesión";
+    header("location:index.php");
+    die();
+}
 $id_cliente = $_SESSION['no_cliente'];
 $no_pedido = $_SESSION['no_pedido'];
 $_SESSION['no_cliente'] =$id_cliente;
@@ -62,11 +68,29 @@ $cliente = mysqli_fetch_array($arr3);
                     <a class="nav-link" href="hombres.php">Ropa para hombre <span class="sr-only">(current)</span></a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="ropaMujer.html">Ropa para mujer</a>
+                    <a class="nav-link" href="mujeres.php">Ropa para mujer</a>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="loginUsuario.html">Iniciar Sesion</a>
-                  </li>
+                  <?php
+                    $session_email=$_SESSION['correo'];
+                    if($session_email==null || $session_email==''){
+                  ?>
+                      <li class="nav-item">
+                          <a class="nav-link" id="txt-menu" href="loginUsuario.html">Iniciar Sesión</a>
+                      </li>
+
+                  <?php
+                }else{
+                  ?>
+                      <li class="nav-item">
+                          <a class="nav-link" id="txt-menu" href="informacionPersonal.php">Mi cuenta</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" id="txt-menu" href="cerrar_sesion.php">Cerrar Sesión</a>
+                      </li>
+
+                  <?php
+                }
+                  ?>
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
                 </form>

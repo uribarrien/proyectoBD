@@ -4,6 +4,13 @@ $password = "123456789";
 $user = "proyecto";
 $db = "proyectobd";
 
+session_start();
+$session_email=$_SESSION['correo'];
+if($session_email==null || $session_email==''){
+    echo "Usted no puede entrar a esta página, necesita iniciar una sesión";
+    header("location:index.php");
+    die();
+}
 $connection = mysqli_connect($server,$user,$password,$db);
 if(!$connection){
     echo "Error. Sin conexion a la base de datos";
@@ -43,7 +50,7 @@ $cd = mysqli_query($connection, "SELECT * FROM ciudad;");
                 <ul class="navbar-nav mr-auto">
 
                   <li class="nav-item">
-                    <a class="nav-link" href="administrador.html">Mi cuenta</a>
+                    <a class="nav-link" href="administrador.php">Mi cuenta</a>
                   </li>
                   <li class="nav-item  ">
                     <a class="nav-link" href="usuarios.php">Usuarios
@@ -62,7 +69,7 @@ $cd = mysqli_query($connection, "SELECT * FROM ciudad;");
                     </a>
                   </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="#">Cerrar sesión
+                    <a class="nav-link" href="cerrar_sesion.php">Cerrar sesión
                     </a>
                   </li>
                 </ul>

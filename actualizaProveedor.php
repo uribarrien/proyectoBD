@@ -3,7 +3,13 @@ $server = "localhost";
 $password = "123456789";
 $user = "proyecto";
 $db = "proyectobd";
-
+session_start();
+$session_email=$_SESSION['correo'];
+if($session_email==null || $session_email==''){
+    echo "Usted no puede entrar a esta página, necesita iniciar una sesión";
+    header("location:index.php");
+    die();
+}
 $id = $_GET['id'];
 //echo "el ide es: ".$id;
 $connection = mysqli_connect($server,$user,$password,$db);
@@ -46,7 +52,7 @@ $cd = mysqli_query($connection, "SELECT * FROM ciudad;");
                 <ul class="navbar-nav mr-auto">
 
                   <li class="nav-item">
-                    <a class="nav-link" href="administrador.html">Mi cuenta</a>
+                    <a class="nav-link" href="administrador.php">Mi cuenta</a>
                   </li>
                   <li class="nav-item  ">
                     <a class="nav-link" href="usuarios.php">Usuarios
@@ -69,7 +75,7 @@ $cd = mysqli_query($connection, "SELECT * FROM ciudad;");
                     </a>
                   </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="#">Cerrar sesión
+                    <a class="nav-link" href="cerrar_sesion.php">Cerrar sesión
                     </a>
                   </li>
                 </ul>
@@ -118,7 +124,7 @@ $cd = mysqli_query($connection, "SELECT * FROM ciudad;");
                   <?php } $id=$data["no_proveedor"];
                   $q = mysqli_query($connection, "SELECT a.nombre cd, a.id_ciudad FROM ciudad a JOIN v_proveedor b ON b.ciudad_id_ciudad=a.id_ciudad AND b.no_proveedor=$id;");
                   $k = mysqli_fetch_array($q);?>
-                  <option value="<?php echo $k['id_ciudad'];?>"selected hidden><?php 
+                  <option value="<?php echo $k['id_ciudad'];?>"selected hidden><?php
                         echo $k["cd"]; ?></option>
                 </select>
               </div>

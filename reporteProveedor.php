@@ -20,7 +20,7 @@
                     <div id="cont_nav" class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav mr-auto">
                             <li class="nav-item">
-                                <a class="nav-link active " href="administrador.html">Regresar</a>
+                                <a class="nav-link active " href="administrador.php">Regresar</a>
                             </li>
 
                         </ul>

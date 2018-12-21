@@ -77,12 +77,27 @@ if($session_email==null || $session_email==''){
                         <li class="nav-item">
                             <a class="nav-link" id="txt-menu" href="mujeres.php">Ropa para mujer</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="txt-menu" href="loginUsuario.html">Iniciar Sesión</a>
-                        </li>
-												<li class="nav-item">
-														<a class="nav-link" id="txt-menu" href="cerrar_sesion.php">Cerrar Sesión</a>
-												</li>
+												<?php
+													$session_email=$_SESSION['correo'];
+													if($session_email==null || $session_email==''){
+												?>
+														<li class="nav-item">
+																<a class="nav-link" id="txt-menu" href="loginUsuario.html">Iniciar Sesión</a>
+														</li>
+
+												<?php
+											}else{
+												?>
+														<li class="nav-item">
+																<a class="nav-link" id="txt-menu" href="informacionPersonal.php">Mi cuenta</a>
+														</li>
+														<li class="nav-item">
+																<a class="nav-link" id="txt-menu" href="cerrar_sesion.php">Cerrar Sesión</a>
+														</li>
+
+												<?php
+											}
+												?>
 												<li >
 														<a href="carrito.php" style="font-size: 40px; color: gray ;"><i class="fas fa-shopping-cart  m-l-370 p-l-370"></i></a>
 												</li>
@@ -107,8 +122,9 @@ if($session_email==null || $session_email==''){
                                     <!-- EMPIEZA UNA FILA PARA UN ELEMENTO-->
                                     <?php
 																		$no_cliente = $_SESSION['no_cliente'];
+
 																		$_SESSION['no_cliente'] = $no_cliente;
-																		$query = mysqli_query($connection,"SELECT * FROM carrito where cliente_no_cliente = $no_cliente");
+																		$query = mysqli_query($connection,"SELECT * FROM carrito where cliente_no_cliente = $no_cliente and status='0' ");
 																		$array = mysqli_fetch_array($query);
 																		$subtotal = $array['subtotal'];
 																		if ($subtotal == null){
@@ -124,7 +140,7 @@ if($session_email==null || $session_email==''){
 
                                     while ($row = mysqli_fetch_array($query2)){
 																			$no_producto = $row['producto_no_producto'];
-																			echo "PRODUCTO ".$no_producto;
+																			
 																			$query3 = mysqli_query($connection,"SELECT a.nombre as name from producto a, detalle_carrito b where a.no_producto = b.producto_no_producto and carrito_no_pedido=$no_pedido and producto_no_producto = $no_producto");
 																			$array3 = mysqli_fetch_array($query3);
 																			$imagenes = getFiles('productos/'.$no_producto.'/');

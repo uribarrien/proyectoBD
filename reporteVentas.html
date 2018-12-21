@@ -46,7 +46,7 @@ $descuento = mysqli_query($connection,"SELECT * FROM descuento;");
                 <ul class="navbar-nav mr-auto">
 
                   <li class="nav-item">
-                    <a class="nav-link" href="administrador.html">Mi cuenta</a>
+                    <a class="nav-link" href="administrador.php">Mi cuenta</a>
                   </li>
                   <li class="nav-item  ">
                     <a class="nav-link" href="usuarios.php">Usuarios

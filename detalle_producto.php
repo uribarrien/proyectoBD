@@ -189,7 +189,7 @@ $imagenes = getFiles('productos/'.$id.'/');
                 <div class="size-204 respon6-next">
                     <div class="rs1-select2 bor8 bg0">
                         <select selected value="" id="sizes" name="sizes" class="form-control">
-                            <option value="">Escoga un tamaño</option>
+                            <option value="">Escoja un tamaño</option>
                             <?php
                             $p = "SELECT a.talla talla,a.id_talla idT, c.no_producto from producto c join talla_producto b on(b.producto_no_producto = c.no_producto and c.no_producto=$id) right join talla a on( b.talla_id_talla = a.id_talla) order by idT";
                             $tallas=mysqli_query($connection,$p);
@@ -290,7 +290,15 @@ $imagenes = getFiles('productos/'.$id.'/');
                     </select>
                 </div>
             </div>
-            <button id="boton" class="btn btn-lg btn-secondary btn-block" type="submit">Añadir al carrito</button>
+            <?php
+            if($session_email!=null || $session_email!=''){
+          ?>
+                <button id="boton" class="btn btn-lg btn-secondary btn-block" type="submit">Añadir al carrito</button>
+
+          <?php
+        }
+          ?>
+          
         </form>
 
         <!--  -->
