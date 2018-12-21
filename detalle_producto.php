@@ -66,49 +66,43 @@ $imagenes = getFiles('productos/'.$id.'/');
     </head>
     <body id="fondo" class="animsition">
 
-	<!-- Header -->
-	<header>
-		<!-- Header desktop -->
-		<div class="container-menu-desktop">
-			<!-- Topbar -->
-			<div>
-      	<h1 id="marca">Quetzal</h1>
-      </div>
+        <!-- Header -->
+        <header>
+            <!-- Header desktop -->
+            <div class="container-menu-desktop">
+                <!-- Topbar -->
+                <div>
+                    <h1 id="marca">Quetzal</h1>
+                </div>
 
-			<div>
-      	<nav id="cont_nav" class="navbar navbar-expand-lg navbar-light">
-        	<a id="txt-menu" class="navbar-brand" href="index.html">Inicio</a>
-          <button id="cont_nav" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          	<span class="navbar-toggler-icon"></span>
-          </button>
+                <div>
+                    <nav id="cont_nav" class="navbar navbar-expand-lg navbar-light">
+                        <a id="txt-menu" class="navbar-brand" href="index.html">Inicio</a>
+                        <button id="cont_nav" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
 
-                    <div id="cont_nav" class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav mr-auto">
-                            <li class="nav-item ">
-                                <a class="nav-link" id="txt-menu" href="hombres.html">Ropa para hombre </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="txt-menu" href="mujeres.html">Ropa para mujer</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="txt-menu" href="loginUsuario.html">Iniciar Sesión</a>
-                            </li>
-														<li class="nav-item">
-																<a class="nav-link" id="txt-menu" href="cerrar_sesion.html">Cerrar Sesión</a>
-														</li>
-														<li >
-																<a href="carrito.php" style="font-size: 40px; color: gray ;"><i class="fas fa-shopping-cart  m-l-370 p-l-370"></i></a>
-														</li>
-                        </ul>
-                    </div>
-        	</nav>
-        </div>
-		</div>
-	</header>
-	<!-- Slider -->
-	<section class="sec-product-detail p-t-65 p-b-60">
-		<div class="container">
-			<div  id="contenedor" class="bg0 p-t-60 p-b-30 p-lr-15-lg how-pos3-parent">
+                        <div id="cont_nav" class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav mr-auto">
+                                <li class="nav-item ">
+                                    <a class="nav-link" id="txt-menu" href="hombres.html">Ropa para hombre </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="txt-menu" href="mujeres.html">Ropa para mujer</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="txt-menu" href="loginUsuario.html">Iniciar Sesión</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </header>
+        <!-- Slider -->
+        <section class="sec-product-detail p-t-65 p-b-60">
+            <div class="container">
+                <div  id="contenedor" class="bg0 p-t-60 p-b-30 p-lr-15-lg how-pos3-parent">
 
                     <div class="row">
                         <div class="col-md-6 col-lg-7 p-b-30">
@@ -173,26 +167,26 @@ $imagenes = getFiles('productos/'.$id.'/');
                     Tamaño
                 </div>
 
-									<div class="size-204 respon6-next">
-										<div class="rs1-select2 bor8 bg0">
-											<select class="form-control" name="tamano">
-												<option value="">Escoja un tamaño</option>
-												<?php
-												$p = "SELECT a.talla talla,a.id_talla idT, c.no_producto from producto c join talla_producto b on(b.producto_no_producto = c.no_producto and c.no_producto=$id) right join talla a on( b.talla_id_talla = a.id_talla) order by idT";
-												$tallas=mysqli_query($connection,$p);
-												while ($x=mysqli_fetch_array($tallas)) {
-													if ($x['no_producto']!=null) {
-														if ($x['talla'] == "S"){
-															echo "<option value=1>Chico</option>";
-														}else if ($x['talla'] == "M"){
-															echo "<option value=2>Mediano</option>";
-														}else if ($x['talla'] == "L"){
-															echo "<option value=3>Grande</option>";
-														}else if ($x['talla'] == "XL"){
-															echo "<option value=4>Extra Grande</option>";
-														}
-													}
-												}
+                <div class="size-204 respon6-next">
+                    <div class="rs1-select2 bor8 bg0">
+                        <select selected value="" id="sizes" name="sizes" class="form-control">
+                            <option value="">Escoga un tamaño</option>
+                            <?php
+                            $p = "SELECT a.talla talla,a.id_talla idT, c.no_producto from producto c join talla_producto b on(b.producto_no_producto = c.no_producto and c.no_producto=$id) right join talla a on( b.talla_id_talla = a.id_talla) order by idT";
+                            $tallas=mysqli_query($connection,$p);
+                            while ($x=mysqli_fetch_array($tallas)) {
+                                if ($x['no_producto']!=null) {
+                                    if ($x['talla'] == "S"){
+                                        echo "<option value=1>Chico</option>";
+                                    }else if ($x['talla'] == "M"){
+                                        echo "<option value=2>Mediano</option>";
+                                    }else if ($x['talla'] == "L"){
+                                        echo "<option value=3>Grande</option>";
+                                    }else if ($x['talla'] == "XL"){
+                                        echo "<option value=4>Extra Grande</option>";
+                                    }
+                                }
+                            }
 
                             ?>
                         </select>
@@ -207,20 +201,20 @@ $imagenes = getFiles('productos/'.$id.'/');
                     Color
                 </div>
 
-									<div class="size-204 respon6-next">
-										<div class="rs1-select2 bor8 bg0">
-											<select class="form-control" name="color">
-												<option value="">Escoja un color</option>
-												<?php
-												$q = "SELECT a.nombre color,a.id_color idC, c.no_producto from producto c join color_producto b on(b.producto_no_producto = c.no_producto and c.no_producto=$id) right join color a on( b.color_id_color = a.id_color) order by idC";
-												$colores=mysqli_query($connection,$q);
-												while ($s=mysqli_fetch_array($colores)) {
-													if ($s['no_producto']!=null) {
-														?>
-														<option value="<?php $s['idC'] ?>"><?php echo $s['color']; ?></option>
-														<?php
-													}
-												}
+                <div class="size-204 respon6-next">
+                    <div class="rs1-select2 bor8 bg0">
+                        <select selected value="" id ="sel_color" name="sel_color" class="form-control" >
+                            <option value="">Escoga un color</option>
+                            <?php
+                            $q = "SELECT a.nombre color,a.id_color idC, c.no_producto from producto c join color_producto b on(b.producto_no_producto = c.no_producto and c.no_producto=$id) right join color a on( b.color_id_color = a.id_color) order by idC";
+                            $colores=mysqli_query($connection,$q);
+                            while ($s=mysqli_fetch_array($colores)) {
+                                if ($s['no_producto']!=null) {
+                            ?>
+                            <option value="<?php $s['idC'] ?>"><?php echo $s['color']; ?></option>
+                            <?php
+                                }
+                            }
 
                             ?>
 
