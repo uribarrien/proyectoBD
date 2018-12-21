@@ -193,7 +193,7 @@ $imagenes = getFiles('productos/'.$id.'/');
                         <div class="dropDownSelect2"></div>
                     </div>
                 </div>
-                
+
             </div>
 
             <div class="flex-w flex-r-m p-b-10">
@@ -203,8 +203,8 @@ $imagenes = getFiles('productos/'.$id.'/');
 
                 <div class="size-204 respon6-next">
                     <div class="rs1-select2 bor8 bg0">
-                        <select selected value="" id ="sel_color" name="sel_color" class="form-control" >
-                            <option value="">Escoga un color</option>
+                        <select selected value=""   class="form-control" >
+                            <option value="">Escoja un color</option>
                             <?php
                             $q = "SELECT a.nombre color,a.id_color idC, c.no_producto from producto c join color_producto b on(b.producto_no_producto = c.no_producto and c.no_producto=$id) right join color a on( b.color_id_color = a.id_color) order by idC";
                             $colores=mysqli_query($connection,$q);
@@ -235,14 +235,14 @@ $imagenes = getFiles('productos/'.$id.'/');
                         }else{
                             val_tam = true;
                         }
-                        
+
                         if(sel_colores == ""){
                             alert("Debes seleccionar un color");
                             val_color = false;
                         }else{
                             val_color = true;
                         }
-                        
+
                         if(val_tam && val_color){
                             form.submit();
                             return true;
@@ -257,7 +257,7 @@ $imagenes = getFiles('productos/'.$id.'/');
                 </div>
 
                 <div class="size-204">
-                    <select class="form-control" id="sel1" name="cantidad" >
+                    <select class="form-control"  name="cantidad" >
                         <?php
                         $stock = mysqli_query($connection,"select stock from producto where no_producto=$id");
                         $z = mysqli_fetch_array($stock);

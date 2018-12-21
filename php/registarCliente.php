@@ -23,18 +23,17 @@
 echo "Exito: Se realizo una conexion apropiada a la base de datos. Ahora la base de datos esta lista para usarse".PHP_EOL;
 echo "Informacion del Host:".mysqli_get_host_info($connection).PHP_EOL;
 
-$qInsert = "INSERT INTO cliente(nombre,apellido_paterno,apellido_materno,correo,contrasena) VALUES('$name','$apePat','$apeMat','$email','$passwd');";
+$qInsert = "INSERT INTO cliente(nombre,apellido_paterno,apellido_materno,correo,contrasena) VALUES('$name','$apePat','$apeMat','$email',sha('$passwd'));";
 
 mysqli_query($connection,$qInsert);
 
-$qSelect = "SELECT * FROM cliente WHERE correo = '$email' and contrasena = '$passwd';";
-
+$qSelect = "SELECT * FROM cliente WHERE correo = '$email' and contrasena = sha('$passwd');";
 $result = mysqli_query($connection,$qSelect);
 $row = mysqli_num_rows($result);
 
 if ($row > 0){
-	echo "Exito en la insersión ";
+	header("location:../informacionPersonal.php");
 } else{
-	echo "Error en la insersión";
+	header("location:../registroCliente.html");
 }
 ?>

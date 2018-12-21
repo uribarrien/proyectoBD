@@ -105,6 +105,12 @@ while ($row=mysqli_fetch_array($select)){
                     <a class="nav-link" href="historialDeCompra.php">Historial de compra
                     </a>
                   </li>
+                  <li class="nav-item">
+                      <a class="nav-link" id="txt-menu" href="cerrar_sesion.html">Cerrar Sesión</a>
+                  </li>
+                  <li >
+                      <a href="carrito.php" style="font-size: 40px; color: gray ;"><i class="fas fa-shopping-cart  m-l-370 p-l-370"></i></a>
+                  </li>
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
                 </form>
@@ -135,9 +141,9 @@ while ($row=mysqli_fetch_array($select)){
                   echo $row['codigo_postal'];
                 }
                 ?>" >
-                
+
               </div>
-              
+
             </div>
             <div class="mb-3">
                 <label for="">Calle <span class="text-muted"></span></label>
@@ -185,7 +191,7 @@ while ($row=mysqli_fetch_array($select)){
                   echo $row['colonia'];
                 }
                 ?>" >
-    
+
               </div>
             </div>
             <div class="row">
@@ -243,24 +249,24 @@ while ($row=mysqli_fetch_array($select)){
                         valid_num=false;
                         alert("Solo digitos en Número exterior o interior");
                     }
-                    
-                    
+
+
                     if(/^\D*\d{4,5}$/.test(cp)){
                         valid_cp = true;
                     }else{
                         alert("El codigo postal es de cuatro a cinco digitos")
                         valid_cp = false;
                     }
-                    
+
                     if(valid_num && valid_cp){
                         form.submit();
-                        return true;  
+                        return true;
                     }else{
                         return false;
                     }
 
 
-                } 
+                }
 
             </script>
             <button id="boton" class="btn btn-lg btn-secondary btn-block" type="submit">CONFIRMAR</button>

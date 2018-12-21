@@ -35,6 +35,12 @@
                     <a class="nav-link" href="historialDeCompra.php">Historial de compra
                     </a>
                   </li>
+                  <li class="nav-item">
+                      <a class="nav-link" id="txt-menu" href="cerrar_sesion.html">Cerrar Sesión</a>
+                  </li>
+                  <li >
+                      <a href="carrito.php" style="font-size: 40px; color: gray ;"><i class="fas fa-shopping-cart  m-l-370 p-l-370"></i>carrito</a>
+                  </li>
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
                 </form>

@@ -21,7 +21,7 @@ else{
 
 
 //--------------------SESIONES------------------------
-$qClient = "SELECT * FROM cliente WHERE correo = '$client' AND contrasena = '$pass'";
+$qClient = "SELECT * FROM cliente WHERE correo = '$client' AND contrasena = sha('$pass')";
 
 $resultC = mysqli_query($connection,$qClient);
 $rowsC = mysqli_num_rows($resultC);
@@ -30,8 +30,12 @@ session_start();
 $_SESSION['correo']=$client;
 
 if($rowsC > 0){
-    echo "Cliente existe <br>";
-    header("location:../informacionPersonal.php");
+  if ($client == "Admin@gmail.com"){
+    header("location:../Administrador.html");
+  }else{
+      header("location:../informacionPersonal.php");
+  }
+
 }else{
     echo "REQUIERE INICIAR SESION";
     header("location:../loginUsuario.html");
