@@ -25,6 +25,7 @@ mysqli_query($connection,$query5);
 $envio = mysqli_query($connection,"SELECT last_insert_id()");
 $env = mysqli_fetch_array($envio);
 $no_envio = $env[0];
+$actualizaCarrito = mysqli_query($connection,"UPDATE carrito set envio_no_envio=$no_envio, fecha='$fecha' where no_pedido=$no_pedido");
 $_SESSION['no_envio'] = $no_envio;
 $arr4 = mysqli_query($connection,"SELECT * from envio where no_envio = $no_envio");
 $envio = mysqli_fetch_array($arr4);
