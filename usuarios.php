@@ -12,7 +12,7 @@ if(!$connection){
     exit;
 }
 
-$datos = mysqli_query($connection, "SELECT * FROM cliente;");
+$datos = mysqli_query($connection, "SELECT * FROM v_cliente;");
 
  ?>
  <!DOCTYPE html>
