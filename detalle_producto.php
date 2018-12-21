@@ -169,7 +169,7 @@ $imagenes = getFiles('productos/'.$id.'/');
 
                 <div class="size-204 respon6-next">
                     <div class="rs1-select2 bor8 bg0">
-                        <select selected value="0" id="sizes" name="sizes" class="form-control">
+                        <select selected value="" id="sizes" name="sizes" class="form-control">
                             <option value="">Escoga un tamaño</option>
                             <?php
                             $p = "SELECT a.talla talla,a.id_talla idT, c.no_producto from producto c join talla_producto b on(b.producto_no_producto = c.no_producto and c.no_producto=$id) right join talla a on( b.talla_id_talla = a.id_talla) order by idT";
@@ -193,19 +193,7 @@ $imagenes = getFiles('productos/'.$id.'/');
                         <div class="dropDownSelect2"></div>
                     </div>
                 </div>
-                <script>
-                    function enviar(){
-                        var tamano = document.form.sizes.value;
-                        alert("hola");
-                        if( tamano == "0" ) {
-                            alert("Debe seleccionar un tamaño");
-                            return false;                            
-                        }else{
-                            form.submit();
-                            return true;
-                        }
-                    }
-                </script>
+                
             </div>
 
             <div class="flex-w flex-r-m p-b-10">
@@ -215,7 +203,7 @@ $imagenes = getFiles('productos/'.$id.'/');
 
                 <div class="size-204 respon6-next">
                     <div class="rs1-select2 bor8 bg0">
-                        <select class="form-control" name="color">
+                        <select selected value="" id ="sel_color" name="sel_color" class="form-control" >
                             <option value="">Escoga un color</option>
                             <?php
                             $q = "SELECT a.nombre color,a.id_color idC, c.no_producto from producto c join color_producto b on(b.producto_no_producto = c.no_producto and c.no_producto=$id) right join color a on( b.color_id_color = a.id_color) order by idC";
@@ -235,7 +223,34 @@ $imagenes = getFiles('productos/'.$id.'/');
                     </div>
                 </div>
             </div>
-
+            <script>
+                    function enviar(){
+                        var tamano = document.form.sizes.value;
+                        var sel_colores = document.form.sel_color.value;
+                        var val_tam = false;
+                        var val_color = false;
+                        if( tamano == "" ) {
+                            alert("Debe seleccionar un tamaño");
+                            val_tam = false;
+                        }else{
+                            val_tam = true;
+                        }
+                        
+                        if(sel_colores == ""){
+                            alert("Debes seleccionar un color");
+                            val_color = false;
+                        }else{
+                            val_color = true;
+                        }
+                        
+                        if(val_tam && val_color){
+                            form.submit();
+                            return true;
+                        }else{
+                            return false;
+                        }
+                    }
+                </script>
             <div class="flex-w flex-r-m p-b-10">
                 <div class="size-203 flex-c-m respon6">
                     Cantidad
