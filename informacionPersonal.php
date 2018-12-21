@@ -6,6 +6,12 @@ $bd = 'proyectobd';
 
 session_start();
 $session_email=$_SESSION['correo'];
+if($session_email==null || $session_email==''){
+    echo "Usted no puede entrar a esta página, necesita iniciar una sesión";
+    header("location:index.php");
+    die();
+
+}
 $connection=mysqli_connect($server,$user,$password,$bd);
 if(!$connection){
 
@@ -18,6 +24,7 @@ if(!$connection){
 
 $select = mysqli_query($connection,"SELECT day(fecha_nac) dia,month(fecha_nac) mes, year(fecha_nac) anio, cliente.* from cliente where correo= '$session_email';");
 while ($row=mysqli_fetch_array($select)){
+$_SESSION['no_cliente']= $row['no_cliente'];  
 ?>
 
 <!DOCTYPE html>
@@ -29,14 +36,14 @@ while ($row=mysqli_fetch_array($select)){
         <title>INFORMACIÓN PERSONAL</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <link rel="stylesheet" href="css/css_informacion_personal/informacionPersonal.css">
-
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
     </head>
     <body>
         <header>
             <h1>QUETZAL</h1>
             <!-- MENU SUPERIOR -->
             <nav id="cont_nav" class="navbar navbar-expand-lg navbar-light">
-                <a id="cont_nav" class="navbar-brand" href="index.html">Inicio</a>
+                <a id="cont_nav" class="navbar-brand" href="index.php">Inicio</a>
                 <button id="cont_nav" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -56,7 +63,7 @@ while ($row=mysqli_fetch_array($select)){
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="txt-menu" href="cerrar_sesion.html">Cerrar Sesión</a>
+                            <a class="nav-link" id="txt-menu" href="cerrar_sesion.php">Cerrar Sesión</a>
                         </li>
                         <li >
                             <a href="carrito.php" style="font-size: 40px; color: gray ;"><i class="fas fa-shopping-cart  m-l-370 p-l-370"></i></a>

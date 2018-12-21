@@ -35,7 +35,14 @@ if($fatmp != false){
 return $fa;
 }
 session_start();
+$session_email=$_SESSION['correo'];
+if($session_email==null || $session_email==''){
+    echo "Usted no puede entrar a esta página, necesita iniciar una sesión";
+		$_SESSION['bandera']=1;
+    header("location:loginUsuario.html");
+    die();
 
+}
  ?>
 <!DOCTYPE html>
 <html id="full">
@@ -57,7 +64,7 @@ session_start();
         </div>
         <div>
             <nav id="cont_nav" class="navbar navbar-expand-lg navbar-light">
-                <a id="txt-menu" class="navbar-brand" href="index.html">Inicio</a>
+                <a id="txt-menu" class="navbar-brand" href="index.php">Inicio</a>
                 <button id="cont_nav" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -65,16 +72,16 @@ session_start();
                 <div id="cont_nav" class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item ">
-                            <a class="nav-link" id="txt-menu" href="hombres.html">Ropa para hombre </a>
+                            <a class="nav-link" id="txt-menu" href="hombres.php">Ropa para hombre </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="txt-menu" href="mujeres.html">Ropa para mujer</a>
+                            <a class="nav-link" id="txt-menu" href="mujeres.php">Ropa para mujer</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" id="txt-menu" href="loginUsuario.html">Iniciar Sesión</a>
                         </li>
 												<li class="nav-item">
-														<a class="nav-link" id="txt-menu" href="cerrar_sesion.html">Cerrar Sesión</a>
+														<a class="nav-link" id="txt-menu" href="cerrar_sesion.php">Cerrar Sesión</a>
 												</li>
 												<li >
 														<a href="carrito.php" style="font-size: 40px; color: gray ;"><i class="fas fa-shopping-cart  m-l-370 p-l-370"></i></a>
@@ -100,7 +107,7 @@ session_start();
                                     <!-- EMPIEZA UNA FILA PARA UN ELEMENTO-->
                                     <?php
 																		$no_cliente = $_SESSION['no_cliente'];
-																		$query = mysqli_query($connection,"SELECT * FROM carrito where cliente_no_cliente = $no_cliente");
+																		$query = mysqli_query($connection,"SELECT * FROM carrito where cliente_no_cliente = $no_cliente and status='0'");
 																		$array = mysqli_fetch_array($query);
 																		$subtotal = $array['subtotal'];
 																		if ($subtotal == null){

@@ -4,13 +4,14 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Camisas mujer</title>
+        <title>Pantalones mujer</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="css/util.css">
         <link rel="stylesheet" type="text/css" href="css/main.css">
         <link rel="stylesheet" href="css/css_playerasH/playerasH.css">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="css/css_index/index.css">
+
     </head>
     <body id="todo">
         <header>
@@ -27,21 +28,37 @@
 
                         <div id="cont_nav" class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav mr-auto">
-                                <li class="nav-item active">
-                                    <a class="nav-link" id="txt-menu" href="index.html">Inicio </a>
+                                <li class="nav-item ">
+                                    <a class="nav-link" id="txt-menu" href="index.php">Inicio </a>
                                 </li>
                                 <li class="nav-item ">
-                                    <a class="nav-link" id="txt-menu" href="hombres.html">Ropa para hombre </a>
+                                    <a class="nav-link" id="txt-menu" href="hombres.php">Ropa para hombre </a>
                                 </li>
                                 <li class="nav-item active">
-                                    <a class="nav-link" id="txt-menu" href="mujeres.html">Ropa para mujer</a>
+                                    <a class="nav-link" id="txt-menu" href="mujeres.php">Ropa para mujer</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="txt-menu" href="loginUsuario.html">Iniciar Sesión</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="txt-menu" href="cerrar_sesion.html">Cerrar Sesión</a>
-                                </li>
+                                <?php
+                                session_start();
+                                  $session_email=$_SESSION['correo'];
+                                  if($session_email==null || $session_email==''){
+                                ?>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="txt-menu" href="loginUsuario.html">Iniciar Sesión</a>
+                                    </li>
+
+                                <?php
+                              }else{
+                                ?>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="txt-menu" href="informacionPersonal.php">Mi cuenta</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="txt-menu" href="cerrar_sesion.php">Cerrar Sesión</a>
+                                    </li>
+
+                                <?php
+                              }
+                                ?>
                                 <li >
                                     <a href="carrito.php" style="font-size: 40px; color: gray ;"><i class="fas fa-shopping-cart  m-l-370 p-l-370"></i></a>
                                 </li>
@@ -56,16 +73,16 @@
                 <div class="col-md-2 h-full m-t-30">
                     <div id="menu_izq" class="container-fluid">
                         <div class="row m-b-25 p-l-0">
-                            <a id="activo" class="cl3 ltext-106 hov-cl2 trans-08" href="camisasM.html">CAMISAS</a>
+                            <a class="cl3 ltext-106 hov-cl2 trans-08"  href="camisasM.php">CAMISAS</a>
                         </div>
                         <div class="row m-b-25 p-l-0">
-                            <a class="cl3 ltext-106 hov-cl2 trans-08" href="faldasM.html">FALDAS</a>
+                            <a class="cl3 ltext-106 hov-cl2 trans-08" href="faldasM.php">FALDAS</a>
                         </div>
                         <div class="row m-b-25 p-l-0">
-                            <a class="cl3 ltext-106 hov-cl2 trans-08" href="chamarrasM.html">ABRIGOS</a>
+                            <a class="cl3 ltext-106 hov-cl2 trans-08" href="chamarrasM.php">ABRIGOS</a>
                         </div>
                         <div class="row m-b-25 p-l-0">
-                            <a class="cl3 ltext-106 hov-cl2 trans-08" href="pantalonesM.html">JEANS</a>
+                            <a id="activo" class="cl3 ltext-106 hov-cl2 trans-08" href="pantalonesM.php">JEANS</a>
                         </div>
 
                     </div>
@@ -78,17 +95,17 @@
                         <div class="col-md-4 " >
                             <div class="block2">
                                 <div class="block2-pic hov-img0">
-                                    <img src="img_tienda/blusas/m21_1.jpg" alt="IMG-PRODUCT">
+                                    <img src="img_tienda/pantalones/m23_1.jpg" alt="IMG-PRODUCT">
 
-                                    <a href="detalle_producto.php?id=33" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
+                                    <a href="detalle_producto.php?id=45" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
                                         Ver producto
                                     </a>
                                 </div>
 
                                 <div class="block2-txt flex-w flex-t p-t-5 txt-center">
                                     <div class="block2-txt-child1 flex-col-l ">
-                                        <a href="detalle_producto.php?id=33" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                                            TOP ESPIGA
+                                        <a href="detalle_producto.php?id=45" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                            JEANS Z1975 BAJO ASIMÉTRICO
                                         </a>
 
                                     </div>
@@ -99,45 +116,44 @@
                         <div class="col-md-4 " >
                             <div class="block2">
                                 <div class="block2-pic hov-img0">
-                                    <img src="img_tienda/blusas/m16_1.jpg" alt="IMG-PRODUCT">
+                                    <img src="img_tienda/pantalones/m24_1.jpg" alt="IMG-PRODUCT">
 
-                                    <a href="detalle_producto.php?id=34" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
+                                    <a href="detalle_producto.php?id=46" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
                                         Ver producto
                                     </a>
                                 </div>
 
                                 <div class="block2-txt flex-w flex-t p-t-5">
                                     <div class="block2-txt-child1 flex-col-l ">
-                                        <a href="detalle_producto.php?id=34" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                                            CUERPO ESTAMPADO CADENAS
+                                        <a href="detalle_producto.php?id=46" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                           JEANS ZW PREMIUM BOOT CUT VENICE BLUE
                                         </a>
 
                                     </div>
                                 </div>
                             </div>
-                        </div><div class="col-md-4 " >
-
-                            <div class="block2">
-                                <div class="block2-pic hov-img0">
-                                    <img src="img_tienda/blusas/m20_1.jpg" alt="IMG-PRODUCT">
-
-                                     <a href="detalle_producto.php?id=35" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
-                                        Ver producto
-                                    </a>
-                                    <div class="block2-txt flex-w flex-t p-t-5">
-                                        <div id="" class="block2-txt-child1 flex-col-l">
-                                            <a href="detalle_producto.php?id=35" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                                                CUERPO LENCERO ESTAMPADO
-                                            </a>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- ******************************termina un renglon **********************************-->
-
                         </div>
 
+                        <div class="col-md-4 " >
+
+                        <div class="block2">
+                            <div class="block2-pic hov-img0">
+                                <img src="img_tienda/pantalones/m28_1.jpg" alt="IMG-PRODUCT">
+                                <a href="detalle_producto.php?id=47" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
+                                        Ver producto
+                                    </a>
+
+                            <div class="block2-txt flex-w flex-t p-t-5">
+                                <div id="" class="block2-txt-child1 flex-col-l">
+                                    <a href="detalle_producto.php?id=47" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                        JEANS MOM FIT AUTHENTIC DENIM
+                                    </a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ******************************termina un renglon **********************************-->
 
                     </div>
 
@@ -148,38 +164,39 @@
                         <div class="col-md-4 " >
                             <div class="block2">
                                 <div class="block2-pic hov-img0">
-                                    <img src="img_tienda/blusas/m17_1.jpg" alt="IMG-PRODUCT">
+                                    <img src="img_tienda/pantalones/m25_1.jpg" alt="IMG-PRODUCT">
 
-                                    <a href="detalle_producto.php?id=36" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
+                                    <a href="detalle_producto.php?id=48" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
                                         Ver producto
                                     </a>
                                 </div>
 
                                 <div class="block2-txt flex-w flex-t p-t-5">
                                     <div class="block2-txt-child1 flex-col-l ">
-                                        <a href="detalle_producto.php?id=36" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                                            CAMISA ESTAMPADO CADENAS
+                                        <a href="detalle_producto.php?id=48" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                            JEANS Z1975 BAJO IRREGULAR
                                         </a>
 
                                     </div>
                                 </div>
                             </div>
                         </div>
+
                         <!--****************************TERMINA 1 IMAGEN (3 MAX) **************************-->
                         <div class="col-md-4 " >
                             <div class="block2">
                                 <div class="block2-pic hov-img0">
-                                    <img src="img_tienda/blusas/m18_1.jpg" alt="IMG-PRODUCT">
+                                    <img src="img_tienda/pantalones/m26_1.jpg" alt="IMG-PRODUCT">
 
-                                    <a href="detalle_producto.php?id=37" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
+                                    <a href="detalle_producto.php?id=49" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
                                         Ver producto
                                     </a>
                                 </div>
 
                                 <div class="block2-txt flex-w flex-t p-t-5">
                                     <div class="block2-txt-child1 flex-col-l ">
-                                        <a href="detalle_producto.php?id=37" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                                            BLUSA ESTAMPADO FLORAL
+                                        <a href="detalle_producto.php?id=49" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                            JEANS ZW PREMIUM HIGH WAIST REVOLVE BLACK
                                         </a>
 
                                     </div>
@@ -189,17 +206,17 @@
                         <div class="col-md-4 " >
                             <div class="block2">
                                 <div class="block2-pic hov-img0">
-                                    <img src="img_tienda/blusas/m19_1.jpg" alt="IMG-PRODUCT">
+                                    <img src="img_tienda/pantalones/m27_1.jpg" alt="IMG-PRODUCT">
 
-                                    <a href="detalle_producto.php?id=38" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
+                                    <a href="detalle_producto.php?id=50" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
                                         Ver producto
                                     </a>
                                 </div>
 
                                 <div class="block2-txt flex-w flex-t p-t-5">
                                     <div id="" class="block2-txt-child1 flex-col-l">
-                                        <a href="detalle_producto.php?id=38" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                                            CAMISA LARGA
+                                        <a href="detalle_producto.php?id=50" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                            CULOTTE Z1975 ESTAMPADO CAMUFLAJE
                                         </a>
 
                                     </div>
@@ -209,31 +226,31 @@
 
 
 
-                    </div>
+            </div>
 
-                </div>
-                <footer class="footer">
+        </div>
+        <footer class="footer">
 
-                    <div class="container">
-                        <ul class="foote_bottom_ul_amrc">
-                            <li><a href="index.html">Inicio</a></li>
-                            <li><a href="#">Acerca de nosotros</a></li>
-                            <li><a href="#">Servicios</a></li>
-                            <li><a href="#">Contacto</a></li>
-                        </ul>
-                        <!--foote_bottom_ul_amrc ends here-->
-                        <p class="text-center">Copyright @2018 | <a href="index.html">QUETZAL</a></p>
+            <div class="container">
+                <ul class="foote_bottom_ul_amrc">
+                    <li><a href="index.php">Inicio</a></li>
+                    <li><a href="#">Acerca de nosotros</a></li>
+                    <li><a href="#">Servicios</a></li>
+                    <li><a href="#">Contacto</a></li>
+                </ul>
+                <!--foote_bottom_ul_amrc ends here-->
+                <p class="text-center">Copyright @2018 | <a href="index.php">QUETZAL</a></p>
 
-                        <ul class="social_footer_ul">
-                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                        </ul>
+                <ul class="social_footer_ul">
+                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                </ul>
 
-                    </div>
-                </footer>
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-                <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-                <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-                </body>
-            </html>
+            </div>
+        </footer>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    </body>
+</html>

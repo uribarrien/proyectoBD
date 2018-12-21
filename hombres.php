@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Ropa para Mujer</title>
+        <title>Ropa para Hombre</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <link rel="stylesheet" href="css/css_Hombres/hombres.css">
 
@@ -37,20 +37,36 @@
                         <div id="cont_nav" class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav mr-auto">
                                 <li class="nav-item ">
-                                    <a class="nav-link" id="txt-menu" href="index.html">Inicio </a>
-                                </li>
-                                <li class="nav-item ">
-                                    <a class="nav-link" id="txt-menu" href="hombres.html">Ropa para hombre </a>
+                                    <a class="nav-link" id="txt-menu" href="index.php">Inicio </a>
                                 </li>
                                 <li class="nav-item active">
-                                    <a class="nav-link" id="txt-menu" href="mujeres.html">Ropa para mujer</a>
+                                    <a class="nav-link" id="txt-menu" href="hombres.php">Ropa para hombre </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" id="txt-menu" href="loginUsuario.html">Iniciar Sesión</a>
+                                    <a class="nav-link" id="txt-menu" href="mujeres.php">Ropa para mujer</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="txt-menu" href="cerrar_sesion.html">Cerrar Sesión</a>
-                                </li>
+                                <?php
+                                session_start();
+                                  $session_email=$_SESSION['correo'];
+                                  if($session_email==null || $session_email==''){
+                                ?>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="txt-menu" href="loginUsuario.html">Iniciar Sesión</a>
+                                    </li>
+
+                                <?php
+                              }else{
+                                ?>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="txt-menu" href="informacionPersonal.php">Mi cuenta</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="txt-menu" href="cerrar_sesion.php">Cerrar Sesión</a>
+                                    </li>
+
+                                <?php
+                              }
+                                ?>
                                 <li >
                                     <a href="carrito.php" style="font-size: 40px; color: gray ;"><i class="fas fa-shopping-cart  m-l-370 p-l-370"></i></a>
                                 </li>
@@ -73,17 +89,17 @@
                 </ol>
                 <div class="carousel-inner" role="listbox">
                     <div class="carousel-item active">
-                        <img class="d-block w-100" src="img/banner_m1.jpg" alt="Second slide">
+                        <img class="d-block w-100" src="img/40_banner.png" alt="Second slide">
                         <div class="carousel-caption d-none d-md-block">
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img class="d-block w-100" src="img/banner_m3.jpg" alt="Second slide">
+                        <img class="d-block w-100" src="img/41_banner.png" alt="Second slide">
                         <div class="carousel-caption d-none d-md-block">
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img class="d-block w-100" src="img/banner_m2.jpg" alt="Second slide">
+                        <img class="d-block w-100" src="img/42_banner.png" alt="Second slide">
                         <div class="carousel-caption d-none d-md-block">
                         </div>
                     </div>
@@ -103,7 +119,7 @@
         <div id="pre_combis" class="container mb-0">
             <div class="row">
                 <div class="col-lg-11 text-center mt-0 ">
-                    <h1 id="post_banner_text" class="lead"> Conoce nuestra nueva colección</h1>
+                    <h1 id="post_banner_text" class="lead"> Las mejores combinaciones para la temporada invierno 2k18 </h1>
                 </div>
             </div>
         </div>
@@ -114,13 +130,13 @@
             <div id="cont_combis_in" class="container">
                 <div class="row">
                     <div class="col-md">
-                        <img class="img-thumbnail" src="img/mm_4.jpg" alt="Thumbnail image">
+                        <img class="img-thumbnail" src="img/43_200.png" alt="Thumbnail image">
                     </div>
                     <div class="col-md">
-                        <img class="img-thumbnail" src="img/mm_2.jpg" alt="Thumbnail image">
+                        <img class="img-thumbnail" src="img/44_200.png" alt="Thumbnail image">
                     </div>
                     <div class="col-md">
-                        <img class="img-thumbnail" src="img/mm_3.jpg" alt="Thumbnail image">
+                        <img class="img-thumbnail" src="img/45_200.png" alt="Thumbnail image">
                     </div>
                 </div>
             </div>
@@ -131,7 +147,7 @@
         <div id="pre_sel_text" class="container-fluid">
             <div id="sel_text" class="row">
                 <div id="sel_text_in" class="col-lg-12 text-center">
-                    <h1 id="post_banner_text" class="lead"> Lo más nuevo para ti </h1>
+                    <h1 id="post_banner_text" class="lead"> Todas nuestras opciones al alcance de tus manos </h1>
                 </div>
             </div>
 
@@ -144,12 +160,12 @@
                     <div class="col-md col-xl-4 p-b-30 m-lr-auto">
                         <!-- Block1 -->
                         <div class="block1 wrap-pic-w">
-                            <img src="img/m8_1.jpg" alt="IMG-BANNER">
+                            <img src="img/32.jpg" alt="IMG-BANNER">
 
-                            <a href="camisasM.html" class="block1-txt-mio ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
+                            <a href="playerasH.php" class="block1-txt-mio ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
                                 <div class="block1-txt-child1 flex-col-l">
                                     <span class="block1-name ltext-102 trans-04 p-b-8">
-                                        Blusas
+                                        Playeras
                                     </span>
 
                                     <span class="block1-info stext-102 trans-04">
@@ -168,12 +184,12 @@
                     <div class="col-md col-xl-4 p-b-30 m-lr-auto">
                         <!-- Block1 -->
                         <div class="block1 wrap-pic-w">
-                            <img src="img/m11_1.jpg" alt="IMG-BANNER">
+                            <img src="img/33.png" alt="IMG-BANNER">
 
-                            <a href="faldasM.html" class="block1-txt-mio ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
+                            <a href="camisasH.php" class="block1-txt-mio ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
                                 <div class="block1-txt-child1 flex-col-l">
                                     <span class="block1-name ltext-102 trans-04 p-b-8">
-                                        Faldas/Vestidos
+                                        Camisas
                                     </span>
 
                                     <span class="block1-info stext-102 trans-04">
@@ -196,9 +212,9 @@
                     <div class="col-md col-xl-4 p-b-30 m-lr-auto">
                         <!-- Block1 -->
                         <div class="block1 wrap-pic-w">
-                            <img src="img/m4_1.jpg" alt="IMG-BANNER">
+                            <img src="img/34.png" alt="IMG-BANNER">
 
-                            <a href="chamarrasM.html" class="block1-txt-mujeres ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
+                            <a href="chamarrasH.php" class="block1-txt-mio ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
                                 <div class="block1-txt-child1 flex-col-l">
                                     <span class="block1-name ltext-102 trans-04 p-b-8">
                                         Abrigos/Sudaderas
@@ -220,12 +236,12 @@
                     <div class="col-md col-xl-4 p-b-30 m-lr-auto">
                         <!-- Block1 -->
                         <div class="block1 wrap-pic-w">
-                            <img src="img/m12_1.jpg" alt="IMG-BANNER">
+                            <img src="img/35_pant.png" alt="IMG-BANNER">
 
-                            <a href="pantalonesM.html" class="block1-txt-mio ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
+                            <a href="pantalonesH.php" class="block1-txt-mio ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
                                 <div class="block1-txt-child1 flex-col-l">
                                     <span class="block1-name ltext-102 trans-04 p-b-8">
-                                        Jeans
+                                        Pantalones
                                     </span>
 
                                     <span class="block1-info stext-102 trans-04">
@@ -251,13 +267,13 @@
 
             <div class="container">
                 <ul class="foote_bottom_ul_amrc">
-                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="index.php">Inicio</a></li>
                     <li><a href="#">Acerca de nosotros</a></li>
                     <li><a href="#">Servicios</a></li>
                     <li><a href="#">Contacto</a></li>
                 </ul>
                 <!--foote_bottom_ul_amrc ends here-->
-                <p class="text-center">Copyright @2017 | <a href="index.html">QUETZAL</a></p>
+                <p class="text-center">Copyright @2018 | <a href="index.php">QUETZAL</a></p>
 
                 <ul class="social_footer_ul">
                     <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>

@@ -1,3 +1,29 @@
+<?php
+$server = "localhost";
+$password = "123456789";
+$user = "proyecto";
+$db = "proyectobd";
+
+
+$connection = mysqli_connect($server,$user,$password,$db);
+if(!$connection){
+    echo "Error. Sin conexion a la base de datos";
+    echo "Errno de depuracion ".mysqli_connect_errno().PHP_EOL;
+    echo "Error de depuracion ".mysqli_connect_error().PHP_EOL;
+    exit;
+}
+session_start();
+$session_email=$_SESSION['correo'];
+if($session_email==null || $session_email==''){
+    echo "Usted no puede entrar a esta página, necesita iniciar una sesión";
+    header("location:index.php");
+    die();
+
+}
+$select = mysqli_query($connection,"SELECT * from cliente where correo= '$session_email';");
+$array = mysqli_fetch_array($select);
+$no_cliente = $array['no_cliente'];
+ ?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -7,6 +33,7 @@
         <title>Directorio de Direcciones</title>
         <link rel="stylesheet" href="css/css_historialDeCompra/historialDeCompra.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
         <meta>
     </head>
     <body id="todo" class="bg">
@@ -16,7 +43,7 @@
            </div>
                                            <!-- BARRA DE NAVEGACIÓN-->
            <nav id="cont_nav" class="navbar navbar-expand-lg navbar-light">
-              <a id="cont_nav" class="navbar-brand" href="index.html">Inicio</a>
+              <a id="cont_nav" class="navbar-brand" href="index.php">Inicio</a>
               <button id="cont_nav" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
@@ -36,10 +63,10 @@
                     </a>
                   </li>
                   <li class="nav-item">
-                      <a class="nav-link" id="txt-menu" href="cerrar_sesion.html">Cerrar Sesión</a>
+                      <a class="nav-link" id="txt-menu" href="cerrar_sesion.php">Cerrar Sesión</a>
                   </li>
                   <li >
-                      <a href="carrito.php" style="font-size: 40px; color: gray ;"><i class="fas fa-shopping-cart  m-l-370 p-l-370"></i>carrito</a>
+                      <a href="carrito.php" style="font-size: 40px; color: gray ;"><i class="fas fa-shopping-cart  m-l-370 p-l-370"></i></a>
                   </li>
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
@@ -64,24 +91,17 @@
                     </tr>
                 </thead>
                 <tbody>
+                  <?php
+                  $query = mysqli_query($connection,"SELECT * FROM carrito where cliente_no_cliente = $no_cliente and status = '1'");
+                  while($array = mysqli_fetch_array($query)){
+                   ?>
                     <tr>
-                        <th scope="row">445512</th>
-                        <td>10 de noviembre del 2018</td>
+                        <th scope="row"><?php echo $array['no_pedido']; ?></th>
+                        <td><?php echo $array['fecha']; ?></td>
                         <td>Pedido entregado</td>
-                        <td>$4000.00</td>
+                        <td><?php echo "$".$array['total']; ?></td>
                     </tr>
-                    <tr>
-                        <th scope="row">445513</th>
-                        <td>13 de noviembre del 2018</td>
-                        <td>Pedido enviado</td>
-                        <td>$2800.00</td>
-                    </tr>
-                     <tr>
-                        <th scope="row">445514</th>
-                        <td>15 de noviembre del 2018</td>
-                        <td>Pedido recibido</td>
-                        <td>$1500.00</td>
-                    </tr>
+                  <?php } ?>
                 </tbody>
             </table>
         </div>

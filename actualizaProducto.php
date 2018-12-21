@@ -42,7 +42,7 @@ $descuento = mysqli_query($connection,"SELECT * FROM descuento;");
            </div>
                                            <!-- BARRA DE NAVEGACIÓN-->
            <nav id="cont_nav" class="navbar navbar-expand-lg navbar-light">
-              <a id="cont_nav" class="navbar-brand" href="index.html">Inicio</a>
+              <a id="cont_nav" class="navbar-brand" href="index.php">Inicio</a>
               <button id="cont_nav" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>

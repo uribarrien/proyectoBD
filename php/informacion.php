@@ -8,14 +8,16 @@ $password = "123456789";
 session_start();
 $session_email=$_SESSION['correo'];
 error_reporting(0);
-
+echo $session_email;
 $nombre = $_POST['nombre'];
 $apellido = $_POST['apellido'];
 $contrasena = $_POST['contrasena'];
 $confirmacion =$_POST['newcontrasena'];
 $telefono = $_POST['telefono'];
-
-
+$sexo = $_POST['sexo'];
+$dia = $_POST['dia'];
+$mes = $_POST['mes'];
+$anio = $_POST['anio'];
  $nombre = $_POST['nombre'];
 
 echo $nombre;
@@ -30,15 +32,12 @@ if(!$connection){
 
 }
 
-echo "Exito: Se realizo una conexion apropiada a la base de datos. Ahora la base de datos esta lista para usarse".PHP_EOL;
-echo "Informacion del Host:".mysqli_get_host_info($connection).PHP_EOL;
 
-$update = "UPDATE cliente SET nombre = '$nombre', apellido_paterno = '$apellido', telefono ='$telefono' WHERE correo = '$session_email'";
+$update = "UPDATE cliente SET nombre = '$nombre', apellido_paterno = '$apellido',sexo ='$sexo',fecha_nac= '$anio-$mes-$dia', telefono ='$telefono' WHERE correo = '$session_email'";
 mysqli_query($connection,$update);
 
  if ($contrasena == $confirmacion && $contrasena != ""  && $confirmacion != ""){
-   echo "holaaa";
-   $update = "UPDATE cliente SET contrasena = '$contrasena' WHERE correo = '$session_email'";
+   $update = "UPDATE cliente SET contrasena = sha('$contrasena') WHERE correo = '$session_email'";
    mysqli_query($connection,$update);
  }
 
@@ -52,6 +51,7 @@ if ($row > 0){
  header("location:../informacionPersonal.php");
 } else{
  echo "Error en la insersión";
+ header("location:../informacionPersonal.php");
 }
 
 

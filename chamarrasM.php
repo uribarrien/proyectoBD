@@ -29,20 +29,36 @@
                         <div id="cont_nav" class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav mr-auto">
                                 <li class="nav-item ">
-                                    <a class="nav-link" id="txt-menu" href="index.html">Inicio </a>
+                                    <a class="nav-link" id="txt-menu" href="index.php">Inicio </a>
                                 </li>
                                 <li class="nav-item ">
-                                    <a class="nav-link" id="txt-menu" href="hombres.html">Ropa para hombre </a>
+                                    <a class="nav-link" id="txt-menu" href="hombres.php">Ropa para hombre </a>
                                 </li>
                                 <li class="nav-item active">
-                                    <a class="nav-link" id="txt-menu" href="mujeres.html">Ropa para mujer</a>
+                                    <a class="nav-link" id="txt-menu" href="mujeres.php">Ropa para mujer</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="txt-menu" href="loginUsuario.html">Iniciar Sesión</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="txt-menu" href="cerrar_sesion.html">Cerrar Sesión</a>
-                                </li>
+                                <?php
+                                session_start();
+                                  $session_email=$_SESSION['correo'];
+                                  if($session_email==null || $session_email==''){
+                                ?>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="txt-menu" href="loginUsuario.html">Iniciar Sesión</a>
+                                    </li>
+
+                                <?php
+                              }else{
+                                ?>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="txt-menu" href="informacionPersonal.php">Mi cuenta</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="txt-menu" href="cerrar_sesion.php">Cerrar Sesión</a>
+                                    </li>
+
+                                <?php
+                              }
+                                ?>
                                 <li >
                                     <a href="carrito.php" style="font-size: 40px; color: gray ;"><i class="fas fa-shopping-cart  m-l-370 p-l-370"></i></a>
                                 </li>
@@ -57,16 +73,16 @@
                 <div class="col-md-2 h-full m-t-30">
                     <div id="menu_izq" class="container-fluid">
                         <div class="row m-b-25 p-l-0">
-                            <a class="cl3 ltext-106 hov-cl2 trans-08" href="camisasM.html">CAMISAS</a>
+                            <a class="cl3 ltext-106 hov-cl2 trans-08" href="camisasM.php">CAMISAS</a>
                         </div>
                         <div class="row m-b-25 p-l-0">
-                            <a class="cl3 ltext-106 hov-cl2 trans-08" href="faldasM.html">FALDAS</a>
+                            <a class="cl3 ltext-106 hov-cl2 trans-08" href="faldasM.php">FALDAS</a>
                         </div>
                         <div class="row m-b-25 p-l-0">
-                            <a id="activo" class="cl3 ltext-106 hov-cl2 trans-08" href="chamarrasM.html">ABRIGOS</a>
+                            <a id="activo" class="cl3 ltext-106 hov-cl2 trans-08" href="chamarrasM.php">ABRIGOS</a>
                         </div>
                         <div class="row m-b-25 p-l-0">
-                            <a class="cl3 ltext-106 hov-cl2 trans-08" href="pantalonesM.html">JEANS</a>
+                            <a class="cl3 ltext-106 hov-cl2 trans-08" href="pantalonesM.php">JEANS</a>
                         </div>
 
                     </div>
@@ -218,13 +234,13 @@
 
             <div class="container">
                 <ul class="foote_bottom_ul_amrc">
-                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="index.php">Inicio</a></li>
                     <li><a href="#">Acerca de nosotros</a></li>
                     <li><a href="#">Servicios</a></li>
                     <li><a href="#">Contacto</a></li>
                 </ul>
                 <!--foote_bottom_ul_amrc ends here-->
-                <p class="text-center">Copyright @2018 | <a href="index.html">QUETZAL</a></p>
+                <p class="text-center">Copyright @2018 | <a href="index.php">QUETZAL</a></p>
 
                 <ul class="social_footer_ul">
                     <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>

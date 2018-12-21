@@ -6,6 +6,12 @@ $bd = 'proyectobd';
 
 session_start();
 $session_email=$_SESSION['correo'];
+if($session_email==null || $session_email==''){
+    echo "Usted no puede entrar a esta página, necesita iniciar una sesión";
+    header("location:index.php");
+    die();
+
+}
 $connection=mysqli_connect($server,$user,$password,$bd);
 if(!$connection){
 
@@ -27,6 +33,7 @@ while ($row=mysqli_fetch_array($select)){
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Directorio de Direcciones</title>
         <link rel="stylesheet" href="css/css_directorio_Direcciones/directorioDirecciones.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
@@ -86,7 +93,7 @@ while ($row=mysqli_fetch_array($select)){
            </div>
                                            <!-- BARRA DE NAVEGACIÓN-->
            <nav id="cont_nav" class="navbar navbar-expand-lg navbar-light">
-              <a id="cont_nav" class="navbar-brand" href="index.html">Inicio</a>
+              <a id="cont_nav" class="navbar-brand" href="index.php">Inicio</a>
               <button id="cont_nav" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
@@ -106,7 +113,7 @@ while ($row=mysqli_fetch_array($select)){
                     </a>
                   </li>
                   <li class="nav-item">
-                      <a class="nav-link" id="txt-menu" href="cerrar_sesion.html">Cerrar Sesión</a>
+                      <a class="nav-link" id="txt-menu" href="cerrar_sesion.php">Cerrar Sesión</a>
                   </li>
                   <li >
                       <a href="carrito.php" style="font-size: 40px; color: gray ;"><i class="fas fa-shopping-cart  m-l-370 p-l-370"></i></a>

@@ -28,12 +28,19 @@ $rowsC = mysqli_num_rows($resultC);
 
 session_start();
 $_SESSION['correo']=$client;
-
+$bandera = $_SESSION['bandera'];
 if($rowsC > 0){
   if ($client == "Admin@gmail.com"){
     header("location:../Administrador.html");
   }else{
+    if($bandera == 1){
+      $array = mysqli_fetch_array($resultC);
+      $_SESSION['no_cliente']=$array[0];
+      $bandera=0;
+      header("location:../carrito.php");
+    }else{
       header("location:../informacionPersonal.php");
+    }
   }
 
 }else{

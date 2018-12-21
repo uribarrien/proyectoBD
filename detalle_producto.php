@@ -77,7 +77,7 @@ $imagenes = getFiles('productos/'.$id.'/');
 
                 <div>
                     <nav id="cont_nav" class="navbar navbar-expand-lg navbar-light">
-                        <a id="txt-menu" class="navbar-brand" href="index.html">Inicio</a>
+                        <a id="txt-menu" class="navbar-brand" href="index.php">Inicio</a>
                         <button id="cont_nav" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>
@@ -85,14 +85,33 @@ $imagenes = getFiles('productos/'.$id.'/');
                         <div id="cont_nav" class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav mr-auto">
                                 <li class="nav-item ">
-                                    <a class="nav-link" id="txt-menu" href="hombres.html">Ropa para hombre </a>
+                                    <a class="nav-link" id="txt-menu" href="hombres.php">Ropa para hombre </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" id="txt-menu" href="mujeres.html">Ropa para mujer</a>
+                                    <a class="nav-link" id="txt-menu" href="mujeres.php">Ropa para mujer</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="txt-menu" href="loginUsuario.html">Iniciar Sesión</a>
-                                </li>
+                                <?php
+                              #  session_start();
+                                  $session_email=$_SESSION['correo'];
+                                  if($session_email==null || $session_email==''){
+                                ?>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="txt-menu" href="loginUsuario.html">Iniciar Sesión</a>
+                                    </li>
+
+                                <?php
+                              }else{
+                                ?>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="txt-menu" href="informacionPersonal.php">Mi cuenta</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="txt-menu" href="cerrar_sesion.php">Cerrar Sesión</a>
+                                    </li>
+
+                                <?php
+                              }
+                                ?>
                             </ul>
                         </div>
                     </nav>
@@ -287,13 +306,13 @@ $imagenes = getFiles('productos/'.$id.'/');
 
     <div class="container">
         <ul class="foote_bottom_ul_amrc">
-            <li><a href="index.html">Inicio</a></li>
+            <li><a href="index.php">Inicio</a></li>
             <li><a href="#">Acerca de nosotros</a></li>
             <li><a href="#">Servicios</a></li>
             <li><a href="#">Contacto</a></li>
         </ul>
         <!--foote_bottom_ul_amrc ends here-->
-        <p class="text-center">Copyright @2017 | <a href="index.html">QUETZAL</a></p>
+        <p class="text-center">Copyright @2017 | <a href="index.php">QUETZAL</a></p>
 
         <ul class="social_footer_ul">
             <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
