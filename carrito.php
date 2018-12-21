@@ -73,6 +73,12 @@ session_start();
                         <li class="nav-item">
                             <a class="nav-link" id="txt-menu" href="loginUsuario.html">Iniciar Sesión</a>
                         </li>
+												<li class="nav-item">
+														<a class="nav-link" id="txt-menu" href="cerrar_sesion.html">Cerrar Sesión</a>
+												</li>
+												<li >
+														<a href="carrito.php" style="font-size: 40px; color: gray ;"><i class="fas fa-shopping-cart  m-l-370 p-l-370"></i></a>
+												</li>
                     </ul>
                 </div>
             </nav>
