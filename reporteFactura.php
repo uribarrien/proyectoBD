@@ -1,9 +1,21 @@
+<?php
+$server = "localhost";
+$db = "proyectobd";
+$user = "proyecto";
+$password = "123456789";
+
+$connection = mysqli_connect($server,$user,$password,$db);
+if(!$connection){
+    exit;
+}
+?>
+<!DOCTYPE html>
 <html>
 
 <head>
 <meta name=Generator content="Microsoft Word 15 (filtered)">
 <meta charset="UTF-8">
-<title>CFDI</title>
+<title>Factura</title>
 <style>
 <!--
  /* Font Definitions */
@@ -261,7 +273,7 @@ border-right-color: #17365D;
  <tr>
 
   <td width=369 valign=top style='width:297.65pt;background:#0C2D42;padding:0cm 5.4pt 0cm 5.4pt;height:4pt; border-right-style: solid; border-top-style: solid;' class="auto-style54">
-  <p class=auto-style23 align=center>QUETZAL<br><font size="2">UIMQO1118RW9</font></p>  
+  <p class=auto-style23 align=center>QUETZAL<br><font size="2">UIMQO1118RW9</font></p>
   <p class=auto-style66 align=center>Emiliano Zapata 562, San Francisco de Asis, <br>
   Guadalajara, Jalisco. C.P.47755, México</p>
   </td>
@@ -274,8 +286,12 @@ border-right-color: #17365D;
   </td>
  </tr>
  <tr>
+ <?php $fecha = mysqli_query($connection,"SELECT curdate();");
+ $date = mysqli_fetch_array($fecha);
+ $fecha=$date[0];
+ $i=0000;?>
   <td width=369 valign=top style='width:297.65pt;background:#0C2D42;padding:0cm 5.4pt 0cm 5.4pt;border-right-style: solid; ' class="auto-style6">
-  <p class=auto-style56 style="height: 28px">Folio: AGS [Folio]<br>Fecha: [FechaEmision]</p>
+  <p class=auto-style56 style="height: 28px">Folio: AGS<?php echo $i; ?><br>Fecha: <?php echo $fecha; ?> </p>
   </td>
  </tr>
 </table>
@@ -290,7 +306,7 @@ border-right-color: #17365D;
   <p class=MsoNormal style="width: 87px; height: 14px;"><b><span style='font-size:9.0pt;font-family:"Calibri",sans-serif'>Régimen Fiscal:</span></b></p>
   </td>
   <td style='width:180pt; padding:0cm 5.4pt 0cm 5.4pt;height:7.95pt'>
-  <p class=MsoNormal style="width: 137px"><span style='font-size:9.0pt;font-family:"Calibri",sans-serif'>612- Personas físicas con actividades empresariales y servicios profesionales</span></p>
+  <p class=MsoNormal style="width: 137px"><span style='font-size:9.0pt;font-family:"Calibri",sans-serif'>Quetzal S.A de C.V</span></p>
   </td>
  </tr>
  <tr style='height:7.95pt'>
@@ -299,7 +315,7 @@ border-right-color: #17365D;
   <p class=MsoNormal style="width: 87px; height: 14px;"><b><span style='font-size:9.0pt;font-family:"Calibri",sans-serif'>Forma de Pago:</span></b></p>
   </td>
   <td style='width:180pt; padding:0cm 5.4pt 0cm 5.4pt;height:7.95pt'>
-  <p class=MsoNormal style="width: 137px"><span style='font-size:9.0pt;font-family:"Calibri",sans-serif'>28-Tarjeta de débito</span></p>
+  <p class=MsoNormal style="width: 137px"><span style='font-size:9.0pt;font-family:"Calibri",sans-serif'>Tarjeta de débito</span></p>
   </td>
   <td width=121 style='width:87.0pt;background:white;padding:0cm 5.4pt 0cm 5.4pt;
   height:7.95pt'>
@@ -307,7 +323,7 @@ border-right-color: #17365D;
   </td>
   <td width=121 style='width:87.0pt;background:white;padding:0cm 5.4pt 0cm 5.4pt;
   height:7.95pt'>
-  <p class=MsoNormal><span style='font-size:9.0pt;font-family:"Calibri",sans-serif'>PUE – Pago en una sola exhibición</span></p>
+  <p class=MsoNormal><span style='font-size:9.0pt;font-family:"Calibri",sans-serif'>Pago en una sola exhibición</span></p>
   </td>
   <td width=121 style='width:87.0pt;background:white;padding:0cm 5.4pt 0cm 5.4pt;
   height:7.95pt'>
@@ -315,7 +331,7 @@ border-right-color: #17365D;
   </td>
   <td width=121 style='width:87.0pt;background:white;padding:0cm 5.4pt 0cm 5.4pt;
   height:7.95pt'>
-  <p class=MsoNormal><span style='font-size:9.0pt;font-family:"Calibri",sans-serif'>MXN- Peso Mexicano</span></p>
+  <p class=MsoNormal><span style='font-size:9.0pt;font-family:"Calibri",sans-serif'>MXN-Peso Mexicano</span></p>
   </td>
  </tr>
 
@@ -379,7 +395,7 @@ border-right-color: #17365D;
   <td width=80 valign=top style='width:56.65pt;padding:0cm 5.4pt 0cm 5.4pt; height: 1px;'>
   <strong><span class="auto-style28"></span><span style='font-size:9.0pt;font-family:"Calibri",sans-serif'></span></strong></td>
   <td width=638 colspan=3 valign=top style='width:453.65pt;padding:0cm 5.4pt 0cm 5.4pt; height: 1px;'>
-  <span style='font-size:9.0pt;font-family:"Calibri",sans-serif'> 
+  <span style='font-size:9.0pt;font-family:"Calibri",sans-serif'>
   &nbsp;</span></td>
  </tr>
 </table>
@@ -430,7 +446,7 @@ border-right-color: #17365D;
   <span style='font-family:
   "Calibri",sans-serif;' class="auto-style22">&nbsp;<span class="auto-style63">Producto SAT</span></span></b></p>
   </td>
- 
+
   <td width=91 valign=top style='background-position: 0% 0%; width:68.3pt; padding:0cm 5.4pt 0cm 5.4pt; background:#0C2D42; background-repeat: repeat; background-attachment: scroll;' class="auto-style61">
   <p class=MsoNormal align=center style='text-align:center'><b
   style='mso-bidi-font-weight:normal'>
@@ -467,7 +483,7 @@ border-right-color: #17365D;
   <p class=auto-style21>73141700 Producción de telas y cuero
   <o:p></o:p></p>
   </td>
- 
+
   <td width=91 style='width:68.3pt;padding:0cm 5.4pt 0cm 5.4pt'>
   <p class=auto-style31 align=center>
   <span lang=ES-MX
@@ -557,19 +573,6 @@ border-right-color: #17365D;
 
 <table class=auto-style41 border=0 cellspacing=0 cellpadding=0 width=0
  style='width:19.0cm;border-collapse:collapse'>
- <tr>
-  <td width=718 valign=top style='width:491.4pt;padding:0cm 5.4pt 0cm 5.4pt; height: 39px;'>
-
-  <p class=auto-style39>
-  Tipo
-  Relación:
-  -</p>
-  <p class=auto-style40>
-  CFDI
-  Relacionado:
-  -</p>
-  </td>
- </tr>
   <tr>
   <td width=718 valign=top style='width:491.4pt;padding:0cm 5.4pt 0cm 5.4pt; height: 39px;'>
   </td>
@@ -605,7 +608,7 @@ border-right-color: #17365D;
   <td width=271 style='width:203.65pt;padding:0cm 5.4pt 0cm 5.4pt;'>
   <p class=MsoNormal><span style='font-size:8.5pt;font-family:"Calibri",sans-serif'>0000100000040873060</span></p>
   <p class=MsoNormal><span style='font-size:8.5pt;font-family:"Calibri",sans-serif'>00001000000404486074</span></p>
-  <p class=MsoNormal><span style='font-size:8.5pt;font-family:"Calibri",sans-serif'>[FechaTimbrado]</span></p>
+  <p class=MsoNormal><span style='font-size:8.5pt;font-family:"Calibri",sans-serif'>[<?php $q=mysqli_query($connection,"select concat(curdate(),' ',curtime())"); $fecha=mysqli_fetch_array($q); echo $fecha[0];?>]</span></p>
   </td>
  </tr>
  <tr style='height:13.5pt'>

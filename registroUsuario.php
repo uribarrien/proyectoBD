@@ -3,6 +3,7 @@ $server = "localhost";
 $password = "123456789";
 $user = "proyecto";
 $db = "proyectobd";
+$id = $_GET['id'];
 
 $connection = mysqli_connect($server,$user,$password,$db);
 if(!$connection){
@@ -11,10 +12,9 @@ if(!$connection){
     echo "Error de depuracion ".mysqli_connect_error().PHP_EOL;
     exit;
 }
-$i = 1;
-$talla = mysqli_query($connection,"SELECT * FROM talla;");
-$color = mysqli_query($connection,"SELECT * FROM color;");
-$descuento = mysqli_query($connection,"SELECT * FROM descuento;");
+$datos = mysqli_query($connection, "SELECT * FROM cliente WHERE no_cliente = $id;");
+$data = mysqli_fetch_array($datos);
+$cd = mysqli_query($connection, "SELECT * FROM ciudad;");
 ?>
 
 <!DOCTYPE html>
@@ -79,7 +79,7 @@ $descuento = mysqli_query($connection,"SELECT * FROM descuento;");
       <div id="cont_titulo" class="py-1 text-center">
       </div>
 
-      <form class="row" action="php/registroProducto.php?id=<?php echo $id; ?>" method="post">
+      <form class="row" action="php/actualizaCliente.php?id=<?php echo $id; ?>" method="post">
         <div class="col-md order-md-2 mb-4">
           <h4 class="d-flex justify-content-between align-items-center mb-3">
             <span class="text-muted">Dirección</span>
@@ -87,34 +87,41 @@ $descuento = mysqli_query($connection,"SELECT * FROM descuento;");
           <br>
             <div class="mb-3">
                 <label for="calle">Calle<span class="text-muted"></span></label>
-                <input type="text" name="calle" class="form-control" id="calle" placeholder="">
+                <input type="text" name="calle" class="form-control" id="calle" placeholder="" value="<?php echo $data['calle']; ?>">
             </div>
                <div class="row">
 
               <div class="col-md-6 mb-3">
                 <label for="no_exterior">No. exterior</label>
-                <input type="text" name="no_exterior" class="form-control" id="no_exterior5" placeholder="" value="" >
+                <input type="text" name="no_exterior" class="form-control" id="no_exterior5" placeholder="" value="<?php echo $data['no_exterior']; ?>" >
             </div>
               <div class="col-md-6 mb-3">
                 <label for="colonia">Colonia</label>
-                <input type="text" name="colonia" class="form-control" id="colonia" placeholder="" value="" >
+                <input type="text" name="colonia" class="form-control" id="colonia" placeholder="" value="<?php echo $data['colonia']; ?>" >
                     </div>
               </div>
                              <div class="row">
 
               <div class="col-md-6 mb-3">
                 <label for="ciudad">Ciudad</label>
-                <input type="text" name="ciudad" class="form-control" id="ciudad" placeholder="" value="" >
+                <select name="ciudad" class="form-control" id="firstName" >
+                    <?php while ($res = mysqli_fetch_array($cd)) { ?>
+                    <option value="<?php echo $res['id_ciudad'];?>"><?php echo $res['nombre']; ?></option>
+                  <?php }  $id=$data["no_cliente"];
+                  $q = mysqli_query($connection, "SELECT a.nombre cd, a.id_ciudad FROM ciudad a JOIN cliente b ON b.ciudad_id_ciudad=a.id_ciudad AND b.no_cliente=$id;");
+                        $k = mysqli_fetch_array($q);?>
+                  <option selected hidden value="<?php echo $k['id_ciudad'];?>"><?php echo $k["cd"]; ?></option>
+                </select>
             </div>
               <div class="col-md-6 mb-3">
                 <label for="codigo_postal">Código postal</label>
-                <input type="text" name="codigo_postal" class="form-control" id="codigo_postal" placeholder="" value="" >
+                <input type="text" name="codigo_postal" class="form-control" id="codigo_postal" placeholder="" value="<?php echo $data['codigo_postal']; ?>" >
                     </div>
               </div>
           <br>
             <br>
 
-            <button id="boton" class="btn btn-lg btn-secondary btn-block" type="submit">CONFIRMAR</button>
+            <button id="boton" class="btn btn-lg btn-secondary btn-block" type="submit" >ACTUALIZAR</button>
         </div>
         <div class="col-md order-md-1">
           <h4 id="text_izq" class="mb-3 text-muted">Información del usuario</h4>
@@ -122,18 +129,18 @@ $descuento = mysqli_query($connection,"SELECT * FROM descuento;");
           <div class="needs-validation" novalidate>
             <div class="mb-3">
                 <label for="nombre">Nombre<span class="text-muted"></span></label>
-                <input type="text" name="nombre" class="form-control" id="nombre" placeholder="">
+                <input type="text" name="nombre" class="form-control" id="nombre" placeholder="" value="<?php echo $data['nombre']; ?>">
             </div>
 
             <div class="row">
               <div class="col-md-6 mb-3">
-                <label for="apellido_paterno">Apellido materno</label>
-                <input type="text" name="apellido_paterno" class="form-control" id="apellido_paterno" placeholder="" value="" >
+                <label for="apellido_paterno">Apellido paterno</label>
+                <input type="text" name="apellido_paterno" class="form-control" id="apellido_paterno" placeholder="" value="<?php echo $data['apellido_paterno']; ?>" >
 
               </div><br>
                 <div class="col-md-6 mb-3">
                 <label for="apellido_materno">Apellido materno</label>
-                <input type="text" name="apellido_materno" class="form-control" id="apellido_materno" placeholder="" value="" >
+                <input type="text" name="apellido_materno" class="form-control" id="apellido_materno" placeholder="" value="<?php echo $data['apellido_materno']; ?>" >
 
               </div><br>
 
@@ -141,32 +148,26 @@ $descuento = mysqli_query($connection,"SELECT * FROM descuento;");
          <div class="row">
                   <div class="col-md-6 mb-3">
                 <label for="telefono">Telefono</label>
-                <input type="text" name="telefono" class="form-control" id="telefono" placeholder="" value="" >
+                <input type="text" name="telefono" class="form-control" id="telefono" placeholder="" value="<?php echo $data['telefono']; ?>" >
               </div>
               <div class="col-md-6 mb-3">
                 <label for="correo">Email</label>
-                <input type="text" name="correo" class="form-control" id="correo" placeholder="" value="" >
+                <input type="text" name="correo" class="form-control" id="correo" placeholder="" value="<?php echo $data['correo']; ?>" >
               </div>
             </div>
-       
-
             <div class="row">
-                  <div class="col-md-6 mb-3">
-                <label for="contrasena">Contraseña</label>
-                <input type="text" name="contraena" class="form-control" id="contraena" placeholder="" value="" >
+              <div class="col-md-6 mb-3">
+                <label for="sexo">Sexo</label>
+                <input type="text" name="sexo" class="form-control" id="sexo" placeholder="" value="<?php echo $data['sexo']; ?>" >
               </div>
               <div class="col-md-6 mb-3">
-                <label for="tarjeta_id_tarjeta">Id de tarjeta</label>
-                <input type="text" name="tarjeta_id_tarjeta" class="form-control" id="tarjeta_id_tarjeta" placeholder="" value="" >
-              </div>
-            </div>
-
-    
-
-            </div>
-         
+            <label for="fecha_nac">Fecha de nacimiento</label>
+            <input type="text" name="fecha_nac" class="form-control" id="fecha_nac" placeholder="" value="<?php echo $data['fecha_nac']; ?>" >
+          </div>
         </div>
-
+            </div>
+            </div>
+        </div>
       </form>
         <!-- FIN FORMULARIOS-->
       <footer class="my-5 pt-5 text-muted text-center text-small">
