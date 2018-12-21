@@ -90,7 +90,7 @@ if($session_email==null || $session_email==''){
                 </div>
             </nav>
         </div>
-        <form class="bg0 p-t-75 p-b-85" action="" method="POST">
+        <form class="bg0 p-t-75 p-b-85" action="envios.php" method="POST">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-10 col-xl-7 m-lr-auto m-b-50">
@@ -107,7 +107,8 @@ if($session_email==null || $session_email==''){
                                     <!-- EMPIEZA UNA FILA PARA UN ELEMENTO-->
                                     <?php
 																		$no_cliente = $_SESSION['no_cliente'];
-																		$query = mysqli_query($connection,"SELECT * FROM carrito where cliente_no_cliente = $no_cliente and status='0'");
+																		$_SESSION['no_cliente'] = $no_cliente;
+																		$query = mysqli_query($connection,"SELECT * FROM carrito where cliente_no_cliente = $no_cliente");
 																		$array = mysqli_fetch_array($query);
 																		$subtotal = $array['subtotal'];
 																		if ($subtotal == null){
@@ -140,9 +141,9 @@ if($session_email==null || $session_email==''){
 
                                             </div>
                                         </td>
-                                        <td class="column-2 "><span id="txt-desc"><?php echo $array3['name'];?> </span></td>
-                                        <td class="column-3">$ <?php echo $row['precio'] ?></td>
-                                        <td class="column-4"><?php echo $row['cantidad'] ?></td>
+                                        <td class="column-2"><span id="txt-desc"><?php echo $array3['name'];?> </span></td>
+                                        <td class="column-3">$ <?php echo $row['precio']; ?></td>
+                                        <td class="column-4"><?php echo $row['cantidad']; ?></td>
                                         <td class="column-5">
                                           <a href="php/eliminarcarrito.php?id=<?php echo $no_producto; ?>">  <button type="button" class="btn btn-outline-dark btn-sm">Remover </button></a>
                                         </td>

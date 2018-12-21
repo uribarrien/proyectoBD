@@ -4,20 +4,29 @@ $password = "123456789";
 $user = "proyecto";
 $db = "proyectobd";
 
-$id = $_GET['id'];
+session_start();
+$id_cliente = $_SESSION['no_cliente'];
+$no_pedido = $_SESSION['no_pedido'];
+$no_envio = $_SESSION['no_envio'];
+$_SESSION['no_cliente'] = $id_cliente;
+$_SESSION['no_pedido'] = $no_pedido;
+$_SESSION['no_envio'] = $no_envio;
+
 $connection = mysqli_connect($server,$user,$password,$db);
 if(!$connection){
-    echo "Error. Sin conexion a la base de datos";
-    echo "Errno de depuracion ".mysqli_connect_errno().PHP_EOL;
-    echo "Error de depuracion ".mysqli_connect_error().PHP_EOL;
     exit;
+}else {
+$query = mysqli_query($connection,"SELECT * from cliente where no_cliente=$id_cliente");
+$datos_cliente = mysqli_fetch_array($query);
+$tar = mysqli_query($connection,"SELECT tarjeta_id_tarjeta from cliente where no_cliente=$id_cliente");
+$row = mysqli_num_rows($tar);
+$t = mysqli_fetch_array($tar);
+$id_tarjeta = $t[0];
+if ($row > 0 || $id_tarjeta!=NULL) {
+  $tarjeta = mysqli_query($connection,"SELECT * from tarjeta where id_tarjeta = $id_tarjeta");
+  #$datos_tarjeta = mysqli_fetch_array($tarjeta);
 }
-$i = 1;
-$talla = mysqli_query($connection,"SELECT * FROM talla;");
-$color = mysqli_query($connection,"SELECT * FROM color;");
-$descuento = mysqli_query($connection,"SELECT * FROM descuento;");
 ?>
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -80,7 +89,7 @@ $descuento = mysqli_query($connection,"SELECT * FROM descuento;");
       <div id="cont_titulo" class="py-1 text-center">
       </div>
 
-      <form class="row" action="php/?id=<?php echo $id; ?>" method="post">
+      <form class="row" action="php/registroTarjeta.php?>" method="post">
         <div class="col-md order-md-2 mb-4">
           <h4 class="d-flex justify-content-between align-items-center mb-3">
             <span class="text-muted">Información del propietario</span>
@@ -89,17 +98,17 @@ $descuento = mysqli_query($connection,"SELECT * FROM descuento;");
             <div class="row">
                   <div class="col-md-6 mb-3">
                 <label for="nombre_th">Nombre</label>
-                <input type="text" name="nombre_th" class="form-control" id="nombre_th" placeholder="" value="" >
+                <input type="text" name="nombre_th" value=<?php echo $datos_cliente['nombre'];?> class="form-control" id="nombre_th" placeholder="">
               </div>
                  </div>
             <div class="row">
               <div class="col-md-6 mb-3">
+              <label for="apellidopat_th">Apellido paterno</label>
+              <input type="text" name="apellidpat_th" value=<?php echo $datos_cliente['apellido_paterno'];?> class="form-control" id="apellidopat_th" placeholder="" >
+            </div>
+              <div class="col-md-6 mb-3">
                 <label for="apellidomat_th">Apellido materno</label>
-                <input type="text" name="apellidomat_th" class="form-control" id="apellidomat_th" placeholder="" value="" >
-              </div>
-                <div class="col-md-6 mb-3">
-                <label for="apellidopat_th">Apellido paterno</label>
-                <input type="text" name="apellidpat_th" class="form-control" id="apellidopat_th" placeholder="" value="" >
+                <input type="text" name="apellidomat_th" value=<?php echo $datos_cliente['apellido_materno'];?> class="form-control" id="apellidomat_th" placeholder="" >
               </div>
             </div>
 
@@ -119,8 +128,19 @@ $descuento = mysqli_query($connection,"SELECT * FROM descuento;");
               <div class="col-md-6 mb-3">
                 <label for="mes_exp">Mes de expiración</label>
                 <select name="mes_exp" class="form-control" id="mes_exp">
-                    <option selected>Enero</option>
-                
+                  <option value="01">Enero</option>
+                  <option value="02">Febrero</option>
+                  <option value="03">Marzo</option>
+                  <option value="04">Abril</option>
+                  <option value="05">Mayo</option>
+                  <option value="06">Junio</option>
+                  <option value="07">Julio</option>
+                  <option value="08">Agosto</option>
+                  <option value="09">Septiembre</option>
+                  <option value="10">Octubre</option>
+                  <option value="11">Noviembre</option>
+                  <option value="12">Diciembre</option>
+                  <option selected hidden>Mes</option>
                 </select>
 
 
@@ -128,7 +148,21 @@ $descuento = mysqli_query($connection,"SELECT * FROM descuento;");
                 <div class="col-md-6 mb-3">
                     <label for="ano_exp">Año de expiración</label>
                         <select name="ano_exp" class="form-control" id="ano_exp">
-                         <option selected>2010</option></select>
+                          <option value="18">2018</option>
+                          <option value="19">2019</option>
+                          <option value="20">2020</option>
+                          <option value="21">2021</option>
+                          <option value="22">2022</option>
+                          <option value="23">2023</option>
+                          <option value="24">2024</option>
+                          <option value="25">2025</option>
+                          <option value="26">2026</option>
+                          <option value="27">2027</option>
+                          <option value="28">2028</option>
+                          <option value="29">2029</option>
+                          <option value="30">2030</option>
+                          <option selected hidden>Anio</option>
+                        </select>
 
                 </div><br>
 
@@ -142,12 +176,20 @@ $descuento = mysqli_query($connection,"SELECT * FROM descuento;");
                     <div class="col-md-6 mb-3">
                         <label for="tipo">Tipo de tarjeta</label>
                         <select name="tipo" class="form-control" id="tipo">
-                            <option selected>Visa</option>
-                            <option selected >Mastercard</option>
+                            <option value="visa">Visa</option>
+                            <option value="mastercard" >Mastercard</option>
+                            <option selected hidden >Tipo</option>
                         </select>
               </div>
               </div>
-          
+              <div class="row">
+
+            <div class="col-md-6 mb-3">
+              <label for="banco">Banco</label>
+              <input type="text" name="banco" class="form-control" id="banco" placeholder="" value="" >
+            </div>
+            </div>
+
             <hr class="mb-4">
 
             </div>
@@ -166,3 +208,5 @@ $descuento = mysqli_query($connection,"SELECT * FROM descuento;");
     </div>
   </body>
 </html>
+
+<?php } ?>

@@ -1,3 +1,37 @@
+<?php
+$server = "localhost";
+$password = "123456789";
+$user = "proyecto";
+$db = "proyectobd";
+
+session_start();
+$id_cliente = $_SESSION['no_cliente'];
+$no_pedido = $_SESSION['no_pedido'];
+$_SESSION['no_cliente'] =$id_cliente;
+$_SESSION['no_pedido'] = $no_pedido;
+
+$connection = mysqli_connect($server,$user,$password,$db);
+if(!$connection){
+    exit;
+}else{
+  $fech = mysqli_query($connection,"SELECT curdate();");
+  $arr = mysqli_fetch_array($fech);
+  $fecha = $arr[0];
+  $query6 = mysqli_query($connection,"SELECT adddate(curdate(),interval 3 day)");
+  $arr2 = mysqli_fetch_array($query6);
+  $fecha_llegada = $arr2[0];
+$query5 = "INSERT INTO envio(fecha_envio,fecha_llegada,paquteria,estatus) values('$fecha','$fecha_llegada','DHL','No enviado')";
+mysqli_query($connection,$query5);
+$envio = mysqli_query($connection,"SELECT last_insert_id()");
+$env = mysqli_fetch_array($envio);
+$no_envio = $env[0];
+$actualizaCarrito = mysqli_query($connection,"UPDATE carrito set envio_no_envio=$no_envio, fecha='$fecha' where no_pedido=$no_pedido");
+$_SESSION['no_envio'] = $no_envio;
+$arr4 = mysqli_query($connection,"SELECT * from envio where no_envio = $no_envio");
+$envio = mysqli_fetch_array($arr4);
+$arr3 = mysqli_query($connection,"SELECT * from cliente where no_cliente = $id_cliente");
+$cliente = mysqli_fetch_array($arr3);
+ ?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -6,9 +40,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>ENVIOS</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-        
+
         <link rel="stylesheet" href="css/css_envios/envios.css">
-        
+
     </head>
     <body class="bg-light">
     <header>
@@ -38,7 +72,7 @@
                 </form>
               </div>
             </nav>
-           
+
        </header>
     <div class="container">
       <div id="cont_titulo" class="py-1 text-center">
@@ -56,90 +90,132 @@
               <div>
                 <h6 class="my-0">ESTATUS : </h6>
               </div>
-              <strong class="text-muted">SHALALALA</strong>
+              <strong class="text-muted"><?php echo $envio['estatus']; ?></strong>
             </li>
             <li class="list-group-item d-flex justify-content-between lh-condensed">
               <div>
                 <h6 class="my-0">Ciudad destino</h6>
                 <small class="text-muted"></small>
               </div>
-              <span class="text-muted">ciudad</span>
+              <span class="text-muted"><?php
+              $idCd = $cliente['ciudad_id_ciudad'];
+              $cd = mysqli_query($connection, "SELECT * FROM ciudad WHERE id_ciudad=$idCd;");
+              $res = mysqli_fetch_array($cd);
+              echo $res['nombre'];
+               ?></span>
             </li>
           </ul>
         </div>
         <div class="col-md-8 order-md-1">
           <h4 class="mb-3">DETALLES DEL ENVIO</h4>
-          <form class="needs-validation" novalidate>
+          <form class="needs-validation" method="post" novalidate action="php/actualizaEnvio.php">
             <div class="row">
               <div class="col-md-6 mb-3">
                 <label for="firstName">NUMERO DE ENVIO</label>
-                <input type="text" class="form-control" id="firstName" placeholder="" value="" >
+                <input type="text" class="form-control" id="firstName" placeholder="" name="no_envio" value=<?php echo $no_envio; ?> >
                 <div class="invalid-feedback">
                   Valid first name is required.
                 </div>
               </div>
               <div class="col-md-6 mb-3">
                 <label for="lastName">PESO DE ENVIO</label>
-                <input type="text" class="form-control" id="lastName" placeholder="" value="" >
+                <?php
+                $query = "SELECT * FROM detalle_carrito where carrito_no_pedido = $no_pedido";
+                $array = mysqli_query($connection,$query);
+                $cantidadTotal = 0;
+                while ($s=mysqli_fetch_array($array)) {
+                  $cantidad = $s['cantidad'];
+                  $cantidadTotal = $cantidadTotal + $cantidad;
+                  $no_producto = $s['producto_no_producto'];
+                  $query2 = "SELECT stock from producto where no_producto=$no_producto";
+                  $query3 = mysqli_query($connection,$query2);
+                  $stock = mysqli_fetch_array($query3);
+                  $nuevo_stock = $stock[0]-$cantidad;
+                  if ($nuevo_stock>0) {
+                    $query4 = "UPDATE producto set stock = $nuevo_stock where no_producto = $no_producto";
+                    mysqli_query($connection,$query4);
+                  }else {
+                    $query4 = "UPDATE producto set stock = 0 where no_producto = $no_producto";
+                    mysqli_query($connection,$query4);
+                  }
+                }
+                $peso = $cantidadTotal*100;
+                 ?>
+                <input type="text" class="form-control" id="lastName" name="peso" placeholder="" value="<?php echo $peso?>gr." >
                 <div class="invalid-feedback">
                   Valid last name is required.
                 </div>
               </div>
             </div>
-            
+
             <div class="row">
               <div class="col-md-6 mb-3">
                 <label for="firstName">FECHA DE ENVIO</label>
-                <input type="text" class="form-control" id="firstName" placeholder="" value="" >
+                <input type="text" class="form-control" id="firstName" placeholder="" value=<?php echo $envio['fecha_envio']; ?> >
                 <div class="invalid-feedback">
                   Valid first name is required.
                 </div>
               </div>
               <div class="col-md-6 mb-3">
                 <label for="lastName">FECHA DE LLEGADA</label>
-                <input type="text" class="form-control" id="lastName" placeholder="" value="" >
+                <input type="text" class="form-control" id="lastName" placeholder="" value=<?php echo $envio['fecha_llegada']; ?>  >
                 <div class="invalid-feedback">
                   Valid last name is required.
                 </div>
               </div>
             </div>
             <div class="mb-3">
-                <label for="email">CALLE <span class="text-muted"></span></label>
-                <input type="email" class="form-control" id="email" placeholder="">
+                <label for="firstName">CALLE <span class="text-muted"></span></label>
+                <input type="text" class="form-control" id="firstName" name="calle" placeholder="" value=<?php echo $cliente['calle']; ?> >
+                <div class="invalid-feedback">
+                  Valid first name is required.
+                </div>
             </div>
             <div class="row">
               <div class="col-md-6 mb-3">
                 <label for="firstName">NUMERO DE EXTERIOR</label>
-                <input type="text" class="form-control" id="firstName" placeholder="" value="" >
+                <input type="text" class="form-control" id="firstName" name="no_exterior" placeholder="" value=<?php echo $cliente['no_exterior']; ?> >
                 <div class="invalid-feedback">
                   Valid first name is required.
                 </div>
               </div>
-              <div class="col-md-6 mb-3">
-                <label for="lastName">NUMERO DE INTERIOR</label>
-                <input type="text" class="form-control" id="lastName" placeholder="" value="" >
-                <div class="invalid-feedback">
-                  Valid last name is required.
-                </div>
-              </div>
             </div>
-            
+
             <div class="mb-3">
-                <label for="email">COLONIA <span class="text-muted"></span></label>
-                <input type="email" class="form-control" id="email" placeholder="">
+                <label for="firstName">COLONIA <span class="text-muted"></span></label>
+                <input type="text" class="form-control" id="firstName" name="colonia" placeholder="" value=<?php echo $cliente['colonia']; ?>>
+                <div class="invalid-feedback">
+                  Valid first name is required.
+                </div>
             </div>
-            
+
             <div class="row">
               <div class="col-md-6 mb-3">
                 <label for="firstName">CODIGO POSTAL</label>
-                <input type="text" class="form-control" id="firstName" placeholder="" value="" >
+                <input type="text" class="form-control" id="firstName" name="codigo_postal" placeholder="" value=<?php echo $cliente['codigo_postal']; ?> >
                 <div class="invalid-feedback">
                   Valid first name is required.
                 </div>
               </div>
+              <div class="col-md-6 mb-3">
+            <label for="ciudad">CIUDAD</label>
+            <select name="ciudad" class="form-control" id="firstName" >
+                <?php
+                $cd=mysqli_query($connection,"SELECT * FROM ciudad");
+                 while ($res = mysqli_fetch_array($cd)) { ?>
+                <option value="<?php echo $res['id_ciudad'];?>"><?php echo $res['nombre']; ?></option>
+              <?php } $idCd = $cliente['ciudad_id_ciudad'];
+              $cd = mysqli_query($connection, "SELECT * FROM ciudad WHERE id_ciudad=$idCd;");
+              $res = mysqli_fetch_array($cd);?>
+              <option selected hidden value="<?php $res['id_ciudad']?>">
+                <?php
+              echo $res['nombre'];
+               ?></option>
+            </select>
+          </div>
             </div>
-            
-            
+
+
             <hr class="mb-4">
             <button id="boton" class="btn btn-lg btn-secondary btn-block" type="submit">CONFIRMAR</button>
           </form>
@@ -188,3 +264,5 @@
     </script>
   </body>
 </html>
+<?php
+} ?>

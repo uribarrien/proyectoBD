@@ -17,7 +17,9 @@ $datos = mysqli_query($connection, "SELECT * FROM v_proveedor;");
 
 <!DOCTYPE html>
 <html>
-<head><link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<head>
+  <title>Proveedores</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
 
@@ -78,7 +80,8 @@ $datos = mysqli_query($connection, "SELECT * FROM v_proveedor;");
       <th scope="row"><?php echo $dt["no_proveedor"]; ?></th>
       <td><?php echo $dt["nombre_proveedor"]; ?></td>
       <td><?php echo $dt["rfc"]; ?></td>
-      <td><?php $q = mysqli_query($connection, "SELECT a.nombre cd FROM ciudad a JOIN v_proveedor b ON b.ciudad_id_ciudad=a.id_ciudad;");
+      <td><?php $id=$dt["no_proveedor"];
+      $q = mysqli_query($connection, "SELECT a.nombre cd FROM ciudad a JOIN v_proveedor b ON b.ciudad_id_ciudad=a.id_ciudad AND b.no_proveedor=$id;");
             $k = mysqli_fetch_array($q);
             echo $k["cd"]; ?></td>
        <td><a href="actualizaProveedor.php?id=<?php echo $i; ?>"><img src="img/actualizarUsuario.png"></a>
