@@ -81,9 +81,7 @@ if($session_email==null || $session_email==''){
                         <div class="row m-b-25 p-l-0">
                             <a class="cl3 ltext-108 hov-cl2 trans-08" href="reporteEnvioStatus.php">Envíos por status</a>
                         </div>
-                        <div class="row m-b-25 p-l-0">
-                            <a class="cl3 ltext-108 hov-cl2 trans-08" href="reporteFactura.php">Factura</a>
-                        </div>
+                      
                          <div class="row m-b-25 p-l-0">
                             <a class="cl3 ltext-108 hov-cl2 trans-08" href="reporteVentasPorCantidad.php">Ventas por cantidad</a>
                         </div>

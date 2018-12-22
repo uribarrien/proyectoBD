@@ -93,7 +93,7 @@ $cd = mysqli_query($connection, "SELECT * FROM ciudad;");
             <div class="needs-validation" novalidate>
             <div class="mb-3">
                 <label for="razonsocial">Razón social<span class="text-muted"></span></label>
-                <input type="text" name="razonsocial" class="form-control" id="razonsocial" placeholder="">
+                <input type="text" name="nombre" class="form-control" id="razonsocial" placeholder="">
             </div>
 
             <div class="row">

@@ -24,7 +24,7 @@ if(!$connection){
 
 $select = mysqli_query($connection,"SELECT day(fecha_nac) dia,month(fecha_nac) mes, year(fecha_nac) anio, cliente.* from cliente where correo= '$session_email';");
 while ($row=mysqli_fetch_array($select)){
-$_SESSION['no_cliente']= $row['no_cliente'];  
+$_SESSION['no_cliente']= $row['no_cliente'];
 ?>
 
 <!DOCTYPE html>
@@ -102,12 +102,12 @@ $_SESSION['no_cliente']= $row['no_cliente'];
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label >Cambiar contraseña (opcional)</label>
-                            <input type="text" class="form-control" name="contrasena" placeholder="Contraseña " value="" >
+                            <input type="password" class="form-control" name="contrasena" placeholder="Contraseña " value="" >
 
                         </div>
                         <div class="col-md-6 mb-3">
                             <label >Reingresar contraseña</label>
-                            <input type="text" class="form-control" name="newcontrasena" placeholder="Confirmar contraseña" value="" >
+                            <input type="password" class="form-control" name="newcontrasena" placeholder="Confirmar contraseña" value="" >
 
                         </div>
                     </div>

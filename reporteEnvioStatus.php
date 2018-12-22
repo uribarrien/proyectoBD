@@ -136,11 +136,14 @@ if(!$connection){
   </thead>
   <tbody>
     <?php
+
     if (isset($_POST['reporte'])) {
       $estatus = $_POST['estatus'];
+
       $env = mysqli_query($connection,"SELECT a.*,b.nombre ciudad FROM envio a JOIN ciudad b ON a.ciudad_id_ciudad = b.id_ciudad AND a.estatus = '$estatus';");
       $i=0;
       while ($envio = mysqli_fetch_array($env)) {
+        echo "hola";
         $i = $i + 1;
       ?>
         <tr>

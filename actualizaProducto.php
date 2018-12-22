@@ -23,7 +23,8 @@ if(!$connection){
 $id = $_GET['id'];
 $data = mysqli_query($connection,"SELECT * FROM producto WHERE no_producto = $id;");
 $dt = mysqli_fetch_array($data);
-
+$name = $dt['nombre'];
+echo $name;
 $tallaP = mysqli_query($connection,"SELECT a.* from talla a, talla_producto b, producto c where b.producto_no_producto = c.no_producto and b.talla_id_talla = a.id_talla and b.producto_no_producto =$id;");
 $talla = mysqli_query($connection,"SELECT * FROM talla;");
 $colorP = mysqli_query($connection,"SELECT a.* from color a, color_producto b, producto c where b.producto_no_producto = c.no_producto and b.color_id_color = a.id_color and b.producto_no_producto =$id;");
@@ -148,7 +149,7 @@ $descuento = mysqli_query($connection,"SELECT * FROM descuento;");
           <div class="needs-validation" novalidate>
             <div class="mb-3">
                 <label for="nombre">Nombre<span class="text-muted"></span></label>
-                <input type="text" name="nombre" class="form-control" id="nombre" placeholder="" value=<?php echo $dt['nombre']; ?>>
+                <input type="text" name="nombre" class="form-control" id="nombre" placeholder="<?php echo $name ?>" value=>
             </div>
 
             <div class="row">

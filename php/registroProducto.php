@@ -14,6 +14,7 @@ $color = $_POST['color'];
 $aviable = $_POST['disponible'];
 $model = $_POST['modelo'];
 $cloth = $_POST['tela'];
+$desc = $_POST['descuento'];
 $idP = $_GET['id'];
 
 $connection = mysqli_connect($server,$user,$password,$db);
@@ -27,8 +28,8 @@ if(!$connection){
 }
 //---------------------------Insert---------------------------
 //nombre,precio,costo,sexo,stock,disponible,modelo,tela
-$qInsert = "INSERT INTO producto (nombre,precio,costo,sexo,stock,disponible,modelo,tela)
-            VALUES('$name',$price,$cost,'$sex',$stock,$aviable,'$model','$cloth')";
+$qInsert = "INSERT INTO producto (nombre,precio,costo,sexo,stock,disponible,modelo,tela,descuento_cod_descuento)
+            VALUES('$name',$price,$cost,'$sex',$stock,$aviable,'$model','$cloth',$desc)";
 mysqli_query($connection,$qInsert);
 
 $qSelect = "SELECT * FROM producto WHERE nombre='$name' AND precio=$price AND costo=$cost AND sexo='$sex' AND stock='$stock' AND disponible=$aviable AND modelo='$model' AND tela='$cloth';";

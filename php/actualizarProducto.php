@@ -4,7 +4,7 @@ $db = "proyectobd";
 $user = "proyecto";
 $password = "123456789";
 
-$name = $_POST['nombre'];
+#$name = $_POST['nombre'];
 $price = $_POST['precio'];
 $cost = $_POST['costo'];
 $sex = $_POST['sexo'];
@@ -22,7 +22,7 @@ if(!$connection){
     exit;
 }else{
 //-------------ACTUALIZAR-----------
-$qRefresh = "UPDATE producto SET nombre = '$name', precio = $price, costo = $cost,sexo = '$sex',
+$qRefresh = "UPDATE producto SET  precio = $price, costo = $cost,sexo = '$sex',
               stock = $stock, modelo = '$model', disponible = $aviable, tela = '$cloth', descuento_cod_descuento = $discount
               WHERE no_producto = '$id';";
 mysqli_query($connection,$qRefresh);
@@ -62,7 +62,7 @@ while ($s = mysqli_fetch_array($tallaP)) {
 $qSelect = "SELECT * FROM producto WHERE no_producto = '$id'";
 $result = mysqli_query($connection,$qSelect);
 $datos = mysqli_fetch_array($result);
-if ($datos['nombre'] = "$name" && $datos['precio'] = $price && $datos['costo'] = $cost && $datos['sexo'] = "$sex"
+if ( $datos['precio'] = $price && $datos['costo'] = $cost && $datos['sexo'] = "$sex"
     && $datos['stock'] = $stock && $datos['modelo'] = "$model" && $datos['disponible'] = $aviable && $datos['tela'] = "$cloth"
     && $datos['descuento_cod_descuento'] = $discount) {
   $rows = mysqli_num_rows($result);
