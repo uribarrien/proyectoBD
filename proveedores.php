@@ -4,6 +4,14 @@ $password = "123456789";
 $user = "proyecto";
 $db = "proyectobd";
 
+session_start();
+$session_email=$_SESSION['correo'];
+if($session_email==null || $session_email==''){
+    echo "Usted no puede entrar a esta página, necesita iniciar una sesión";
+    header("location:index.php");
+    die();
+}
+
 $connection = mysqli_connect($server,$user,$password,$db);
 if(!$connection){
     echo "Error. Sin conexion a la base de datos";
@@ -17,7 +25,9 @@ $datos = mysqli_query($connection, "SELECT * FROM v_proveedor;");
 
 <!DOCTYPE html>
 <html>
-<head><link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<head>
+  <title>Proveedores</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
 
@@ -30,7 +40,7 @@ $datos = mysqli_query($connection, "SELECT * FROM v_proveedor;");
                 <!-- BARRA DE NAVEGACIÓN-->
                 <div>
                 <nav id="cont_nav" class="navbar navbar-expand-lg navbar-light">
-                    <a id="cont_nav" class="navbar-brand" href="index.html">Inicio</a>
+                    <a id="cont_nav" class="navbar-brand" href="index.php">Inicio</a>
                     <button id="cont_nav" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -38,7 +48,7 @@ $datos = mysqli_query($connection, "SELECT * FROM v_proveedor;");
                     <div id="cont_nav" class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav mr-auto">
                             <li class="nav-item">
-                                <a class="nav-link" href="administrador.html">Mi cuenta </a>
+                                <a class="nav-link" href="administrador.php">Mi cuenta </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="usuarios.php">Usuarios</a>
@@ -53,7 +63,7 @@ $datos = mysqli_query($connection, "SELECT * FROM v_proveedor;");
                                 <a class="nav-link" href="producto.php">Productos</a>
                             </li>
                              <li class="nav-item">
-                                <a class="nav-link" href="">Cerrar sesión</a>
+                                <a class="nav-link" href="cerrar_sesion.php">Cerrar sesión</a>
                             </li>
                         </ul>
 
@@ -78,7 +88,8 @@ $datos = mysqli_query($connection, "SELECT * FROM v_proveedor;");
       <th scope="row"><?php echo $dt["no_proveedor"]; ?></th>
       <td><?php echo $dt["nombre_proveedor"]; ?></td>
       <td><?php echo $dt["rfc"]; ?></td>
-      <td><?php $q = mysqli_query($connection, "SELECT a.nombre cd FROM ciudad a JOIN v_proveedor b ON b.ciudad_id_ciudad=a.id_ciudad;");
+      <td><?php $id=$dt["no_proveedor"];
+      $q = mysqli_query($connection, "SELECT a.nombre cd FROM ciudad a JOIN v_proveedor b ON b.ciudad_id_ciudad=a.id_ciudad AND b.no_proveedor=$id;");
             $k = mysqli_fetch_array($q);
             echo $k["cd"]; ?></td>
        <td><a href="actualizaProveedor.php?id=<?php echo $i; ?>"><img src="img/actualizarUsuario.png"></a>

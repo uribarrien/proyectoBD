@@ -4,6 +4,13 @@ $password = "123456789";
 $user = "proyecto";
 $db = "proyectobd";
 
+session_start();
+$session_email=$_SESSION['correo'];
+if($session_email==null || $session_email==''){
+    echo "Usted no puede entrar a esta página, necesita iniciar una sesión";
+    header("location:index.php");
+    die();
+}
 $connection = mysqli_connect($server,$user,$password,$db);
 if(!$connection){
     echo "Error. Sin conexion a la base de datos";
@@ -11,7 +18,7 @@ if(!$connection){
     echo "Error de depuracion ".mysqli_connect_error().PHP_EOL;
     exit;
 }
-$i = 1;
+
 $cd = mysqli_query($connection, "SELECT * FROM ciudad;");
 ?>
 
@@ -34,7 +41,7 @@ $cd = mysqli_query($connection, "SELECT * FROM ciudad;");
            </div>
                                            <!-- BARRA DE NAVEGACIÓN-->
            <nav id="cont_nav" class="navbar navbar-expand-lg navbar-light">
-              <a id="cont_nav" class="navbar-brand" href="index.html">Inicio</a>
+              <a id="cont_nav" class="navbar-brand" href="index.php">Inicio</a>
               <button id="cont_nav" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
@@ -43,7 +50,7 @@ $cd = mysqli_query($connection, "SELECT * FROM ciudad;");
                 <ul class="navbar-nav mr-auto">
 
                   <li class="nav-item">
-                    <a class="nav-link" href="administrador.html">Mi cuenta</a>
+                    <a class="nav-link" href="administrador.php">Mi cuenta</a>
                   </li>
                   <li class="nav-item  ">
                     <a class="nav-link" href="usuarios.php">Usuarios
@@ -62,7 +69,7 @@ $cd = mysqli_query($connection, "SELECT * FROM ciudad;");
                     </a>
                   </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="#">Cerrar sesión
+                    <a class="nav-link" href="cerrar_sesion.php">Cerrar sesión
                     </a>
                   </li>
                 </ul>
@@ -74,12 +81,31 @@ $cd = mysqli_query($connection, "SELECT * FROM ciudad;");
        </header>
                    <!-- FIN BARRA DE NAVEGACIÓN-->
                    <!-- FORMULARIOS-->
-    <div id="contenedor_forms" class="container">
+       <!--  <div id="contenedor_form" class="container col-md-6">
+            <div class="col-ld-10 order-md-3 ">-->
+    <div id="contenedor_forms" class="container col-md-6">
       <div id="cont_titulo" class="py-1 text-center">
       </div>
 
       <form class="row" action="php/registroProveedor.php" method="post">
         <div class="col-md order-md-2 mb-4">
+            <h4 id="text_izq" class="mb-3 text-muted">Proveedor</h4>
+            <div class="needs-validation" novalidate>
+            <div class="mb-3">
+                <label for="razonsocial">Razón social<span class="text-muted"></span></label>
+                <input type="text" name="nombre" class="form-control" id="razonsocial" placeholder="">
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="rfc">RFC</label>
+                <input type="text" name="rfc" class="form-control" id="rfc" placeholder="" value="" >
+
+              </div><br>
+
+            </div>
+
+          </div>
           <h4 class="d-flex justify-content-between align-items-center mb-3">
             <span class="text-muted">Dirección</span>
           </h4>
@@ -105,7 +131,6 @@ $cd = mysqli_query($connection, "SELECT * FROM ciudad;");
             <div class="row">
                   <div class="col-md-6 mb-3">
                 <label for="ciudad">Ciudad</label>
-                <!--<input type="text" name="ciudad" class="form-control" id="ciudad" placeholder="" value="" >-->
                 <select name="ciudad" class="form-control" id="firstName">
                     <option selected hidden>Ciudad</option>
                     <?php while ($res = mysqli_fetch_array($cd)) { ?>
@@ -122,41 +147,7 @@ $cd = mysqli_query($connection, "SELECT * FROM ciudad;");
 
             <button id="boton" class="btn btn-lg btn-secondary btn-block" type="submit">CONFIRMAR</button>
         </div>
-        <div class="col-md order-md-1">
-          <h4 id="text_izq" class="mb-3 text-muted">Proveedor</h4>
-          <br>
-          <div class="needs-validation" novalidate>
-            <div class="mb-3">
-                <label for="razonsocial">Razón social<span class="text-muted"></span></label>
-                <input type="text" name="razonsocial" class="form-control" id="razonsocial" placeholder="">
-            </div>
 
-            <div class="row">
-              <div class="col-md-6 mb-3">
-                <label for="rfc">RFC</label>
-                <input type="text" name="rfc" class="form-control" id="rfc" placeholder="" value="" >
-
-              </div><br>
-
-            </div>
-                <div class="row">
-
-              <div class="col-md-6 mb-3">
-                <label for="contrasena">Contraseña</label>
-                <input type="text" name="contrasena" class="form-control" id="contrasena" placeholder="" value="" >
-
-              </div>
-                  <div class="col-md-6 mb-3">
-                <label for="contrasena">Confirmar contraseña</label>
-                <input type="text" name="contrasena" class="form-control" id="contrasena" placeholder="" value="" >
-
-              </div>
-            </div>
-
-            <hr class="mb-4">
-
-          </div>
-        </div>
       </form>
         <!-- FIN FORMULARIOS-->
       <footer class="my-5 pt-5 text-muted text-center text-small">

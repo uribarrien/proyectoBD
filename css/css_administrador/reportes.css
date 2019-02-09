@@ -1,0 +1,45 @@
+#contenedorr{
+
+    align-content: left;
+    display: inline-block;
+}
+ .containerr botton, .containerr {
+    display: inline-block;
+
+    position: relative;
+    left:10px;
+}
+.form-control{
+    width: 200px;
+}
+
+.barra{
+    background: #17365D;
+    color: #ffff;
+}
+#tabla{
+   position: relative;
+    left: 15px;
+    border: black;
+
+}
+#cont_nav{
+    background: #B4C2E2  ;
+}
+#importetotal{
+    border: solid;
+}
+#importe{
+    border:red;
+}
+
+#mes{
+    position: relative;
+    left:120px;
+}
+div label{
+   font-family:"Lucida Console";
+}
+#tabla{
+   background-color:  #EFEFF0;
+}

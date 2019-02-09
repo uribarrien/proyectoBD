@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>INFORMACIÓN PERSONAL</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        
+        <link rel="stylesheet" href="css/css_seleccion_pago/css_pago.css">
+        
+    </head>
+    <body>
+        <header>
+            <h1>QUETZAL</h1>   
+                        <!-- MENU SUPERIOR -->
+            <div>
+                <nav id="cont_nav" class="navbar navbar-expand-lg navbar-light">
+                    <a id="cont_nav" class="navbar-brand" href="index.php">Inicio</a>
+                    <button id="cont_nav" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div id="cont_nav" class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item ">
+                                <a class="nav-link" href="hombres.php">Ropa para hombre </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="ropaMujer.html">Ropa para mujer</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="loginUsuario.html">Iniciar Sesion</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+
+                <!-- FINMENU SUPERIOR -->
+        </header>
+        <div>
+            
+        </div>
+        <div id="contenedor_form" class="container col-md-6">
+            <div class="col-ld-10 order-md-3 ">
+          <h4 class="mb-3 text-center pt-4" id="txt-50-c">Realizar pago</h4>
+          <form class="needs-validation" action="" method="POST">
+             <div class="row">
+              <div class="col-md-6 mb-3">
+                <label id="txt-20-c">Nombre</label>
+                <input type="text" class="form-control" name="telefono" placeholder="Nombre del dueño de la tarjeta" value="" >
+              </div>
+            </div>
+             
+             <div class="row">
+              <div class="col-md-6 mb-3">
+                <label  id="txt-20-c">Apellido paterno</label>
+                <input type="text" class="form-control"  name="apellido_paterno" id="apellido_paterno" placeholder="Apellido del dueño de la tarjeta" value="" >
+
+              </div>
+              <div class="col-md-6 mb-3">
+                <label  id="txt-20-c">Apellido materno</label>
+                <input type="text" class="form-control" name="apellido_materno" id="apellido_materno" placeholder="Apellido del dueño de la tarjeta" value="" >
+              </div>
+            </div>
+            
+            <div class="mb-3">
+                <label  id="txt-20-c">Numero de tarjeta <span class="text-muted"></span></label>
+                <input type="email" class="form-control" name="num_tarjeta" id="num_tarjeta" placeholder="Numero de tarjeta">
+            </div>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label  id="txt-20-c">Fecha de vencimiento</label>
+                <input type="text" class="form-control" name="caducidad" id="caducidad" placeholder="Vencimiento " value="" >
+
+              </div>
+              <div class="col-md-6 mb-3">
+                <label id="txt-20-c">Codigo de seguridad</label>
+                <input type="text" class="form-control" name="cvv" id="cvv" placeholder="CVV" value="" >
+
+              </div>
+            </div>          
+            <hr class="mb-4">
+            <button id="boton" class="btn btn-lg btn-dark btn-block" type="submit">CONFIRMAR</button>
+            <br>
+          </form>
+        </div>
+        </div>
+           
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    </body>
+</html>

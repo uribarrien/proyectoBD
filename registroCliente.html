@@ -4,19 +4,19 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>INFORMACIÓN PERSONAL</title>
+        <title>Registro</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-        
+
         <link rel="stylesheet" href="css/css_informacion_personal/informacionPersonal.css">
-        
+
     </head>
     <body>
         <header>
-            <h1>QUETZAL</h1>   
-                        <!-- MENU SUPERIOR -->
+            <h1>QUETZAL</h1>
+            <!-- MENU SUPERIOR -->
             <div>
                 <nav id="cont_nav" class="navbar navbar-expand-lg navbar-light">
-                    <a id="cont_nav" class="navbar-brand" href="index.html">Inicio</a>
+                    <a id="cont_nav" class="navbar-brand" href="index.php">Inicio</a>
                     <button id="cont_nav" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -24,10 +24,10 @@
                     <div id="cont_nav" class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav mr-auto">
                             <li class="nav-item ">
-                                <a class="nav-link" href="hombres.html">Ropa para hombre </a>
+                                <a class="nav-link" href="hombres.php">Ropa para hombre </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="ropaMujer.html">Ropa para mujer</a>
+                                <a class="nav-link" href="mujeres.php">Ropa para mujer</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="loginUsuario.html">Iniciar Sesion</a>
@@ -37,57 +37,92 @@
                 </nav>
             </div>
 
-                <!-- FINMENU SUPERIOR -->
+            <!-- FINMENU SUPERIOR -->
         </header>
         <div>
-            
+
         </div>
         <div id="contenedor_form" class="container col-md-6">
             <div class="col-ld-10 order-md-3 ">
-          <h4 class="mb-3 text-center pt-4">Abre una cuenta</h4>
-          <form class="needs-validation" action="php/registarCliente.php" method="POST">
-             <div class="row">
-              <div class="col-md-6 mb-3">
-                <label for="firstName">Nombre</label>
-                <input type="text" class="form-control" name="telefono" placeholder="Nombre" value="" >
-              </div>
-            </div>
-             
-             <div class="row">
-              <div class="col-md-6 mb-3">
-                <label for="firstName">Apellido paterno</label>
-                <input type="text" class="form-control"  name="apellido_paterno" id="firstName" placeholder="Apellido paterno" value="" >
+                <h4 class="mb-3 text-center pt-4">Abre una cuenta</h4>
+                <form class="needs-validation" id="form" name="form" action="php/registarCliente.php" method="POST" onsubmit="return enviar();">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="firstName">Nombre</label>
+                            <input type="text" class="form-control" name="nombre" placeholder="Nombre" value=""  required autofocus>
+                        </div>
+                    </div>
 
-              </div>
-              <div class="col-md-6 mb-3">
-                <label for="lastName">Apellido materno</label>
-                <input type="text" class="form-control" name="apellido_materno" id="lastName" placeholder="Apellido materno" value="" >
-              </div>
-            </div>
-            
-            <div class="mb-3">
-                <label for="email">Correo Electronico <span class="text-muted"></span></label>
-                <input type="email" class="form-control" name="correo" id="email" placeholder="Correo">
-            </div>
-            <div class="row">
-              <div class="col-md-6 mb-3">
-                <label for="firstName">Contraseña</label>
-                <input type="text" class="form-control" name="contrasena" placeholder="Contraseña " value="" >
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="firstName">Apellido paterno</label>
+                            <input type="text" class="form-control"  name="apellido_paterno" id="firstName" placeholder="Apellido paterno" value="" required>
 
-              </div>
-              <div class="col-md-6 mb-3">
-                <label for="lastName">Reingresar contraseña</label>
-                <input type="text" class="form-control" name="confcontra" placeholder="Confirmar contraseña" value="" >
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="lastName">Apellido materno</label>
+                            <input type="text" class="form-control" name="apellido_materno" id="lastName" placeholder="Apellido materno" value="" required>
+                        </div>
+                    </div>
 
-              </div>
-            </div>          
-            <hr class="mb-4">
-            <button id="boton" class="btn btn-lg btn-secondary btn-block" type="submit">CONFIRMAR</button>
-            <br>
-          </form>
+                    <div class="mb-3">
+                        <label for="email">Correo Electronico <span class="text-muted"></span></label>
+                        <input type="email" class="form-control" name="correo" id="correo" placeholder="Correo" oninvalid="setCustomValidity('Correo incorrecto')" oninput="setCustomValidity('')" required>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="firstName">Contraseña</label>
+                            <input type="password" class="form-control" id="contrasena" name="contrasena" placeholder="Contraseña " value=""  required>
+
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="lastName">Reingresar contraseña</label>
+                            <input type="password" class="form-control" id="confcontra" name="confcontra" placeholder="Confirmar contraseña" value="" required>
+
+                        </div>
+
+                        <script>
+                            function enviar(){
+                                var clave1 = document.form.contrasena.value;
+                                var clave2 = document.form.confcontra.value;
+                                var same_pass = false;
+                                var valid_pass = false;
+
+                                if (clave1 == clave2){
+                                    same_pass = true;
+
+                                }else{
+                                    alert("Las dos claves son distintas");
+                                    same_pass = false;
+                                }
+
+                                if(/^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/.test(clave1)){
+                                    valid_pass = true;
+                                }else{
+                                    alert("La contraseña debe contener : \n - Mayusculas \n - Minusculas \n - Almenos un digito \n - De 8 a 16 caraceteres");
+                                    valid_pass = false;
+                                }
+
+
+                                if (same_pass && valid_pass){
+                                    form.submit();
+                                    return true;
+                                }else{
+                                    return false;
+                                }
+
+
+                            }
+
+                        </script>
+                    </div>
+                    <hr class="mb-4">
+                    <button id="boton" class="btn btn-lg btn-secondary btn-block" type="submit">CONFIRMAR</button>
+                    <br>
+                </form>
+            </div>
         </div>
-        </div>
-           
+
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

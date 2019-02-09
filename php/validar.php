@@ -21,17 +21,28 @@ else{
 
 
 //--------------------SESIONES------------------------
-$qClient = "SELECT * FROM cliente WHERE correo = '$client' AND contrasena = '$pass'";
+$qClient = "SELECT * FROM cliente WHERE correo = '$client' AND contrasena = sha('$pass')";
 
 $resultC = mysqli_query($connection,$qClient);
 $rowsC = mysqli_num_rows($resultC);
 
 session_start();
 $_SESSION['correo']=$client;
-
+$bandera = $_SESSION['bandera'];
 if($rowsC > 0){
-    echo "Cliente existe <br>";
-    header("location:../menuInicio.html");
+  if ($client == "Admin@gmail.com"){
+    header("location:../administrador.php");
+  }else{
+    if($bandera == 1){
+      $array = mysqli_fetch_array($resultC);
+      $_SESSION['no_cliente']=$array[0];
+      $bandera=0;
+      header("location:../carrito.php");
+    }else{
+      header("location:../informacionPersonal.php");
+    }
+  }
+
 }else{
     echo "REQUIERE INICIAR SESION";
     header("location:../loginUsuario.html");

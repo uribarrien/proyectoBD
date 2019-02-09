@@ -3,7 +3,13 @@ $server = "localhost";
 $password = "123456789";
 $user = "proyecto";
 $db = "proyectobd";
-
+session_start();
+$session_email=$_SESSION['correo'];
+if($session_email==null || $session_email==''){
+    echo "Usted no puede entrar a esta página, necesita iniciar una sesión";
+    header("location:index.php");
+    die();
+}
 $id = $_GET['id'];
 //echo "el ide es: ".$id;
 $connection = mysqli_connect($server,$user,$password,$db);
@@ -37,7 +43,7 @@ $cd = mysqli_query($connection, "SELECT * FROM ciudad;");
            </div>
                                            <!-- BARRA DE NAVEGACIÓN-->
            <nav id="cont_nav" class="navbar navbar-expand-lg navbar-light">
-              <a id="cont_nav" class="navbar-brand" href="index.html">Inicio</a>
+              <a id="cont_nav" class="navbar-brand" href="index.php">Inicio</a>
               <button id="cont_nav" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
@@ -46,7 +52,7 @@ $cd = mysqli_query($connection, "SELECT * FROM ciudad;");
                 <ul class="navbar-nav mr-auto">
 
                   <li class="nav-item">
-                    <a class="nav-link" href="administrador.html">Mi cuenta</a>
+                    <a class="nav-link" href="administrador.php">Mi cuenta</a>
                   </li>
                   <li class="nav-item  ">
                     <a class="nav-link" href="usuarios.php">Usuarios
@@ -69,7 +75,7 @@ $cd = mysqli_query($connection, "SELECT * FROM ciudad;");
                     </a>
                   </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="#">Cerrar sesión
+                    <a class="nav-link" href="cerrar_sesion.php">Cerrar sesión
                     </a>
                   </li>
                 </ul>
@@ -85,7 +91,7 @@ $cd = mysqli_query($connection, "SELECT * FROM ciudad;");
       <div id="cont_titulo" class="py-1 text-center">
       </div>
 
-      <form class="row" action="php/actualizarProveedor.php" method="post">
+      <form class="row" action="php/actualizarProveedor.php?id=<?php echo $id;?>" method="post">
         <div class="col-md order-md-2 mb-4">
           <h4 class="d-flex justify-content-between align-items-center mb-3">
             <span class="text-muted">Dirección</span>
@@ -113,10 +119,13 @@ $cd = mysqli_query($connection, "SELECT * FROM ciudad;");
                   <div class="col-md-6 mb-3">
                 <label for="ciudad">Ciudad</label>
                 <select name="ciudad" class="form-control" id="firstName" >
-                    <option selected hidden>Ciudad</option>
                     <?php while ($res = mysqli_fetch_array($cd)) { ?>
                     <option value="<?php echo $res['id_ciudad'];?>"><?php echo $res['nombre']; ?></option>
-                  <?php } ?>
+                  <?php } $id=$data["no_proveedor"];
+                  $q = mysqli_query($connection, "SELECT a.nombre cd, a.id_ciudad FROM ciudad a JOIN v_proveedor b ON b.ciudad_id_ciudad=a.id_ciudad AND b.no_proveedor=$id;");
+                  $k = mysqli_fetch_array($q);?>
+                  <option value="<?php echo $k['id_ciudad'];?>"selected hidden><?php
+                        echo $k["cd"]; ?></option>
                 </select>
               </div>
               <div class="col-md-6 mb-3">
